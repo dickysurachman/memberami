@@ -1,0 +1,10 @@
+
+
+# ignore generated files
+/assets/
+/css/
+/images/
+/js/
+/template-kit/
+/wp-content/
+/wp-includes/
