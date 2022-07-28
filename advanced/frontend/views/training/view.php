@@ -12,9 +12,10 @@ use yii\widgets\DetailView;
         'attributes' => [
             'id',
             'tanggal_r',
-            'status',
+            'statusnya',
+            'ket',
             'keterangan:ntext',
-            'nama',
+            
         ],
     ]) ?>
 

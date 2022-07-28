@@ -18,8 +18,8 @@ class VisitSearch extends Visit
     public function rules()
     {
         return [
-            [['id', 'id_costumer', 'status','id_user'], 'integer'],
-            [['nama', 'tanggal', 'nama_ap'], 'safe'],
+            [['id',  'status','id_user'], 'integer'],
+            [['nama', 'tanggal', 'nama_ap','id_costumer'], 'safe'],
             [['jumlah'], 'number'],
         ];
     }

@@ -19,7 +19,7 @@ class TrainingSearch extends Training
     {
         return [
             [['id','id_user'], 'integer'],
-            [['tanggal_r', 'status', 'keterangan', 'nama'], 'safe'],
+            [['tanggal_r', 'status', 'keterangan', 'nama','id_costumer'], 'safe'],
         ];
     }
 
@@ -59,6 +59,7 @@ class TrainingSearch extends Training
             'id' => $this->id,
             'tanggal_r' => $this->tanggal_r,
             'id_user' => $this->id_user,
+            'id_costumer' => $this->id_costumer,
         ]);
         } else {
 
@@ -66,6 +67,7 @@ class TrainingSearch extends Training
             $query->andFilterWhere([
             'id' => $this->id,
             'tanggal_r' => $this->tanggal_r,
+            'id_costumer' => $this->id_costumer,
             'id_user' => Yii::$app->user->identity->id,
         ]);
         }

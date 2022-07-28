@@ -7,12 +7,18 @@ use yii\web\View;
 use app\models\Costumer;
 use kartik\money\MaskMoney;
 use yii\jui\DatePicker;
+use hscstudio\mimin\components\Mimin;
+if(Mimin::checkRoute('userk/create')){
+$dataPost=['REQUEST','APPROVED','REJECT','RESCHEDULE'];
+} else {
+$dataPost=['REQUEST'];
+}
 /* @var $this yii\web\View */
 /* @var $model app\models\Demo */
 /* @var $form yii\widgets\ActiveForm */
 $url = \yii\helpers\Url::to(['costumer/karyawan']);
 $cityDesc =empty($model->id_costumer) ? '' : Costumer::findOne(['id'=>$model->id_costumer])->nama;
-$dataPost=['REQUEST','APPROVED','REJECT','RESCHEDULE'];
+
 $script = <<< JS
 $(document).on("select2:open", () => {
   document.querySelector(".select2-container--open .select2-search__field").focus()
@@ -28,7 +34,7 @@ $this->registerJs($script,$position);
     <?php $form = ActiveForm::begin(); ?>
 
   
-    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
+   
 
     <div class="col-md-12" style="padding: 0px !important">
        <label class="control-label" for="semen-tgl"><?php echo "Tanggal Demo" ?> </label>
@@ -40,44 +46,24 @@ $this->registerJs($script,$position);
         'options'=>['class'=>'form-control','autocomplete'=>'off','readonly'=>'readonly']
     ]);?></div>
 
-<?php 
-    echo $form->field($model, 'id_costumer')->widget(Select2::classname(), [
-        'initValueText' => $cityDesc, 
-        'options' => ['placeholder' => 'Search for Costumer ...'],
-        'pluginOptions' => [
-            'allowClear' => true,
-            'minimumInputLength' => 3,
-            'language' => [
-                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
-            ],
-            'ajax' => [
-                'url' => $url,
-                'dataType' => 'json',
-                'data' => new JsExpression('function(params) { return {q:params.term}; }')
-            ],
-            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(id_costumer) { return id_costumer.text; }'),
-            'templateSelection' => new JsExpression('function (id_costumer) { return id_costumer.text; }'),
-        ],
-    ]);
-    ?> 
      <?= $form->field($model, 'status')->dropDownlist($dataPost) ?>
+     
+    <?= $form->field($model, 'ket')->textarea(['rows' => 3]) ?>
 
 
-    <?= $form->field($model, 'nama_ap')->textInput(['maxlength' => true]) ?>
-
+   
     <?php   
         echo $form->field($model, 'jumlah')->widget(MaskMoney::classname());
      ?>  
-      <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
      <?= $form->field($model, 'person_c')->textInput(['maxlength' => true]) ?>
 
   
-	<?php if (!Yii::$app->request->isAjax){ ?>
-	  	<div class="form-group">
-	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	    </div>
-	<?php } ?>
+    <?php if (!Yii::$app->request->isAjax){ ?>
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
+    <?php } ?>
 
     <?php ActiveForm::end(); ?>
     

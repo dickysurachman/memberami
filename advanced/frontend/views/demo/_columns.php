@@ -1,6 +1,19 @@
 <?php
 use yii\helpers\Url;
 $dataPost=['REQUEST','APPROVED','REJECT','RESCHEDULE'];
+use app\models\Costumer;
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
+use kartik\grid\GridView;
+use yii\helpers\Html;
+use app\models\User;
+use hscstudio\mimin\components\Mimin;
+if(Mimin::checkRoute('project/adddemo')){
+    $cos=ArrayHelper::map(Costumer::find()->asArray()->all(), 'id', 'nama');
+} else {
+    $cos=ArrayHelper::map(Costumer::find()->where(['id_user'=>Yii::$app->user->identity->id])->asArray()->all(), 'id', 'nama');
+}
+$usr=ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username');
 
 return [
     [
@@ -15,10 +28,7 @@ return [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'id',
     // ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'nama',
-    ],
+   
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'tanggal',
@@ -26,7 +36,16 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'id_costumer',
-         'value'=>function ($model, $key, $index, $widget) { 
+        'filter' => $cos,
+        'filterType' => GridView::FILTER_SELECT2,
+        'filterWidgetOptions' => [
+                                'options' => ['prompt' => ''],
+                                'pluginOptions' => [
+                                    'allowClear' => true,
+                                    'width'=>'200px'
+                                ],
+                                ],
+        'value'=>function ($model, $key, $index, $widget) { 
                 return isset($model->costumer)?$model->costumer->nama:'';
         },
     ],
@@ -38,15 +57,29 @@ return [
         },
         'filter'=>$dataPost,
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'nama_ap',
-    ],
+   
      [
          'class'=>'\kartik\grid\DataColumn',
          'attribute'=>'jumlah',
          'format'=>['decimal',0],
      ],
+     [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'id_user',
+        'filter' => $usr,
+        'filterType' => GridView::FILTER_SELECT2,
+        'filterWidgetOptions' => [
+                                'options' => ['prompt' => ''],
+                                'pluginOptions' => [
+                                    'allowClear' => true,
+                                    'width'=>'100px'
+                                ],
+                                ],
+        'visible'=>Mimin::checkRoute('project/adddemo'),
+        'value'=>function ($model, $key, $index, $widget) { 
+                return isset($model->namauser)?$model->namauser->username:'';
+                },
+    ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

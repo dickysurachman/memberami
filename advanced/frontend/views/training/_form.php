@@ -31,8 +31,9 @@ $dataPost=['REQUEST'];
         'options'=>['class'=>'form-control','autocomplete'=>'off','readonly'=>'readonly']
     ]);?></div>
 
-    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
+   
      <?= $form->field($model, 'status')->dropDownlist($dataPost) ?>
+    <?= $form->field($model, 'ket')->textarea(['rows' => 6]) ?>
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
 
   <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>

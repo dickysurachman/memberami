@@ -38,6 +38,7 @@ class Visit extends \yii\db\ActiveRecord
             [['nama', 'nama_ap'], 'string', 'max' => 100],
             [['person_c'], 'string', 'max' => 20],
             [['person'], 'string', 'max' => 100],
+            [['ket'], 'string'],
         ];
     }
 
@@ -48,10 +49,12 @@ class Visit extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'ket'=>'Mark',
             'nama' => 'Nama',
             'id_project'=>'Project',
             'tanggal' => 'Tanggal Visit',
             'id_costumer' => 'Costumer',
+            'id_user' => 'User',
             'status' => 'Status',
             'nama_ap' => 'Nama Aplikasi',
             'jumlah' => 'Jumlah',
@@ -76,6 +79,10 @@ class Visit extends \yii\db\ActiveRecord
         return $this->hasOne(Costumer::className(), ['id' => 'id_costumer']);
     }
 
+     public function getNamauser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
       public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {

@@ -32,7 +32,7 @@ class Training extends \yii\db\ActiveRecord
             [['tanggal_r', 'keterangan'], 'required'],
             [['tanggal_r'], 'safe'],
             [['status','id_user','id_project','id_costumer'], 'integer'],
-            [['keterangan'], 'string'],
+            [['keterangan','ket'], 'string'],
             [['nama','person'], 'string', 'max' => 100],
             [['person_c'], 'string', 'max' => 40],
         ];
@@ -56,6 +56,7 @@ class Training extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'ket'=>'Mark',
             'id_project'=>'Project',
             'id_costumer'=>'Company',
             'tanggal_r' => 'Tanggal Request',
@@ -66,6 +67,14 @@ class Training extends \yii\db\ActiveRecord
             'person' => 'Person',
             'person_c' => 'No Contact Person',
         ];
+    }
+          public function getCostumer()
+    {
+        return $this->hasOne(Costumer::className(), ['id' => 'id_costumer']);
+    }
+     public function getNamauser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
     public function beforeSave($insert)
     {

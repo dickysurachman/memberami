@@ -22,6 +22,13 @@ $(document).on("select2:open", () => {
 JS;
 $position= View::POS_END;
 $this->registerJs($script,$position);
+use hscstudio\mimin\components\Mimin;
+if(Mimin::checkRoute('userk/create')){
+$dataPost=['REQUEST','APPROVED','REJECT','RESCHEDULE'];
+} else {
+$dataPost=['REQUEST'];
+}
+
 
 ?>
 
@@ -40,39 +47,17 @@ $this->registerJs($script,$position);
         'options'=>['class'=>'form-control','autocomplete'=>'off','readonly'=>'readonly']
     ]);?></div>
 
-   
-    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
-
-<?php 
-    echo $form->field($model, 'id_costumer')->widget(Select2::classname(), [
-        'initValueText' => $cityDesc, 
-        'options' => ['placeholder' => 'Search for Costumer ...'],
-        'pluginOptions' => [
-            'allowClear' => true,
-            'minimumInputLength' => 3,
-            'language' => [
-                'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
-            ],
-            'ajax' => [
-                'url' => $url,
-                'dataType' => 'json',
-                'data' => new JsExpression('function(params) { return {q:params.term}; }')
-            ],
-            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(id_costumer) { return id_costumer.text; }'),
-            'templateSelection' => new JsExpression('function (id_costumer) { return id_costumer.text; }'),
-        ],
-    ]);
-    ?> 
-        <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
+ 
+    <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'person_c')->textInput(['maxlength' => true]) ?>
 
-  
-	<?php if (!Yii::$app->request->isAjax){ ?>
-	  	<div class="form-group">
-	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	    </div>
-	<?php } ?>
+    <?= $form->field($model, 'status')->dropDownlist($dataPost) ?>
+   <?= $form->field($model, 'ket')->textarea(['rows' => 6]) ?>
+    <?php if (!Yii::$app->request->isAjax){ ?>
+        <div class="form-group">
+            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        </div>
+    <?php } ?>
 
     <?php ActiveForm::end(); ?>
     

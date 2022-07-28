@@ -37,6 +37,7 @@ class Demo extends \yii\db\ActiveRecord
             [['jumlah'], 'number'],
             [['nama', 'nama_ap','person'], 'string', 'max' => 100],
             [['person_c'], 'string', 'max' => 40],
+            [['ket'], 'string'],
         ];
     }
 
@@ -58,9 +59,11 @@ class Demo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'ket'=>'Mark',
             'nama' => 'Nama',
             'tanggal' => 'Tanggal',
             'id_costumer' => 'Costumer',
+            'id_user' => 'User',
             'status' => 'Status',
             'nama_ap' => 'Nama Aplikasi',
             'jumlah' => 'Jumlah Budget',
@@ -72,6 +75,10 @@ class Demo extends \yii\db\ActiveRecord
          public function getCostumer()
     {
         return $this->hasOne(Costumer::className(), ['id' => 'id_costumer']);
+    }
+     public function getNamauser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
 
       public function beforeSave($insert)
