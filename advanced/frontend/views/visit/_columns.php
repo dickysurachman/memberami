@@ -8,12 +8,14 @@ use kartik\grid\GridView;
 use yii\helpers\Html;
 use app\models\User;
 use hscstudio\mimin\components\Mimin;
-if(Mimin::checkRoute('project/adddemo')){
+if(Mimin::checkRoute('userk/index')){
     $cos=ArrayHelper::map(Costumer::find()->asArray()->all(), 'id', 'nama');
+    $usr=ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username');
 } else {
     $cos=ArrayHelper::map(Costumer::find()->where(['id_user'=>Yii::$app->user->identity->id])->asArray()->all(), 'id', 'nama');
+    $usr=ArrayHelper::map(User::find()->where(['id'=>Yii::$app->user->identity->id])->asArray()->all(), 'id', 'username');
 }
-$usr=ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username');
+
 
 return [
     [
@@ -70,7 +72,7 @@ return [
                                     'width'=>'100px'
                                 ],
                                 ],
-        'visible'=>Mimin::checkRoute('project/adddemo'),
+        'visible'=>Mimin::checkRoute('userk/index'),
         'value'=>function ($model, $key, $index, $widget) { 
                 return isset($model->namauser)?$model->namauser->username:'';
                 },

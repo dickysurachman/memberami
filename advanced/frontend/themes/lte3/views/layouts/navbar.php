@@ -3,9 +3,16 @@ use app\models\Visit;
 use app\models\Training;
 use app\models\Demo;
 use yii\helpers\Html;
+if(!Yii::$app->user->isGuest) {
 $demo =Demo::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
 $training=Training::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
 $visit=Visit::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
+} else {
+
+    $demo =0;
+    $training=0;
+    $visit=0;
+}
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
