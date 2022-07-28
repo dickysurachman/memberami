@@ -1,7 +1,11 @@
 <?php
-
+use app\models\Visit;
+use app\models\Training;
+use app\models\Demo;
 use yii\helpers\Html;
-
+$demo =Demo::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
+$training=Training::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
+$visit=Visit::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -65,24 +69,24 @@ use yii\helpers\Html;
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+                <span class="badge badge-warning navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-header">15 Notifications</span>
+                <span class="dropdown-header">3 Notifications</span>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
-                    <i class="fas fa-envelope mr-2"></i> 4 new messages
-                    <span class="float-right text-muted text-sm">3 mins</span>
+                    <i class="fas fa-envelope mr-2"></i> <?php echo $demo ?> Demo  
+                    <span class="float-right text-muted text-sm">Approved</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
+                    <i class="fas fa-users mr-2"></i> <?php echo $visit ?> Visit
+                    <span class="float-right text-muted text-sm">Approved</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
+                    <i class="fas fa-file mr-2"></i> <?php echo $training ?> Training
+                    <span class="float-right text-muted text-sm">Approved</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
