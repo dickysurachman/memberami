@@ -28,6 +28,7 @@ CrudAsset::register($this);
             'id'=>'crud-datatable',
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
+            //'languages'=>isset(Yii::$app->session['lang'])?Yii::$app->language=Yii::$app->session['lang']:"id",
             'pjax'=>true,
             'columns' => require(__DIR__.'/_columns.php'),
             'toolbar'=> [

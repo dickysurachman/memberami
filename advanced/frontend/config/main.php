@@ -5,13 +5,18 @@ $params = array_merge(
     require __DIR__ . '/params.php',
     require __DIR__ . '/params-local.php'
 );
+//$en="en";
+//if(isset(Yii::$app->session['lang'])) $en=Yii::$app->session['lang'];
+
 
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    'language' => 'id-ID',
+    //'language' =>  'id-ID',
+    //'language' =>  'id-ID',
+    //'language' =>  $en,
     'modules' => [
             'gridview' =>  [
                 'class' => '\kartik\grid\Module'
@@ -77,7 +82,7 @@ return [
                 'yii2-ajaxcrud' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@yii2ajaxcrud/ajaxcrud/messages',
-                    'sourceLanguage' => 'id',
+                    //'sourceLanguage' => 'id',
                 ],
             ]
         ],

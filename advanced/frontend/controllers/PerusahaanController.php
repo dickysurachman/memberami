@@ -31,6 +31,13 @@ class PerusahaanController extends Controller
             ],
         ];
     }
+    public function beforeAction($action)
+    {
+        if(!parent::beforeAction($action))
+            return false;
+        if(isset(Yii::$app->session['lang'])) Yii::$app->language=Yii::$app->session['lang'];
+        return true ;
+    }
 
     /**
      * Lists all Perusahaan models.
