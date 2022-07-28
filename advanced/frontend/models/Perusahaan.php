@@ -34,7 +34,7 @@ class Perusahaan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'nama', 'alamat', 'nama_d'], 'required'],
+            [['nama', 'alamat', 'nama_d'], 'required'],
             [['id_user', 'id_kota', 'status'], 'integer'],
             [['nama', 'nama_d'], 'string', 'max' => 100],
             [['alamat'], 'string', 'max' => 150],

@@ -32,10 +32,15 @@ $dataPost=['REQUEST'];
     ]);?></div>
 
    
-     <?= $form->field($model, 'status')->dropDownlist($dataPost) ?>
+     <?= $form->field($model, 'status')->dropDownlist($dataPost,
+      ['onchange'=>'function(data) { 
+            var data_id = training-status.value;
+            alert(data_id);
+        }']) ?>
+   <div id="onof" style="display:none;">
     <?= $form->field($model, 'ket')->textarea(['rows' => 6]) ?>
+   </div>
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
-
   <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
      <?= $form->field($model, 'person_c')->textInput(['maxlength' => true]) ?>
 
