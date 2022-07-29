@@ -32,13 +32,18 @@ $dataPost=['REQUEST'];
     ]);?></div>
 
    
-     <?= $form->field($model, 'status')->dropDownlist($dataPost,
-      ['onchange'=>'function(data) { 
-            var data_id = training-status.value;
-            alert(data_id);
-        }']) ?>
+     <?= $form->field($model, 'status')->dropDownlist($dataPost,['onChange'=>'if($(this).val()>=2)
+     {
+      var divs = document.getElementById("onof");
+      divs.style.display="";         
+      } 
+      else{
+      var divs = document.getElementById("onof");
+      divs.style.display="none";
+      }
+      ']) ?>
    <div id="onof" style="display:none;">
-    <?= $form->field($model, 'ket')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'ket')->textarea(['rows' => 3]) ?>
    </div>
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
   <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>

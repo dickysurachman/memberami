@@ -51,8 +51,19 @@ $dataPost=['REQUEST'];
     <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'person_c')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->dropDownlist($dataPost) ?>
-   <?= $form->field($model, 'ket')->textarea(['rows' => 6]) ?>
+        <?= $form->field($model, 'status')->dropDownlist($dataPost,['onChange'=>'if($(this).val()>=2)
+     {
+      var divs = document.getElementById("onof");
+      divs.style.display="";         
+      } 
+      else{
+      var divs = document.getElementById("onof");
+      divs.style.display="none";
+      }
+      ']) ?>
+   <div id="onof" style="display:none;">
+    <?= $form->field($model, 'ket')->textarea(['rows' => 3]) ?>
+   </div>
     <?php if (!Yii::$app->request->isAjax){ ?>
         <div class="form-group">
             <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

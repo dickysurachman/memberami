@@ -46,11 +46,19 @@ $this->registerJs($script,$position);
         'options'=>['class'=>'form-control','autocomplete'=>'off','readonly'=>'readonly']
     ]);?></div>
 
-     <?= $form->field($model, 'status')->dropDownlist($dataPost) ?>
-     
+        <?= $form->field($model, 'status')->dropDownlist($dataPost,['onChange'=>'if($(this).val()>=2)
+     {
+      var divs = document.getElementById("onof");
+      divs.style.display="";         
+      } 
+      else{
+      var divs = document.getElementById("onof");
+      divs.style.display="none";
+      }
+      ']) ?>
+   <div id="onof" style="display:none;">
     <?= $form->field($model, 'ket')->textarea(['rows' => 3]) ?>
-
-
+   </div>
    
     <?php   
         echo $form->field($model, 'jumlah')->widget(MaskMoney::classname());
