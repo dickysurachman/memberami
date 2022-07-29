@@ -5,15 +5,21 @@ use app\models\Costumer;
 use app\models\User;
 use scotthuangzl\googlechart\GoogleChart;
 
+$chart=@vendor."/almasaeed2010/adminlte/plugins/chart.js/Chart.js";
+$chartcss=@vendor."/almasaeed2010/adminlte/plugins/chart.js/Chart.css";
+
+
 $this->title = 'Dashboard';
 $this->params['breadcrumbs'] = [['label' => $this->title]];
-  $tgls=date('Y',time());
+$tgls=date('Y',time());
 $visit=Visit::find()->count();
 $project=Project::find()->count();
 $costumer=Costumer::find()->count();
 $user=User::find()->count()-1;
 $usera=User::find()->where(['status'=>10])->count()-1;
 ?>
+
+<link rel='stylesheet' href='<?php echo $chartcss?>'>    
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6">
@@ -132,6 +138,7 @@ $usera=User::find()->where(['status'=>10])->count()-1;
                         ),
                 'options' => array('title' => 'Revenue '))); 
             */
+              
         ?>
 
     </div>

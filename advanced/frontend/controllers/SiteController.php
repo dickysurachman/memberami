@@ -35,7 +35,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup','profile'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -43,7 +43,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','profile'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -82,6 +82,10 @@ class SiteController extends Controller
 
      public function actionProfile()
     {
+        /*if(Yii::$app->user->isGuest) {
+            $this->redirect(['site/index']);
+            die();
+        }*/
         $request = Yii::$app->request;
         $do=Perusahaan::findOne(['id_user'=>Yii::$app->user->identity->id]);
         if(!isset($do)){
