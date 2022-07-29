@@ -87,26 +87,30 @@ class SiteController extends Controller
             die();
         }*/
         $request = Yii::$app->request;
+        $ban="";
         $do=Perusahaan::findOne(['id_user'=>Yii::$app->user->identity->id]);
         if(!isset($do)){
             $model = new Perusahaan();  
         } else {
             $model=Perusahaan::findOne(['id_user'=>Yii::$app->user->identity->id]);
+            //$ban=$model->logo;
         }
 
         if ($model->load($request->post())) {
-             $model->logo = UploadedFile::getInstance($model, 'logo');
+                $model->logo = UploadedFile::getInstance($model, 'logo');
                 if(isset($model->logo)){
                 $namafile=rand(1000, 99999999);
                 if(strpos(" jpg jpeg bmp gif png ",strtolower($model->logo->extension))){                
                     $file1= $namafile . '.' . $model->logo->extension;
-                    $model->logo->saveAs('images/' . $namafile . '.' . $model->logo->extension,TRUE);
+                    $model->logo->saveAs('images/' . $file1,TRUE);
                 } else {
                     $file1= $namafile . '.jpg' ;
                     $model->logo->saveAs('images/' . $file1,TRUE);
 
                 }
                 $model->logo=$file1;
+                } else {
+                    //$model->logo=$ban;
                 }
                 $model->id_user=Yii::$app->user->identity->id;
                 $model->save();
