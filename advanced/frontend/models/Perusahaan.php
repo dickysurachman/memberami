@@ -40,7 +40,7 @@ class Perusahaan extends \yii\db\ActiveRecord
             [['alamat'], 'string', 'max' => 150],
             [['npwp'], 'string', 'max' => 30],
             [['telp'], 'string', 'max' => 20],
-            [['logo'], 'string', 'max' => 50],
+            [['logo'], 'string', 'max' => 250],
         ];
     }
 
