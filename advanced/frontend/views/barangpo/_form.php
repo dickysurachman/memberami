@@ -8,6 +8,7 @@ use app\models\Costumer;
 use yii\web\JsExpression;
 use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
+use yii\web\View;
 $url = \yii\helpers\Url::to(['costumer/karyawan']);
 
 /* @var $this yii\web\View */
@@ -18,7 +19,13 @@ $url = \yii\helpers\Url::to(['costumer/karyawan']);
 
  $cityDesc =empty($model->id_perusahaan) ? '' : Costumer::findOne(['id'=>$model->id_perusahaan])->nama;
  $cityDesc2 =empty($model->id_user) ? '' : User::findOne(['id'=>$model->id_user])->username;
-
+$script = <<< JS
+$(document).on("select2:open", () => {
+  document.querySelector(".select2-container--open .select2-search__field").focus()
+})
+JS;
+$position= View::POS_END;
+$this->registerJs($script,$position);
 ?>
 
 <div class="barangin-form">
