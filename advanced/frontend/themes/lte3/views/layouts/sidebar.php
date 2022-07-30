@@ -62,6 +62,7 @@ use hscstudio\mimin\components\Mimin;
                             ['label' => \Yii::t('yii', 'Routes'), 'url' => ['/mimin/route'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
                             ['label' => \Yii::t('yii', 'Language'), 'url' => ['/site/bahasa'], 'iconStyle' => 'far'],
                             ['label' => \Yii::t('yii', 'Segment'), 'url' => ['/segment/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('segment/index')],
+                            ['label' => \Yii::t('yii', 'Barangs'), 'url' => ['/barang/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('barang/index')],
                             ['label' => \Yii::t('yii', 'Company'), 'url' => ['/costumer/index'], 'iconStyle' => 'far'],
                             ['label' => \Yii::t('yii', 'Costumer'), 'url' => ['/person/index'], 'iconStyle' => 'far'],
                             ['label' => \Yii::t('yii', 'Project'), 'url' => ['/project/index'], 'iconStyle' => 'far'],
