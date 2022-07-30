@@ -8,7 +8,7 @@ use app\models\Demo;
 
 use scotthuangzl\googlechart\GoogleChart;
 
-$this->title = 'Dashboard';
+$this->title = 'Dashboard Members';
 $this->params['breadcrumbs'] = [['label' => $this->title]];
 $tgls=date('Y',time());
 $project_open=Project::find()->where('status=0')->count();
