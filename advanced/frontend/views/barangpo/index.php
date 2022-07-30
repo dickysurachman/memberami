@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-
+use kartik\export\ExportMenu;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BarangpoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -15,8 +15,36 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="barangpo-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <p><?php 
 
-    <p>
+        $gridColumns = [
+            ['class' => 'yii\grid\SerialColumn'],
+            'tanggal',
+            'kode',
+            'dari',
+            [
+                'attribute'=>'id_perusahaan',
+                'value'=>'namapr',
+            ],
+            [
+                'attribute'=>'id_user',
+                'value'=>'user.username',
+            ],
+
+            'keterangan:ntext',
+        ];
+
+        // Renders a export dropdown menu
+        echo ExportMenu::widget([
+            'dataProvider' => $dataProvider,
+            'columns' => $gridColumns,
+            'batchSize'=>0,
+
+        ]);
+
+
+    ?>
+    
         <?= Html::a(Yii::t('yii', 'Create Barangpo'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
@@ -32,6 +60,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'tanggal',
             'kode',
             'dari',
+            [
+                'attribute'=>'id_perusahaan',
+                'value'=>'namapr',
+            ],
+            [
+                'attribute'=>'id_user',
+                'value'=>'user.username',
+            ],
+
             'keterangan:ntext',
             //'id_perusahaan',
             //'id_user',

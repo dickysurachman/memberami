@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use app\models\Barangpo;
+use app\models\Costumer;
 use app\models\Barangpodetail;
 use app\models\BarangpoSearch;
 use yii\web\Controller;
@@ -89,7 +90,10 @@ class BarangpoController extends Controller
         $model = new Barangpo();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $cek=Costumer::findOne($model->id_perusahaan);
+                $model->id_user=$cek->id_user;
+                $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -177,9 +181,9 @@ class BarangpoController extends Controller
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> \Yii::t('yii2-ajaxcrud', 'Create New')." Barangpodetail",
-                    'content'=>'<span class="text-success">'.\Yii::t('yii2-ajaxcrud', '_forma').' Barangpodetail '.\Yii::t('yii2-ajaxcrud', 'Success').'</span>',
+                    'content'=>'<span class="text-success">'.\Yii::t('yii2-ajaxcrud', 'Create').' Barangpodetail '.\Yii::t('yii2-ajaxcrud', 'Success').'</span>',
                     'footer'=> Html::button(\Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a(\Yii::t('yii2-ajaxcrud', 'Create More'), ['_forma'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+                            Html::a(\Yii::t('yii2-ajaxcrud', 'Create More'), ['createpo','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           

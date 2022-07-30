@@ -16,6 +16,8 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use app\models\Pages;
+use app\models\Project;
+use app\models\Costumer;
 use app\models\ProjectSearch;
 use frontend\models\Bahasa;
 use hscstudio\mimin\components\Mimin;
@@ -23,6 +25,7 @@ use app\models\City;
 use app\models\Perusahaan;
 use yii\web\UploadedFile;
 use app\models\BarangSearch;
+use yii\helpers\ArrayHelper;
 /**
  * Site controller
  */
@@ -207,6 +210,32 @@ class SiteController extends Controller
 
     }
 
+
+
+    public function actionSubcat() {
+    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    $out = [];
+    if (isset($_POST['depdrop_parents'])) {
+        $parents = $_POST['depdrop_parents'];
+        if ($parents != null) {
+            $cat_id = $parents[0];
+            //$out = self::getSubCatList($cat_id); 
+//            $out=ArrayHelper::map(Project::find()->where(['id_costumer'=>$cat_id])->asArray()->all(), 'id', 'nama');
+            $out1=Project::find()->where(['id_costumer'=>$cat_id])->all();
+            $i=0;
+            foreach($out1 as $val){
+                $out[$i]['id']=$val->id;
+                $out[$i]['name']=$val->nama;
+                $i++;
+            }
+            return ['output'=>$out, 'selected'=>''];
+        }
+    }
+    return ['output'=>'', 'selected'=>''];
+    }
+    
+ 
+    
     /**
      * Logs in a user.
      *

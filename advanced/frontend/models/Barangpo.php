@@ -39,7 +39,7 @@ class Barangpo extends \yii\db\ActiveRecord
            //[['tanggal', 'kode', 'dari', 'keterangan', 'id_perusahaan', 'id_toko'], 'required'],
             [['tanggal', 'add_date', 'edit_date'], 'safe'],
             [['keterangan'], 'string'],
-            [['id_perusahaan', 'status','id_user', 'add_who', 'edit_who'], 'integer'],
+            [['id_perusahaan', 'status','id_user', 'add_who', 'edit_who','id_project'], 'integer'],
             [['kode'], 'string', 'max' => 15],
             [['dari'], 'string', 'max' => 100],
             [['add_who'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['add_who' => 'id']],
@@ -59,6 +59,7 @@ class Barangpo extends \yii\db\ActiveRecord
             'dari' => 'Dari',
             'keterangan' => 'Keterangan',
             'id_perusahaan' => 'Perusahaan',
+            'id_project'=>'Project',
             //'id_toko' => 'User',
             'id_user' => 'User',
             'status' => 'Status',
@@ -104,9 +105,20 @@ class Barangpo extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
+    public function getNamapr()
+    {
+        $j=Costumer::findOne($this->id_perusahaan);
+        if(isset($j)){
+            return $j->nama;
+        } else {
+            return '';
+        }
+
+
+    }
     public function getPerusahaan()
     {
-        return $this->hasOne(Perusahaan::className(), ['id' => 'id_perusahaan']);
+        return $this->hasOne(Costumer::className(), ['id' => 'id_perusahaan']);
     }
 
     /**
@@ -114,7 +126,8 @@ class Barangpo extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getToko()
+   
+    public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
@@ -126,14 +139,10 @@ class Barangpo extends \yii\db\ActiveRecord
                 if($produksi1==0 or $produksi1==""){
                             $produksi=1;
                 }else{
-                            $produksi++;
+                            $produksi=$produksi1+1;
                 }
                 $novo= "PO" . substr("000000000".$produksi, -8);
                 $this->kode=$novo;
-                //$produksi1->urutbon=$produksi;
-                //$produksi1->save();
-                //$this->id_perusahaan=Yii::$app->user->identity->id_perusahaan;
-                //$this->id_toko=Yii::$app->user->identity->id_toko;
                 $this->add_who = Yii::$app->user->identity->id;
                 $this->add_date = date('Y-m-d H:i:s',time());
             } else {                
