@@ -114,14 +114,17 @@ function namabulan($id){
     
     }
     //'backgroundColor'=>['fill'=>'green','opacity'=>'10'],
-    echo "<div class='col'>";
+    //'backgroundColor'=>['fill'=>'white','fillOpacity'=>'0.3'],
+    //'backgroundColor'=>['fill'=>'red','fillOpacity'=>'0.3'],
+    echo "<div class='col-lg-6 alert-success alert '>";
     if(count($item1a)>1) {
     echo GoogleChart::widget(array('visualization' => 'ColumnChart',
                 'data' => $item1a,
-                'options' => array('title' => 'PO by Month ','height'=>350,'hAxis' => array('title' => 'Total Project '.number_format($total)),))); 
+                'options' => array('title' => 'PO by Month ',
+                    'height'=>350,'hAxis' => array('title' => 'Total Project '.number_format($total)),))); 
     }
     echo "</div>";
-    echo "<div class='col'>";
+    echo "<div class='col-lg-6 alert-danger alert alert-danger'>";
     if(count($item2a)>1) {
     echo GoogleChart::widget(array('visualization' => 'ColumnChart',
                 'data' => $item2a,

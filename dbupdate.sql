@@ -78,7 +78,7 @@ alter table `barang_po` add id_project int(11) NULL;
 create view `podetail` as select a.tanggal,b.nama,a.kode,c.qty * d.harga as total from barang_po a 
 join costumer b on a.id_perusahaan=b.id 
   join barang_podetail c on c.id_kode=a.id 
-  join barang d on c.id_barang=d.id 
+  join barang d on c.id_barang=d.id ;
 
 create view `podetailsum` as select tanggal,nama,kode,sum(total) as total from podetail
-  group by tanggal,nama,kode
+  group by tanggal,nama,kode;
