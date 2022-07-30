@@ -17,6 +17,7 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'id_user',
+        'value'=>'user.username',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',

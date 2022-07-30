@@ -57,6 +57,7 @@ use hscstudio\mimin\components\Mimin;
                         'visible' => !Yii::$app->user->isGuest,
                         'items' => [
                             ['label' => \Yii::t('yii', 'User'), 'url' => ['/userk/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
+                            ['label' => \Yii::t('yii', 'Perusahaan User'), 'url' => ['/perusahaan/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
                             ['label' => \Yii::t('yii', 'Pages'), 'url' => ['/pages/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
                             ['label' => \Yii::t('yii', 'Role'), 'url' => ['/mimin/role'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
                             ['label' => \Yii::t('yii', 'Routes'), 'url' => ['/mimin/route'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],

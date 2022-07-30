@@ -6,8 +6,9 @@ use kartik\select2\Select2;
 use yii\web\JsExpression;
 use yii\web\View;
 use app\models\City;
+use kartik\file\FileInput;
 $url = \yii\helpers\Url::to(['site/kota']);
-
+$this->title="Update Profile";
 $cityDesc =empty($model->id_kota) ? '' : City::findOne(['id'=>$model->id_kota])->name;
 /* @var $this yii\web\View */
 /* @var $model app\models\Perusahaan */
@@ -21,10 +22,11 @@ JS;
 $position= View::POS_END;
 $this->registerJs($script,$position);
 ?>
+ <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>    
 
 <div class="perusahaan-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
 
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
@@ -59,7 +61,30 @@ $this->registerJs($script,$position);
 
     <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'logo')->textInput(['maxlength' => true]) ?>
+    
+    <?php
+    if(isset($model->logo)){
+    $images=Yii::$app->homeUrl."/images/".$model->logo;
+    echo $form->field($model, 'logo')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'image/*'],
+     'pluginOptions' => [
+        'initialPreview'=>[
+            $images
+        ],
+        'initialPreviewAsData'=>true,
+         'maxFile'=>1,
+    ]
+    ]);
+    } else {
+        
+    echo $form->field($model, 'logo')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'image/*'],
+     'pluginOptions' => [
+        'maxFile'=>1,
+    ]
+    ]); 
+    }
+     ?>
 
     
   

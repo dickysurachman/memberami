@@ -4,6 +4,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Perusahaan */
+ $images=Yii::$app->homeUrl."/images/".$model->logo;
 ?>
 <div class="perusahaan-view">
  
@@ -16,10 +17,18 @@ use yii\widgets\DetailView;
             'alamat',
             'nama_d',
             'npwp',
-            'id_kota',
+            [
+                'attribute'=>'id_kota',
+                'value'=>isset($model->city)?$model->city->name:'',
+            ],
             'telp',
-            'logo',
-            'status',
+            [
+            'attribute'=>'logo',
+            'value'=>(Yii::$app->homeUrl."/images/" . $model->logo),
+            'format' => ['image',['width'=>'230','height'=>'200']],
+            ]
+            //'logo',
+            //'status',
         ],
     ]) ?>
 

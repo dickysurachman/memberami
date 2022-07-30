@@ -106,7 +106,21 @@ class PerusahaanController extends Controller
                                 Html::button(Yii::t('yii2-ajaxcrud', 'Create'), ['class'=>'btn btn-primary','type'=>"submit"])
         
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
+            }else if($model->load($request->post())){
+                $model->logo = UploadedFile::getInstance($model, 'logo');
+                if(isset($model->logo)){
+                $namafile=rand(1000, 99999999);
+                if(strpos(" jpg jpeg bmp gif png ",strtolower($model->logo->extension))){                
+                    $file1= $namafile . '.' . $model->logo->extension;
+                    $model->logo->saveAs('images/' . $file1,TRUE);
+                } else {
+                    $file1= $namafile . '.jpg' ;
+                    $model->logo->saveAs('images/' . $file1,TRUE);
+                }
+                $model->logo=$file1;
+                } 
+
+                $model->save();
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Perusahaan",
@@ -152,7 +166,7 @@ class PerusahaanController extends Controller
     {
         $request = Yii::$app->request;
         $model = $this->findModel($id);       
-
+        $ban=$model->logo;
         if($request->isAjax){
             /*
             *   Process for ajax request
@@ -167,7 +181,22 @@ class PerusahaanController extends Controller
                     'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button(Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
+            }else if($model->load($request->post())){
+                $model->logo = UploadedFile::getInstance($model, 'logo');
+                if(isset($model->logo)){
+                $namafile=rand(1000, 99999999);
+                if(strpos(" jpg jpeg bmp gif png ",strtolower($model->logo->extension))){                
+                    $file1= $namafile . '.' . $model->logo->extension;
+                    $model->logo->saveAs('images/' . $file1,TRUE);
+                } else {
+                    $file1= $namafile . '.jpg' ;
+                    $model->logo->saveAs('images/' . $file1,TRUE);
+                }
+                $model->logo=$file1;
+                } 
+                else {
+                    $model->logo=$ban;
+                }
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Perusahaan #".$id,

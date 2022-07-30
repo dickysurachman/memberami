@@ -66,6 +66,10 @@ class Perusahaan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(City::className(), ['id' => 'id_kota']);
     }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'id_user']);
+    }
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
