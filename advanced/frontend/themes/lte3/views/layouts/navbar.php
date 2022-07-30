@@ -3,10 +3,18 @@ use app\models\Visit;
 use app\models\Training;
 use app\models\Demo;
 use yii\helpers\Html;
+use hscstudio\mimin\components\Mimin;
+
 if(!Yii::$app->user->isGuest) {
-$demo =Demo::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
-$training=Training::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
-$visit=Visit::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
+    if(Mimin::checkRoute('userk/create')){
+    $demo =Demo::find()->where('status=1')->count();
+    $training=Training::find()->where('status=1')->count();
+    $visit=Visit::find()->where('status=1')->count();
+    } else {    
+    $demo =Demo::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
+    $training=Training::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
+    $visit=Visit::find()->where('status=1 and id_user='.Yii::$app->user->identity->id)->count();
+    }
 } else {
 
     $demo =0;

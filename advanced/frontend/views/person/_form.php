@@ -5,6 +5,7 @@ use kartik\select2\Select2;
 /* @var $this yii\web\View */
 /* @var $model app\models\Person */
 /* @var $form yii\widgets\ActiveForm */
+use app\models\Costumer;
 use yii\web\JsExpression;
 $url = \yii\helpers\Url::to(['costumer/karyawan']);
 $cityDesc =empty($model->id_costumer) ? '' : Costumer::findOne(['id'=>$model->id_costumer])->nama;

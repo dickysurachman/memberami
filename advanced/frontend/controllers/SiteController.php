@@ -155,7 +155,14 @@ class SiteController extends Controller
         } else {
             if(Mimin::checkRoute('userk/create')){
 
-                return $this->render('index');
+                //return $this->render('index');
+                $model = new ProjectSearch;
+                $request = Yii::$app->request;
+                if($model->load($request->post())){
+
+                    return $this->render('index',['model'=>$model]);
+                }
+                return $this->render('index',['model'=>$model]);
             } else {
                 $model = new ProjectSearch;
                 $request = Yii::$app->request;
