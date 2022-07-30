@@ -93,11 +93,13 @@ class SiteController extends Controller
             $model = new Perusahaan();  
         } else {
             $model=Perusahaan::findOne(['id_user'=>Yii::$app->user->identity->id]);
-            //$ban=$model->logo;
+            $ban=$model->logo;
         }
 
         if ($model->load($request->post())) {
                 $model->logo = UploadedFile::getInstance($model, 'logo');
+                //var_dump($model->logo);die();
+                //if(isset($model->logo) or is_null($model->logo)==false){
                 if(isset($model->logo)){
                 $namafile=rand(1000, 99999999);
                 if(strpos(" jpg jpeg bmp gif png ",strtolower($model->logo->extension))){                
@@ -106,11 +108,11 @@ class SiteController extends Controller
                 } else {
                     $file1= $namafile . '.jpg' ;
                     $model->logo->saveAs('images/' . $file1,TRUE);
-
                 }
                 $model->logo=$file1;
-                } else {
-                    //$model->logo=$ban;
+                } 
+                else {
+                    $model->logo=$ban;
                 }
                 $model->id_user=Yii::$app->user->identity->id;
                 $model->save();

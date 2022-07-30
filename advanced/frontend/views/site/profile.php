@@ -66,7 +66,7 @@ $this->registerJs($script,$position);
     if(isset($model->logo)){
     $images=Yii::$app->homeUrl."/images/".$model->logo;
     echo $form->field($model, 'logo')->widget(FileInput::classname(), [
-    'options' => ['accept' => 'image/*', 'multiple'=>true],
+    'options' => ['accept' => 'image/*'],
      'pluginOptions' => [
         'initialPreview'=>[
             $images
