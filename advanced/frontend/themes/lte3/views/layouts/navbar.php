@@ -37,7 +37,7 @@ if(!Yii::$app->user->isGuest) {
 
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?php echo Yii::$app->homeUrl ?>#" class="nav-link">Pricelist</a>
+            <a href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link">Pricelist</a>
 
         </li>
         <li class="nav-item d-none d-sm-inline-block">

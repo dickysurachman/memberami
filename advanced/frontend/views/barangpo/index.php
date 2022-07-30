@@ -9,7 +9,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\BarangpoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Barangpos');
+$this->title = Yii::t('yii','Barangpos');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="barangpo-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Barangpo'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('yii', 'Create Barangpo'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

@@ -11,12 +11,12 @@ use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 /* @var $model app\models\Barangpo */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Barangpos'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Barangpos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
 
-$this->title = Yii::t('app', 'Barangpodetails');
+$this->title = Yii::t('yii', 'Barangpodetails');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
@@ -26,12 +26,12 @@ CrudAsset::register($this);
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Print'), ['print', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('yii', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('yii', 'Print'), ['print', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('yii', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>

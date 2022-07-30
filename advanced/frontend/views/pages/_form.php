@@ -1,13 +1,15 @@
 <?php
+use kartik\editors\Summernote;
 use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
-use kartik\editors\Summernote;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pages */
 /* @var $form yii\widgets\ActiveForm */
 $dataPost=['Tidak Aktif','Aktif'];
+//use kartik\icons\FontAwesomeAsset;
+//FontAwesomeAsset::register($this);
+$this->registerJsFile('https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js', ['position' => \yii\web\View::POS_END]);
 ?>
-
 <div class="pages-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -18,9 +20,13 @@ $dataPost=['Tidak Aktif','Aktif'];
     <?= $form->field($model, 'status')->dropDownlist($dataPost) ?>
 
 <?php 
-echo $form->field($model, 'konten')->widget(Summernote::class, [
-    'useKrajeePresets' => true,
-    // other widget settings
+    echo $form->field($model, 'konten')->widget(Summernote::class, [
+    //'useKrajeePresets' => true,
+    'options' => ['placeholder' => 'Edit your blog content here...'],
+    //'pluginLoading' => false,
+    'container' => [
+                'class' => 'kv-editor-container',
+            ],
 ]);
 
 ?>

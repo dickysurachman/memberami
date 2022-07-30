@@ -79,9 +79,15 @@ return [
         ],
          'i18n' => [
             'translations' => [
+                 'app' => [
+                        'class' => 'yii\i18n\PhpMessageSource',
+                        //'basePath' => '@app/messages',
+                        //'sourceLanguage' => 'en-US',
+                ],
                 'yii2-ajaxcrud' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@yii2ajaxcrud/ajaxcrud/messages',
+                    //'basePath' => '@app/messages',
                     //'sourceLanguage' => 'id',
                 ],
             ]

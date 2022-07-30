@@ -7,33 +7,68 @@ use yii2ajaxcrud\ajaxcrud\CrudAsset;
 use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PagesSearch */
+/* @var $searchModel app\models\BarangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pages';
+$this->title = Yii::t('app', 'Barangs');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
-?>
-<style type="text/css">
-    .modal-dialog {
-        max-width: 90% !important;
-        width: 90% !important;
-    }
-</style>
 
-<div class="pages-index">
+?>
+<?php 
+
+$col=
+[
+    [
+        'class' => 'kartik\grid\SerialColumn',
+        'width' => '30px',
+    ],
+        // [
+        // 'class'=>'\kartik\grid\DataColumn',
+        // 'attribute'=>'id',
+    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'kode',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'kode',
+        'header'=>'Barcode',
+         'format' => 'raw',
+            'value'=>function ($data) {
+                return '<img alt="testing" src="'.str_replace("index.php","",Yii::$app->homeUrl) .'/barcode.php?size=25&text='.$data->kode.'">';
+                                },
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'harga',
+        'hAlign' => 'right',
+        'format'=>['decimal',2],
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'nama',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'ukuran',
+    ],
+];
+
+?>
+<div class="barang-index">
     <div id="ajaxCrudDatatable">
         <?=GridView::widget([
             'id'=>'crud-datatable',
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'pjax'=>true,
-            'columns' => require(__DIR__.'/_columns.php'),
+            'columns' => $col,
             'toolbar'=> [
                 ['content'=>
-                    Html::a(Yii::t('yii2-ajaxcrud', 'Create New'), ['create'],
-                    ['role'=>'modal-remote','title'=> Yii::t('yii2-ajaxcrud', 'Create New').' Pages','class'=>'btn btn-outline-primary']).
+                    
                     Html::a('<i class="fa fa-redo"></i>', [''],
                     ['data-pjax'=>1, 'class'=>'btn btn-outline-success', 'title' => Yii::t('yii2-ajaxcrud', 'Reset Grid')]).
                     '{toggleData}'.
@@ -42,25 +77,12 @@ CrudAsset::register($this);
             ],          
             'striped' => true,
             'condensed' => true,
-            'responsive' => true, 
-             'responsiveWrap' => false,           
+            'responsive' => true,          
             'panel' => [
                 'type' => 'default', 
                 'heading' => '<i class="fa fa-list"></i> <b>'.$this->title.'</b>',
                 'before'=>'<em>* '.Yii::t('yii2-ajaxcrud', 'Resize Column').'</em>',
-                'after'=>BulkButtonWidget::widget([
-                            'buttons'=>Html::a('<i class="fa fa-trash"></i>&nbsp; '.Yii::t('yii2-ajaxcrud', 'Delete All'),
-                                ["bulkdelete"] ,
-                                [
-                                    "class"=>"btn btn-danger btn-xs",
-                                    'role'=>'modal-remote-bulk',
-                                    'data-confirm'=>false, 'data-method'=>false,// for overide yii data api
-                                    'data-request-method'=>'post',
-                                    'data-confirm-title' => Yii::t('yii2-ajaxcrud', 'Delete'),
-                                    'data-confirm-message' => Yii::t('yii2-ajaxcrud', 'Delete Confirm')
-                                ]),
-                        ]).                        
-                        '<div class="clearfix"></div>',
+                'after'=>'<div class="clearfix"></div>',
             ]
         ])?>
     </div>

@@ -51,6 +51,14 @@ class BarangpoController extends Controller
         ]);
     }
 
+     public function beforeAction($action)
+    {
+        if(!parent::beforeAction($action))
+            return false;
+        if(isset(\Yii::$app->session['lang'])) \Yii::$app->language=\Yii::$app->session['lang'];
+        return true ;
+    }
+
     /**
      * Displays a single Barangpo model.
      * @param int $id ID

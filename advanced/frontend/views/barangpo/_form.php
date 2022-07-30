@@ -57,7 +57,7 @@ $this->registerJs($script,$position);
         'options' => ['placeholder' => 'Search for User ...']
     ]);
     ?> 
-
+    
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">

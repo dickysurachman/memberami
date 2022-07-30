@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Barangpo */
 
-$this->title = Yii::t('app', 'Create Barangpo');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Barangpos'), 'url' => ['index']];
+$this->title = Yii::t('yii', 'Create Barangpo');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Barangpos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="barangpo-create">

@@ -22,6 +22,7 @@ use hscstudio\mimin\components\Mimin;
 use app\models\City;
 use app\models\Perusahaan;
 use yii\web\UploadedFile;
+use app\models\BarangSearch;
 /**
  * Site controller
  */
@@ -35,7 +36,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup','profile'],
+                'only' => ['logout', 'signup','profile','rate'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -43,7 +44,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','profile'],
+                        'actions' => ['logout','profile','rate'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -79,7 +80,16 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+    public function actionRate()
+    {    
+        $searchModel = new BarangSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        return $this->render('barang', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
      public function actionProfile()
     {
         /*if(Yii::$app->user->isGuest) {
