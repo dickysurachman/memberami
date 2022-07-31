@@ -147,7 +147,7 @@ Pembayaran dilakukan dengan transfer ke Rek Mandiri 1200010055494 an PT.Global S
 <br/>40% Goods Delivery
 <br/>10% Afer Comissioning/BAP </td>
 			<td colspan="2">Total</td>
-			<td><?php number_format($total);$ppn=$total*0.11; ?></td>
+			<td><?php echo number_format($total);$ppn=$total*0.11; ?></td>
 		</tr>
 		<tr>
 			<td>Disc</td>
