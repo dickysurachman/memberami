@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use app\models\Barangpo;
 use app\models\Costumer;
+use app\models\Project;
 use app\models\Barangpodetail;
 use app\models\BarangpoSearch;
 use yii\web\Controller;
@@ -114,6 +115,27 @@ class BarangpoController extends Controller
         }
 
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+     public function actionProject($id)
+    {
+        $model = new Barangpo();
+
+        $cek=Project::findOne($id);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post())) {
+                $model->id_perusahaan=$cek->id_costumer;
+                $model->id_project=$cek->id;
+                $model->id_user=$cek->id_user;
+                $model->save();
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('createproject', [
             'model' => $model,
         ]);
     }

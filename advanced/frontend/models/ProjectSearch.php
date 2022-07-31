@@ -17,11 +17,12 @@ class ProjectSearch extends Project
      */
      public $tgl_a;
     public $tgl_b;
+    public $kuartal;
     public function rules()
     {
         return [
             [['id', 'status','id_user'], 'integer'],
-            [['nama','id_costumer', 'tanggal', 'deskripsi', 'tanggal_deadline','tgl_a','tgl_b'], 'safe'],
+            [['nama','id_costumer', 'tanggal','kuartal', 'deskripsi', 'tanggal_deadline','tgl_a','tgl_b'], 'safe'],
             [['jumlah'], 'number'],
         ];
     }
@@ -81,7 +82,23 @@ class ProjectSearch extends Project
         ]);
         }
 
-        
+        if($this->kuartal=="Q1"){
+            $query->andFilterWhere(['>=','month(tanggal)',1])
+            ->andFilterWhere(['<=','month(tanggal)',3]);
+
+        } else if($this->kuartal=="Q2"){
+            $query->andFilterWhere(['>=','month(tanggal)',4])
+            ->andFilterWhere(['<=','month(tanggal)',6]);
+
+        } else if($this->kuartal=="Q3"){
+            $query->andFilterWhere(['>=','month(tanggal)',7])
+            ->andFilterWhere(['<=','month(tanggal)',9]);
+
+        } else if($this->kuartal=="Q4"){
+            $query->andFilterWhere(['>=','month(tanggal)',10])
+            ->andFilterWhere(['<=','month(tanggal)',12]);
+
+        }
 
         $query->andFilterWhere(['like', 'nama', $this->nama])
             ->andFilterWhere(['like', 'deskripsi', $this->deskripsi]);

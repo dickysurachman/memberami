@@ -86,12 +86,12 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'status',
+        'attribute'=>'kuartal',
         'header'=>'Quarter',
         'value'=>function ($model, $key, $index, $widget) { 
                 return $model->quartal;
         },
-        'filter'=>false,
+        //'filter'=>false,
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
@@ -110,6 +110,18 @@ return [
                 return isset($model->namauser)?$model->namauser->username:'';
                 },
     ],
+     [
+                'header'=>'Add PO',
+                'attribute' => 'img',
+                'format' => 'raw',
+                'label' => 'Add PO',
+                'visible'=>Mimin::checkRoute('barangpo/create'),
+                'value'=>function ($data) {
+                                return 
+                                Html::a('<span class="fas fa-users" style="font-size:14pt;" title="Print"></span>',['barangpo/project', 'id' => $data->id],
+                                    ['target'=>'_blank', 'data-pjax'=>"0",'class' => 'linksWithTarget']);
+                                },
+    ],    
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => true,

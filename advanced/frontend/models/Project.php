@@ -63,6 +63,7 @@ class Project extends \yii\db\ActiveRecord
         $month=(int) date('m',strtotime($this->tanggal));
         if($month>1 and $month<4){
             return "Q1";
+            
         } elseif($month>3 and $month<7){
             return "Q2";
         
