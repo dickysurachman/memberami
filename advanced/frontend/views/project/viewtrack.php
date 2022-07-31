@@ -15,7 +15,7 @@ if($tracking<>""){
                 <th>No. </th>
                 <th>Tanggal</th>
                 <th>Status</th>
-                <th>Budget</th>
+                <!--<th>Budget</th>-->
                 <th>Nama Person</th>
                 <th>Telp</th>
                 </tr>
@@ -26,7 +26,7 @@ if($tracking<>""){
                 echo "<td>$i</td>";
                 echo "<td>".$value['tanggal']."</td>";
                 echo "<td>".$value['statusnya']."</td>";
-                echo "<td>".number_format($value['jumlah'])."</td>";
+                //echo "<td>".number_format($value['jumlah'])."</td>";
                 echo "<td>".$value['person']."</td>";
                 echo "<td>".$value['person_c']."</td>";
                 echo "</tr>";
