@@ -199,7 +199,7 @@ function namabulan($id){
      <div class="row">
         <div class="col-md-4 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Jumlah Costumer',
+                'text' => 'Jumlah Company',
                 'number' => $costumer,
                 'icon' => 'far fa-envelope',
             ]) ?>
