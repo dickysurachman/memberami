@@ -45,7 +45,7 @@ use hscstudio\mimin\components\Mimin;
             </div>
         </div> -->
 
-        <!-- Sidebar Menu -->
+        <!-- Sidebar Menu <i class="fa-light fa-business-time"></i><i class="far fa-angle-double-right"></i>-->
         <nav class="mt-2">
             <?php
             echo \hail812\adminlte\widgets\Menu::widget([
@@ -56,22 +56,21 @@ use hscstudio\mimin\components\Mimin;
                         'badge' => '<span class="right badge badge-info">5</span>',
                         'visible' => !Yii::$app->user->isGuest,
                         'items' => [
-                            ['label' => \Yii::t('yii', 'User'), 'url' => ['/userk/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
-                            ['label' => \Yii::t('yii', 'Perusahaan User'), 'url' => ['/perusahaan/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
-                            ['label' => \Yii::t('yii', 'Pages'), 'url' => ['/pages/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
-                            ['label' => \Yii::t('yii', 'Role'), 'url' => ['/mimin/role'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
-                            ['label' => \Yii::t('yii', 'Routes'), 'url' => ['/mimin/route'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('userk/create')],
-                            ['label' => \Yii::t('yii', 'Language'), 'url' => ['/site/bahasa'], 'iconStyle' => 'far'],
-                            ['label' => \Yii::t('yii', 'Segment'), 'url' => ['/segment/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('segment/index')],
-                            ['label' => \Yii::t('yii', 'Barangs'), 'url' => ['/barang/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('barang/index')],
-                            ['label' => \Yii::t('yii', 'PO Barangs'), 'url' => ['/barangpo/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('barangpo/index')],
-                            ['label' => \Yii::t('yii', 'Company'), 'url' => ['/costumer/index'], 'iconStyle' => 'far'],
-                            ['label' => \Yii::t('yii', 'Costumer'), 'url' => ['/person/index'], 'iconStyle' => 'far'],
-                            ['label' => \Yii::t('yii', 'Project'), 'url' => ['/project/index'], 'iconStyle' => 'far'],
-                            ['label' => \Yii::t('yii', 'Demo'), 'url' => ['/demo/index'], 'iconStyle' => 'far',
-                            'visible'=>Mimin::checkRoute('demo/index')],
-                            ['label' => \Yii::t('yii', 'Training'), 'url' => ['/training/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('training/index')],
-                            ['label' => \Yii::t('yii', 'Join Visit'), 'url' => ['/visit/index'], 'iconStyle' => 'far','visible'=>Mimin::checkRoute('visit/index')],
+                            ['label' => \Yii::t('yii', 'User'), 'url' => ['/userk/index'], 'icon' => 'fas fa-portrait','visible'=>Mimin::checkRoute('userk/create')],
+                            ['label' => \Yii::t('yii', 'Perusahaan User'), 'url' => ['/perusahaan/index'], 'icon' => 'fas fa-list','visible'=>Mimin::checkRoute('userk/create')],
+                            ['label' => \Yii::t('yii', 'Pages'), 'url' => ['/pages/index'], 'icon' => 'fas fa-images','visible'=>Mimin::checkRoute('userk/create')],
+                            ['label' => \Yii::t('yii', 'Role'), 'url' => ['/mimin/role/index'], 'icon' => 'fas fa-bug','visible'=>Mimin::checkRoute('userk/create')],
+                            ['label' => \Yii::t('yii', 'Routes'), 'url' => ['/mimin/route/index'], 'icon' => 'fas fa-angle-double-right','visible'=>Mimin::checkRoute('userk/create')],
+                            ['label' => \Yii::t('yii', 'Language'), 'url' => ['/site/bahasa'], 'icon' => 'fas fa-atlas'],
+                            ['label' => \Yii::t('yii', 'Segment'), 'url' => ['/segment/index'], 'icon' => 'fas fa-landmark','visible'=>Mimin::checkRoute('segment/index')],
+                            ['label' => \Yii::t('yii', 'Barangs'), 'url' => ['/barang/index'], 'icon' => 'fas fa-sd-card','visible'=>Mimin::checkRoute('barang/index')],
+                            ['label' => \Yii::t('yii', 'PO Barangs'), 'url' => ['/barangpo/index'], 'icon' => 'fas fa-chart-line','visible'=>Mimin::checkRoute('barangpo/index')],
+                            ['label' => \Yii::t('yii', 'Company'), 'url' => ['/costumer/index'], 'icon' => 'fas fa-folder-plus'],
+                            ['label' => \Yii::t('yii', 'Costumer'), 'url' => ['/person/index'], 'icon' => 'fas fa-address-card'],
+                            ['label' => \Yii::t('yii', 'Project'), 'url' => ['/project/index'], 'icon' => 'fas fa-chart-area'],
+                            ['label' => \Yii::t('yii', 'Demo'), 'url' => ['/demo/index'], 'icon' => 'fas fa-city','visible'=>Mimin::checkRoute('demo/index')],
+                            ['label' => \Yii::t('yii', 'Training'), 'url' => ['/training/index'], 'icon' => 'fas fa-chalkboard-teacher','visible'=>Mimin::checkRoute('training/index')],
+                            ['label' => \Yii::t('yii', 'Join Visit'), 'url' => ['/visit/index'], 'icon' => 'far fa-street-view','visible'=>Mimin::checkRoute('visit/index')],
                         ]
                     ],
                     ['label' => \Yii::t('yii', 'Login'), 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
