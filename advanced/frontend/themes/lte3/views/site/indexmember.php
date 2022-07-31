@@ -118,14 +118,14 @@ function namabulan($id){
     if(count($item1)>1) {
     echo GoogleChart::widget(array('visualization' => 'ColumnChart',
                 'data' => $item1,
-                'options' => array('title' => 'Win Project ','hAxis' => array('title' => 'Total Project '.number_format($total)),))); 
+                'options' => array('title' => 'Win Project ','height'=>350,'hAxis' => array('title' => 'Total Project '.number_format($total)),))); 
     }
     echo "</div>";
     echo "<div class='col'>";
     if(count($item1)>1) {
     echo GoogleChart::widget(array('visualization' => 'ColumnChart',
                 'data' => $item2,
-                'options' => array('title' => 'Open Project ','hAxis' => array('title' => 'Total Project '.number_format($total)),))); 
+                'options' => array('title' => 'Open Project ','height'=>350,'hAxis' => array('title' => 'Total Project '.number_format($total)),))); 
     }
     echo "</div>";
     ?>
