@@ -51,7 +51,7 @@ $this->registerJs($script,$position);
 
    
     <?php   
-        echo $form->field($model, 'jumlah')->widget(MaskMoney::classname());
+        //echo $form->field($model, 'jumlah')->widget(MaskMoney::classname());
      ?>  
     <?= $form->field($model, 'person')->textInput(['maxlength' => true]) ?>
      <?= $form->field($model, 'person_c')->textInput(['maxlength' => true]) ?>
