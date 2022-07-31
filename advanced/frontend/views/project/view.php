@@ -10,13 +10,15 @@ use yii\widgets\DetailView;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            //'id',
             'nama',
-            'id_costumer',
+            [ 'attribute'=> 'id_costumer',
+                'value'=>isset($model->costumer)?$model->costumer->nama:'',
+            ],
             'tanggal',
             'deskripsi:ntext',
             'jumlah',
-            'status',
+            'statusnya',
             'tanggal_deadline',
         ],
     ]) ?>
