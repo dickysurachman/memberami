@@ -18,6 +18,7 @@ if($tracking<>""){
                 <!--<th>Budget</th>-->
                 <th>Nama Person</th>
                 <th>Telp</th>
+                <th></th>
                 </tr>
             <?php
             $i=1;
@@ -29,6 +30,9 @@ if($tracking<>""){
                 //echo "<td>".number_format($value['jumlah'])."</td>";
                 echo "<td>".$value['person']."</td>";
                 echo "<td>".$value['person_c']."</td>";
+                echo "<td>".Html::a('<span class="fas fa-pencil-alt" style="font-size:10pt;" title="edit PO"></span> '.\Yii::t('yii', 'Edit'), ['project/editdemo', 'id' => $value['id']], ['data-pjax' => "1",'role'=>'modal-remote','title'=>'Edit Demo','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']).
+                    "</td>";
+
                 echo "</tr>";
                 $i++;
             }
@@ -48,6 +52,7 @@ if($tracking<>""){
                 <th>Telp</th>
                 <th>Status</th>
                 <th width="250px">Keterangan</th>
+                <th></th>
                 </tr>
             <?php
             $i=1;
@@ -59,6 +64,8 @@ if($tracking<>""){
                 echo "<td>".$value['person_c']."</td>";
                 echo "<td>".$value['statusnya']."</td>";
                 echo "<td width='250px'>".$value['keterangan']."</td>";
+                 echo "<td>".Html::a('<span class="fas fa-pencil-alt" style="font-size:10pt;" title="edit PO"></span> '.\Yii::t('yii', 'Edit'), ['project/edittraining', 'id' => $value['id']], ['data-pjax' => "1",'role'=>'modal-remote','title'=>'Edit Training','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']).
+                    "</td>";
                 echo "</tr>";
                 $i++;
             }
@@ -76,6 +83,7 @@ if($tracking<>""){
                 <th>Status</th>
                 <th>Person</th>
                 <th>Telp</th>
+                <th></th>
                 </tr>
             <?php
             $i=1;
@@ -86,6 +94,8 @@ if($tracking<>""){
                 echo "<td>".$value['statusnya']."</td>";
                 echo "<td>".$value['person']."</td>";
                 echo "<td>".$value['person_c']."</td>";
+                 echo "<td>".Html::a('<span class="fas fa-pencil-alt" style="font-size:10pt;" title="edit PO"></span> '.\Yii::t('yii', 'Edit'), ['project/editvisit', 'id' => $value['id']], ['data-pjax' => "1",'role'=>'modal-remote','title'=>'Edit Visit','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']).
+                    "</td>";
                 echo "</tr>";
                 $i++;
             }

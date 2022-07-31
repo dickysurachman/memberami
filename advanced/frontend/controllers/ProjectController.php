@@ -121,7 +121,63 @@ class ProjectController extends Controller
         }
        
     }
- public function actionAddvisit($id)
+    public function actionEditdemo($id)
+    {
+        $request = Yii::$app->request;
+        $model=Demo::findOne($id);
+        //$project=$this->findModel($id);
+        //$model = new Demo();  
+
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if($request->isGet){
+                return [
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Edit ')." Demo",
+                    'content'=>$this->renderAjax('demo', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button(Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
+        
+                ];         
+            }else if($model->load($request->post()) ){
+                $model->save();
+                return [
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Edit')." Demo",
+                    'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' Demo '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"])
+        
+                ];         
+            }else{           
+                return [
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Edit')." Demo",
+                    'content'=>$this->renderAjax('demo', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button(Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
+        
+                ];         
+            }
+        }else{
+            /*
+            *   Process for non-ajax request
+            */
+            if ($model->load($request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('demo', [
+                    'model' => $model,
+                ]);
+            }
+        }
+       
+    }
+    public function actionAddvisit($id)
     {
         $request = Yii::$app->request;
         $project=$this->findModel($id);
@@ -178,7 +234,50 @@ class ProjectController extends Controller
         }
        
     }
- public function actionAddtraining($id)
+    public function actionEditvisit($id)
+    {
+        $request = Yii::$app->request;
+        $model = Visit::findOne($id);  
+
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if($request->isGet){
+                return [
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Visit",
+                    'content'=>$this->renderAjax('visit', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button(Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
+        
+                ];         
+            }else if($model->load($request->post()) ){
+                $model->save();
+                return [
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Visit",
+                    'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' Visit '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"])
+        
+                ];         
+            }else{           
+                return [
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Visit",
+                    'content'=>$this->renderAjax('visit', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button(Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
+        
+                ];         
+            }
+        }
+       
+    }
+    public function actionAddtraining($id)
     {
         $request = Yii::$app->request;
         $project=$this->findModel($id);
@@ -231,6 +330,50 @@ class ProjectController extends Controller
                 return $this->render('training', [
                     'model' => $model,
                 ]);
+            }
+        }
+       
+    }
+
+    public function actionEdittraining($id)
+    {
+        $request = Yii::$app->request;
+        $model =Training::findOne($id);  
+
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if($request->isGet){
+                return [
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update ')." Training",
+                    'content'=>$this->renderAjax('training', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button(Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
+        
+                ];         
+            }else if($model->load($request->post()) ){
+                $model->save();
+                return [
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update ')." Training",
+                    'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' Training '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"])
+        
+                ];         
+            }else{           
+                return [
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update ')." Training",
+                    'content'=>$this->renderAjax('training', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                                Html::button(Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
+        
+                ];         
             }
         }
        
