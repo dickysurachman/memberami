@@ -111,7 +111,7 @@ if(!Yii::$app->user->isGuest) {
         if(!Yii::$app->user->isGuest)
             { ?>
         <li class="nav-item">
-            <?= Html::a('<i class="fas fa-sign-out-alt">Sign Out</i>', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
+            <?= Html::a('<i class="nav-icon fas fa-sign-in-alt"></i> Sign Out', ['/site/logout'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
         </li>
         <?php }?>
         <li class="nav-item">

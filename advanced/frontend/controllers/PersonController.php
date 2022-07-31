@@ -66,7 +66,7 @@ class PersonController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Person #".$id,
+                    'title'=> "".\Yii::t('yii', 'Costumer')."#".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -98,7 +98,7 @@ class PersonController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Person",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ".\Yii::t('yii', 'Costumer'),
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -109,7 +109,7 @@ class PersonController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Person",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ".\Yii::t('yii', 'Costumer'),
                     'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' Person '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
                     'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a(Yii::t('yii2-ajaxcrud', 'Create More'), ['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
@@ -117,7 +117,7 @@ class PersonController extends Controller
                 ];         
             }else{           
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Person",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ".\Yii::t('yii', 'Costumer'),
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -160,7 +160,7 @@ class PersonController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Person #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." ".\Yii::t('yii', 'Costumer')."#".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -170,7 +170,7 @@ class PersonController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Person #".$id,
+                    'title'=> "".\Yii::t('yii', 'Costumer')."#".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -179,7 +179,7 @@ class PersonController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Person #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." ".\Yii::t('yii', 'Costumer')."#".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
