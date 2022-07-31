@@ -137,9 +137,9 @@ function namabulan($id){
 
             <table class="table table-responsive">
                 <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>Nilai</th>
+                    <th style="width:30px">No.</th>
+                    <th  style="width:210px">Nama</th>
+                    <th  style="width:200px;">Nilai</th>
                 </tr>
 
                 <?php 
@@ -168,9 +168,9 @@ function namabulan($id){
 
             <table class="table table-responsive">
                 <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>Nilai</th>
+                    <th style="width:30px">No.</th>
+                    <th  style="width:210px">Nama</th>
+                    <th  style="width:200px;">Nilai</th>
                 </tr>
 
                 <?php 
