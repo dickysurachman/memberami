@@ -105,7 +105,7 @@ return [
                                     'width'=>'100px'
                                 ],
                                 ],
-        'visible'=>Mimin::checkRoute('project/adddemo'),
+        'visible'=>Mimin::checkRoute('userk/index'),
         'value'=>function ($model, $key, $index, $widget) { 
                 return isset($model->namauser)?$model->namauser->username:'';
                 },
@@ -118,7 +118,7 @@ return [
                 'visible'=>Mimin::checkRoute('barangpo/create'),
                 'value'=>function ($data) {
                                 return 
-                                Html::a('<span class="fas fa-users" style="font-size:14pt;" title="Print"></span>',['barangpo/project', 'id' => $data->id],
+                                Html::a('<span class="fas fa-database" style="font-size:14pt;" title="add PO"></span>',['barangpo/project', 'id' => $data->id],
                                     ['target'=>'_blank', 'data-pjax'=>"0",'class' => 'linksWithTarget']);
                                 },
     ],    

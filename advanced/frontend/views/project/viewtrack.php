@@ -4,6 +4,8 @@ use app\models\Project;
 use app\models\Demo;
 use app\models\Visit;
 use app\models\Training;
+use app\models\Barangpo;
+use yii\helpers\Html;
 $tracking=Demo::find()->where(['id_project'=>$model->id])->orderBy(['nama' => SORT_ASC])->all();
 if($tracking<>""){
             ?>
@@ -91,5 +93,32 @@ if($tracking<>""){
             </table>
         <?php }
 
+$tracking=Barangpo::find()->where(['id_project'=>$model->id])->orderBy(['tanggal' => SORT_ASC])->all();
+if($tracking<>""){
+            ?>
+            <h4>PO Project</h4>
+            <table class="table table-bordered">
+                <tr>
+                <th>No. </th>
+                <th>Tanggal</th>
+                <th>No PO</th>
+                <th>Keterangan</th>
+                <th>Cetak</th>
+                </tr>
+            <?php
+            $i=1;
+            foreach ($tracking as $key => $value) {
+                echo "<tr>";
+                echo "<td>$i</td>";
+                echo "<td>".$value['tanggal']."</td>";
+                echo "<td>".$value['kode']."</td>";
+                echo "<td>".$value['keterangan']."</td>";
+                echo "<td>".Html::a('<span class="fas fa-print" style="font-size:10pt;" title="add PO"></span> '.\Yii::t('yii', 'Print'), ['barangpo/print', 'id' => $value['id']], ['class' => 'btn btn-success','target'=>"_blank",'data-pjax'=>"0"])."</td>";
+                echo "</tr>";
+                $i++;
+            }
+            ?>
+            </table>
+        <?php }
 
 ?>
