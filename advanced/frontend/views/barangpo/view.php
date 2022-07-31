@@ -27,7 +27,7 @@ CrudAsset::register($this);
 
     <p>
         <?= Html::a(Yii::t('yii', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('yii', 'Print'), ['print', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('yii', 'Print'), ['print', 'id' => $model->id], ['class' => 'btn btn-success','target'=>"_blank"]) ?>
         <?= Html::a(Yii::t('yii', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [

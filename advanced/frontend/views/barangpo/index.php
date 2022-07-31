@@ -70,13 +70,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             'keterangan:ntext',
-            //'id_perusahaan',
-            //'id_user',
-            //'status',
-            //'add_who',
-            //'add_date',
-            //'edit_who',
-            //'edit_date',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, $model, $key, $index, $column) {

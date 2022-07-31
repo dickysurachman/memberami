@@ -79,6 +79,19 @@ class BarangpoController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionPrint($id)
+    {
+        $model=$this->findModel($id);
+        if(isset($model)){
+            $this->layout=false;
+            return $this->render('print', [
+                'model' => $model,
+//                'searchModel' => $searchModel,
+//                'dataProvider' => $dataProvider,
+            ]);
+
+        }
+    }
 
     /**
      * Creates a new Barangpo model.
