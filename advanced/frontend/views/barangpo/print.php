@@ -43,7 +43,7 @@ $this->title="Print PO";
 
 <div class="row col-12">
 
-	<div class="col-4" style="padding-left: 200px">
+	<div class="col-4" style="padding-left: 100px">
 		<table class="" style="font-size: 10pt;">
 			<tr>
 				<td colspan="2" style="width:300px">TO :<br/>
