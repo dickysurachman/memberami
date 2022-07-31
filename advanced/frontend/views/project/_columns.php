@@ -10,7 +10,7 @@ use hscstudio\mimin\components\Mimin;
 $dataPost=['0'=>"Open",'1'=>'Win','2'=>'Lose'];
 $usr=ArrayHelper::map(User::find()->asArray()->all(), 'id', 'username');
 
-if(Mimin::checkRoute('project/adddemo')){
+if(Mimin::checkRoute('userk/create')){
     $cos=ArrayHelper::map(Costumer::find()->asArray()->all(), 'id', 'nama');
 } else {
     $cos=ArrayHelper::map(Costumer::find()->where(['id_user'=>Yii::$app->user->identity->id])->asArray()->all(), 'id', 'nama');
