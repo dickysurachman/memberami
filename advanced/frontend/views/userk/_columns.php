@@ -18,7 +18,7 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'username',
     ],
-    [
+   /* [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'auth_key',
     ],
@@ -29,7 +29,7 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'password_reset_token',
-    ],
+    ],*/
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'email',

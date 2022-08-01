@@ -66,7 +66,7 @@ use hscstudio\mimin\components\Mimin;
                             ['label' => \Yii::t('yii', 'Barangs'), 'url' => ['/barang/index'], 'icon' => 'fas fa-sd-card','visible'=>Mimin::checkRoute('barang/index')],
                             ['label' => \Yii::t('yii', 'PO Barangs'), 'url' => ['/barangpo/index'], 'icon' => 'fas fa-chart-line','visible'=>Mimin::checkRoute('barangpo/index')],
                             ['label' => \Yii::t('yii', 'Company'), 'url' => ['/costumer/index'], 'icon' => 'fas fa-folder-plus'],
-                            ['label' => \Yii::t('yii', 'Costumer'), 'url' => ['/person/index'], 'icon' => 'fas fa-address-card'],
+                            ['label' => \Yii::t('yii', 'Customer'), 'url' => ['/person/index'], 'icon' => 'fas fa-address-card'],
                             ['label' => \Yii::t('yii', 'Project'), 'url' => ['/project/index'], 'icon' => 'fas fa-chart-area'],
                             ['label' => \Yii::t('yii', 'Demo'), 'url' => ['/demo/index'], 'icon' => 'fas fa-city','visible'=>Mimin::checkRoute('demo/index')],
                             ['label' => \Yii::t('yii', 'Training'), 'url' => ['/training/index'], 'icon' => 'fas fa-chalkboard-teacher','visible'=>Mimin::checkRoute('training/index')],

@@ -19,7 +19,7 @@ $cityDesc =empty($model->id_costumer) ? '' : Costumer::findOne(['id'=>$model->id
      <?php 
     echo $form->field($model, 'id_costumer')->widget(Select2::classname(), [
         'initValueText' => $cityDesc, 
-        'options' => ['placeholder' => 'Search for Costumer ...'],
+        'options' => ['placeholder' => 'Search for Company ...'],
         'pluginOptions' => [
             'allowClear' => true,
             'minimumInputLength' => 3,
