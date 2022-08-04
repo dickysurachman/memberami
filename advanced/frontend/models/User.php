@@ -58,7 +58,7 @@ class User extends \yii\db\ActiveRecord
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
-            'id_level' => 'Level Member',
+            'id_level' => 'Level Patner',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

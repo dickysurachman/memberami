@@ -51,7 +51,7 @@ if($tracking<>""){
                 <th width="85px">Status</th>
                 <th width="185px">Nama Person</th>
                 <th width="185px">Telp</th>
-                <th width="285px">Keterangan</th>
+                <!--<th width="285px">Keterangan</th>-->
                 <th></th>
                 </tr>
             <?php
@@ -63,7 +63,7 @@ if($tracking<>""){
                 echo "<td>".$value['statusnya']."</td>";
                 echo "<td>".$value['person']."</td>";
                 echo "<td>".$value['person_c']."</td>";
-                echo "<td width='285px'>".$value['keterangan']."</td>";
+                //echo "<td width='285px'>".$value['keterangan']."</td>";
                  echo "<td>".Html::a('<span class="fas fa-pencil-alt" style="font-size:10pt;" title="edit PO"></span> '.\Yii::t('yii', 'Edit'), ['project/edittraining', 'id' => $value['id']], ['data-pjax' => "1",'role'=>'modal-remote','title'=>'Edit Training','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']).
                     "</td>";
                 echo "</tr>";
