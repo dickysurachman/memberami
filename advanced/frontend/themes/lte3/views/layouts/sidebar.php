@@ -56,7 +56,7 @@ use hscstudio\mimin\components\Mimin;
                         'badge' => '<span class="right badge badge-info">5</span>',
                         'visible' => !Yii::$app->user->isGuest,
                         'items' => [
-                            ['label' => \Yii::t('yii', 'User'), 'url' => ['/userk/index'], 'icon' => 'fas fa-portrait','visible'=>Mimin::checkRoute('userk/create')],
+                            ['label' => \Yii::t('yii', 'Patner'), 'url' => ['/userk/index'], 'icon' => 'fas fa-portrait','visible'=>Mimin::checkRoute('userk/create')],
                             ['label' => \Yii::t('yii', 'User Level'), 'url' => ['/level/index'], 'icon' => 'fas fa-sitemap','visible'=>Mimin::checkRoute('level/create')],
                             ['label' => \Yii::t('yii', 'Perusahaan User'), 'url' => ['/perusahaan/index'], 'icon' => 'fas fa-list','visible'=>Mimin::checkRoute('perusahaan/index')],
                             ['label' => \Yii::t('yii', 'Pages'), 'url' => ['/pages/index'], 'icon' => 'fas fa-images','visible'=>Mimin::checkRoute('pages/index')],

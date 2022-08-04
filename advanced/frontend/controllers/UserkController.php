@@ -82,7 +82,7 @@ class UserkController extends Controller
                 $model->save();
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "User #".$id,
+                    'title'=> "Partner #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -123,7 +123,7 @@ class UserkController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "User #".$id,
+                    'title'=> "Partner #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -230,7 +230,7 @@ class UserkController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." User #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Partner #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                         'authAssignment' => $authAssignment,
@@ -261,7 +261,7 @@ class UserkController extends Controller
                 }
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "User #".$id,
+                    'title'=> "Partner #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -270,7 +270,7 @@ class UserkController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." User #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Partner #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                         'authAssignment' => $authAssignment,
