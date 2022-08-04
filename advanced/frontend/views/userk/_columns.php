@@ -1,6 +1,11 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\Level;
+use yii\helpers\ArrayHelper;
+
+$level=ArrayHelper::map(Level::find()->asArray()->all(), 'id', 'nama');
+
 return [
     [
         'class' => 'kartik\grid\CheckboxColumn',
@@ -33,6 +38,14 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'email',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'id_level',
+        'filter'=>$level,
+        'value'=>function ($model, $key, $index, $column) {
+        return isset($model->level)?$model->level->nama:'';
+                },
     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',

@@ -90,3 +90,6 @@ ALTER TABLE `user_level`
   ADD PRIMARY KEY (`id`);
 ALTER TABLE `user_level`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+alter table `user` add id_level int(11) NULL;

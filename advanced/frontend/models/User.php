@@ -36,7 +36,7 @@ class User extends \yii\db\ActiveRecord
         return [
             //[['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
             [['username', 'password_hash', 'email'], 'required'],
-            [['status', 'created_at', 'updated_at','hak'], 'integer'],
+            [['status', 'created_at', 'updated_at','hak','id_level'], 'integer'],
             [['username', 'password_hash', 'password_reset_token', 'email', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['username'], 'unique'],
@@ -58,11 +58,16 @@ class User extends \yii\db\ActiveRecord
             'password_hash' => 'Password Hash',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
+            'id_level' => 'Level Member',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'verification_token' => 'Verification Token',
         ];
+    }
+       public function getLevel()
+    {
+        return $this->hasOne(Level::className(), ['id' => 'id_level']);
     }
        public function generateAuthKey()
     {

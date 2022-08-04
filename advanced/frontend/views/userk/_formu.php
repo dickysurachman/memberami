@@ -8,7 +8,12 @@ use kartik\widgets\Select2;
 /* @var $form yii\widgets\ActiveForm */
 //$tipe=['Administrator','BPTU HPT','BIB','BET']
 //$tipe=['Administrator','FO','Housekeeping','FB Outlet','Akunting']
-$tipe=['9'=>'Tidak Aktif','10'=>'Aktif']
+use app\models\Level;
+//use yii\helpers\ArrayHelper;
+$tipe=['9'=>'Tidak Aktif','10'=>'Aktif'];
+
+$level=ArrayHelper::map(Level::find()->asArray()->all(), 'id', 'nama');
+
 ?>
 
 <div class="user-form">
@@ -20,6 +25,7 @@ $tipe=['9'=>'Tidak Aktif','10'=>'Aktif']
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList($tipe,array('prompt'=>'Silahkan Pilih'))  ?>
+    <?= $form->field($model, 'id_level')->dropDownList($level,array('prompt'=>'Silahkan Pilih'))  ?>
     <?php
     echo $form->field($authAssignment, 'item_name')->widget(Select2::classname(), [
       'data' => $authItems,

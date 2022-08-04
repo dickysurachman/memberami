@@ -7,6 +7,7 @@ use yii\web\JsExpression;
 use yii\web\View;
 use app\models\City;
 use kartik\file\FileInput;
+use app\models\User;
 $url = \yii\helpers\Url::to(['site/kota']);
 $this->title="Update Profile";
 $cityDesc =empty($model->id_kota) ? '' : City::findOne(['id'=>$model->id_kota])->name;
@@ -14,6 +15,16 @@ $cityDesc =empty($model->id_kota) ? '' : City::findOne(['id'=>$model->id_kota])-
 /* @var $model app\models\Perusahaan */
 /* @var $form yii\widgets\ActiveForm */
 
+$cek =User::findOne($model->id_user);
+if($cek) 
+{
+    $mem2=isset($cek->level)?$cek->level->nama:'';
+    $mem="Member Level :".$mem2;
+
+} else {
+    $mem="Member Level :";
+
+}
 $script = <<< JS
 $(document).on("select2:open", () => {
   document.querySelector(".select2-container--open .select2-search__field").focus()
@@ -26,11 +37,17 @@ $this->registerJs($script,$position);
 
 <div class="perusahaan-form">
 
+
+
+
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
 
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
-
+    <div class="form-group">
+    <label for="perusahaan-nama_d"><?php echo $mem ?></label>
+    
+    </div>
     <?= $form->field($model, 'nama_d')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
