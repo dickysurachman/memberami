@@ -81,7 +81,7 @@ if($tracking<>""){
                 <th width="15px">No. </th>
                 <th  width="85px">Tanggal Visit</th>
                 <th width="85px">Status</th>
-                <th width="185px">Person</th>
+                <th width="185px">Nama Person</th>
                 <th width="185px">Telp</th>
                 <th></th>
                 </tr>
