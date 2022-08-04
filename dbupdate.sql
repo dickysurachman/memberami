@@ -82,3 +82,11 @@ join costumer b on a.id_perusahaan=b.id
 
 create view `podetailsum` as select tanggal,nama,kode,sum(total) as total from podetail
   group by tanggal,nama,kode;
+
+
+
+create table `user_level`(id int(11), nama varchar(100), diskon double NULL, status int(2) DEFAULT '0');
+ALTER TABLE `user_level`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `user_level`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
