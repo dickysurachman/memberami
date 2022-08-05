@@ -43,17 +43,17 @@ $col=
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'harga',
-        'hAlign' => 'right',
-        'format'=>['decimal',2],
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'nama',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'ukuran',
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'harga',
+        'hAlign' => 'right',
+        'format'=>['decimal',2],
     ],
 ];
 
