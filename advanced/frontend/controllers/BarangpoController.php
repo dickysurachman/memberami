@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use app\models\User;
 use app\models\Barang;
 use app\models\Level;
 use app\models\Barangpo;
@@ -218,7 +219,7 @@ class BarangpoController extends Controller
                 $userd=User::findOne($po->id_user);    
                 $user=Level::findOne($userd->id_level);
                 if(isset($user)) {
-                    $barang=findOne($model->id_barang);
+                    $barang=Barang::findOne($model->id_barang);
                     if(isset($barang)) {
                         $model->harga_d=$barang->harga;
                         $model->harga_m=$barang->harga - ($barang->harga * $user->diskon/100);
