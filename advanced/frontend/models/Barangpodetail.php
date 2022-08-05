@@ -32,6 +32,7 @@ class Barangpodetail extends \yii\db\ActiveRecord
     {
         return [
             [['id_barang', 'qty', 'id_kode'], 'required'],
+            [['harga_d', 'harga_m'], 'number'],
             [['id_barang', 'qty', 'id_kode', 'status'], 'integer'],
             [['id_barang'], 'exist', 'skipOnError' => true, 'targetClass' => Barang::className(), 'targetAttribute' => ['id_barang' => 'id']],
         ];
@@ -48,6 +49,8 @@ class Barangpodetail extends \yii\db\ActiveRecord
             'qty' => 'Qty',
             'id_kode' => 'Kode',
             'status' => 'Status',
+            'harga_d' => Yii::t('app', 'Harga Dasar'),
+            'harga_m' => Yii::t('app', 'Harga Member'),
         ];
     }
 

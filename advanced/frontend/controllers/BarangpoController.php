@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use app\models\Barang;
+use app\models\Level;
 use app\models\Barangpo;
 use app\models\Costumer;
 use app\models\Project;
@@ -211,6 +213,18 @@ class BarangpoController extends Controller
         
                 ];         
             }else if($model->load($request->post())){
+                $po =Project::findOne($id);
+                if(isset($po)) {
+                $userd=User::findOne($po->id_user);    
+                $user=Level::findOne($userd->id_level);
+                if(isset($user)) {
+                    $barang=findOne($model->id_barang);
+                    if(isset($barang)) {
+                        $model->harga_d=$barang->harga;
+                        $model->harga_m=$barang->harga - ($barang->harga * $user->diskon/100);
+                    }
+                }
+                }
                 $model->id_kode=$id;
                 $model->save();
                 return [
@@ -261,7 +275,21 @@ class BarangpoController extends Controller
                     'footer'=> Html::button(\Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                                 Html::button(\Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
-            }else if($model->load($request->post()) && $model->save()){
+            }else if($model->load($request->post())){
+                $po =Project::findOne($model->id_kode);
+                if(isset($po)) {
+                $userd=User::findOne($po->id_user);    
+                $user=Level::findOne($userd->id_level);
+                if(isset($user)) {
+                    $barang=findOne($model->id_barang);
+                    if(isset($barang)) {
+                        $model->harga_d=$barang->harga;
+                        $model->harga_m=$barang->harga - ($barang->harga * $user->diskon/100);
+                    }
+                }
+                }
+                //$model->id_kode=$id;
+                $model->save();
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Barangpodetail #".$id,

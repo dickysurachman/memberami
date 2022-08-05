@@ -93,3 +93,6 @@ ALTER TABLE `user_level`
 
 
 alter table `user` add id_level int(11) NULL;
+
+alter table `barang_podetail` add harga_d double NULL;
+alter table `barang_podetail` add harga_m double NULL;
