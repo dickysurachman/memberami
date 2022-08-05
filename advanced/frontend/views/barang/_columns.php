@@ -29,12 +29,6 @@ return [
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'harga',
-        'hAlign' => 'right',
-        'format'=>['decimal',2],
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'nama',
     ],
     [
@@ -45,6 +39,12 @@ return [
     //    'class'=>'\kartik\grid\DataColumn',
     //    'attribute'=>'stok_awal',
    // ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'harga',
+        'hAlign' => 'right',
+        'format'=>['decimal',2],
+    ],
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,
