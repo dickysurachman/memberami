@@ -120,7 +120,7 @@ $this->title="Print PO";
 			$total=0;
 			$i=1;
 			foreach($podet as $val){
-				$total1=$val->qty * $val->barang->harga;
+				$total1=$val->qty * $val->harga_m;
 				$total+=$total1;
 		?>
 
@@ -131,7 +131,7 @@ $this->title="Print PO";
 			<td>indent</td>
 			<td><?php echo $val->qty ?></td>
 			<td>pcs</td>
-			<td><?php echo number_format($val->barang->harga) ?></td>
+			<td><?php echo number_format($val->harga_m) ?></td>
 			<td><?php echo number_format($total1) ?></td>
 		</tr>
 
@@ -140,7 +140,7 @@ $this->title="Print PO";
 		?>
 
 		<tr>
-			<td colspan="5" rowspan="3">Notes :<br/>
+			<td colspan="5" rowspan="2">Notes :<br/>
 PO to: order@gso.asia<br/>
 Pembayaran dilakukan dengan transfer ke Rek Mandiri 1200010055494 an PT.Global Sahabat Otomasi
 <br/>50% DP
@@ -149,11 +149,11 @@ Pembayaran dilakukan dengan transfer ke Rek Mandiri 1200010055494 an PT.Global S
 			<td colspan="2">Total</td>
 			<td><?php echo number_format($total);$ppn=$total*0.11; ?></td>
 		</tr>
-		<tr>
+		<!---<tr>
 			<td>Disc</td>
 			<td></td>
 			<td></td>
-		</tr>
+		</tr>-->
 		<tr>
 			<td>PPN</td>
 			<td>11%</td>

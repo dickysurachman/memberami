@@ -242,28 +242,33 @@ class UserkController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 // delete all role
                 $authAssignment->load(Yii::$app->request->post());
+                
                 AuthAssignment::deleteAll(['user_id' => $model->id]);
                 if (is_array($authAssignment->item_name)) {
                     foreach ($authAssignment->item_name as $item) {
-                        if (!in_array($item, $authAssignments)) {
+                        //if (!in_array($item, $authAssignments)) {
+                            if(is_null($item)==false or $item<>"")
+                            {
                             $authAssignment2 = new AuthAssignment([
                                 'user_id' => $model->id,
                             ]);
                             $authAssignment2->item_name = $item;
                             $authAssignment2->created_at = time();
                             $authAssignment2->save();
-
                             $authAssignments = AuthAssignment::find()->where([
                                 'user_id' => $model->id,
-                            ])->column();
-                        }
+                            ])->column();                                
+                            }                                
+                        //}
                     }
                 }
+                
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Partner #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
+                        //'ass'=>$authAssignment,
                     ]),
                     'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a(Yii::t('yii2-ajaxcrud', 'Update'), ['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])

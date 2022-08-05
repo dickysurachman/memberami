@@ -6,7 +6,10 @@ use yii\widgets\DetailView;
 /* @var $model app\models\User */
 ?>
 <div class="user-view">
- 
+    <?php
+        //var_dump($ass);
+
+    ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
