@@ -217,7 +217,7 @@ class BarangpoController extends Controller
         
                 ];         
             }else if($model->load($request->post())){
-                $po =Project::findOne($id);
+                $po =$this->findModel($id);// Project::findOne($id);
                 if(isset($po)) {
                 $userd=User::findOne($po->id_user);    
                 $user=Level::findOne($userd->id_level);
@@ -280,7 +280,7 @@ class BarangpoController extends Controller
                                 Html::button(\Yii::t('yii2-ajaxcrud', 'Save'), ['class'=>'btn btn-primary','type'=>"submit"])
                 ];         
             }else if($model->load($request->post())){
-                $po =Project::findOne($model->id_kode);
+                $po =Barangpo::findOne($model->id_kode);
                 if(isset($po)) {
                 $userd=User::findOne($po->id_user);    
                 $user=Level::findOne($userd->id_level);
