@@ -68,9 +68,8 @@ class Demo extends \yii\db\ActiveRecord
             'nama_ap' => \Yii::t('yii', 'Application Name'),
             'jumlah' =>  \Yii::t('yii', 'Budget Total'),
             'id_project'=>\Yii::t('yii', 'Project Name'),
-            'person' => \Yii::t('yii', 'Person'),
-            'person_c' => \Yii::t('yii', 'Contact Person'),
-        ];
+             'person' => \Yii::t('yii', 'Person Name'),
+            'person_c' => \Yii::t('yii', 'Contact Number'),        ];
     }
          public function getCostumer()
     {

@@ -44,11 +44,11 @@ class Person extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nama' => 'Nama',
-            'telp' => 'Telp',
-            'email' => 'Email',
-            'id_costumer' => 'Company',
-            'id_user' => 'Id User',
+            'nama' => \Yii::t('yii', 'Name'),//'Nama',
+            'telp' => \Yii::t('yii', 'Contact Number'),//'Telp',
+            'email' => \Yii::t('yii', 'Email'),
+            'id_costumer' => \Yii::t('yii', 'Company'),
+            'id_user' => \Yii::t('yii', 'User'),//'Id User',
         ];
     }
 

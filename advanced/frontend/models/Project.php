@@ -48,14 +48,14 @@ class Project extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'nama' => 'Nama Project',
-            'id_costumer' => 'Costumer',
-            'id_user' => 'Nama User',
-            'tanggal' => 'Tanggal Mulai',
-            'deskripsi' => 'Deskripsi',
-            'jumlah' => 'Jumlah',
+            'nama' =>  \Yii::t('yii', 'Project Name'),//'Nama Proyek',
+            'id_costumer' => \Yii::t('yii', 'Company'),//'Costumer',
+            'id_user' => \Yii::t('yii', 'User'),//'Nama User',
+            'tanggal' => \Yii::t('yii', 'Beginning Date'),//'Tanggal Mulai',
+            'deskripsi' => \Yii::t('yii', 'Description'),//'Deskripsi',
+            'jumlah' => \Yii::t('yii', 'Total'),//'Jumlah',
             'status' => 'Status',
-            'tanggal_deadline' => 'Tanggal Deadline',
+            'tanggal_deadline' => \Yii::t('yii', 'Deadline Date'),//'Tanggal Deadline',
         ];
     }
 

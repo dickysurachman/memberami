@@ -10,7 +10,7 @@ use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 /* @var $searchModel app\models\TrainingSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Trainings';
+$this->title = \Yii::t('yii', 'Training');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);

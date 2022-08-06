@@ -64,8 +64,8 @@ class Training extends \yii\db\ActiveRecord
             'keterangan' => \Yii::t('yii', 'Description'),
             'nama' => \Yii::t('yii', 'Subject'),
             'id_user' => \Yii::t('yii', 'User'),
-            'person' =>\Yii::t('yii', 'Person'),
-            'person_c' => \Yii::t('yii', 'Contact Person'),
+            'person' => \Yii::t('yii', 'Person Name'),
+            'person_c' => \Yii::t('yii', 'Contact Number'),            
         ];
     }
           public function getCostumer()

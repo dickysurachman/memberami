@@ -111,10 +111,10 @@ return [
                 },
     ],
      [
-                'header'=>'Add PO',
+                'header'=>\Yii::t('yii', 'Add').' PO',
                 'attribute' => 'img',
                 'format' => 'raw',
-                'label' => 'Add PO',
+                'label' => \Yii::t('yii', 'Add').' PO',
                 'visible'=>Mimin::checkRoute('barangpo/create'),
                 'value'=>function ($data) {
                                 return 
@@ -126,7 +126,7 @@ return [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => true,
         'dropdownOptions'=>['header-dropdown'=>'Tambah'],
-        'header'=>'Tambah Data',
+        'header'=> \Yii::t('yii', 'Add').' Data',
         'vAlign'=>'middle',
         'visible'=>Mimin::checkRoute('project/adddemo'),
         'template'=>'{demo}{training}{visit}',
@@ -135,13 +135,13 @@ return [
         },
         'buttons' => [
             'demo' => function ($url, $model, $key) {
-                return Html::a('<span class="fas fa-users"></span>&nbsp;Tambah Demo<br/>', ['adddemo', 'id'=>$model->id],['data-pjax' => "1",'role'=>'modal-remote','title'=>'Add Demo','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']);
+                return Html::a('<span class="fas fa-users"></span>&nbsp;'.\Yii::t('yii', 'Add').' '.\Yii::t('yii', 'Demo'), ['adddemo', 'id'=>$model->id],['data-pjax' => "1",'role'=>'modal-remote','title'=>'Add Demo','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']);
             },
             'training' => function ($url, $model, $key) {
-                return Html::a('<span class="fas fa-users"></span>&nbsp;Tambah Training<br/>', ['addtraining', 'id'=>$model->id],['data-pjax' => "1",'role'=>'modal-remote','title'=>'Add Training','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']);
+                return Html::a('<span class="fas fa-users"></span>&nbsp;'.\Yii::t('yii', 'Add').' '.\Yii::t('yii', 'Training'), ['addtraining', 'id'=>$model->id],['data-pjax' => "1",'role'=>'modal-remote','title'=>'Add Training','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']);
             },
             'visit' => function ($url, $model, $key) {
-                return Html::a('<span class="fas fa-users"></span>&nbsp;Tambah Visit', ['addvisit', 'id'=>$model->id],['data-pjax' => "1",'role'=>'modal-remote','title'=>'Add Visit','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']);
+                return Html::a('<span class="fas fa-users"></span>&nbsp;'.\Yii::t('yii', 'Add').' '.\Yii::t('yii', 'Join Visit'), ['addvisit', 'id'=>$model->id],['data-pjax' => "1",'role'=>'modal-remote','title'=>'Add Visit','data-toggle'=>'tooltip','class'=>'btn btn-sm btn-outline-success dropdown-item']);
             },
 
         ],

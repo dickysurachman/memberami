@@ -9,15 +9,15 @@ use yii\helpers\Html;
 $tracking=Demo::find()->where(['id_project'=>$model->id])->orderBy(['nama' => SORT_ASC])->all();
 if($tracking<>""){
             ?>
-            <h4>Demo</h4>
+            <h4><?=\Yii::t('yii', 'Demo')?></h4>
             <table class="table table-bordered">
                 <tr>
                 <th width="15px">No. </th>
-                <th  width="85px">Tanggal</th>
-                <th width="85px">Status</th>
+                <th  width="85px"><?=\Yii::t('yii', 'Date')?></th>
+                <th width="85px"><?=\Yii::t('yii', 'Status')?></th>
                 <!--<th>Budget</th>-->
-                <th width="185px">Nama Person</th>
-                <th width="185px">Telp</th>
+                <th width="185px"><?=\Yii::t('yii', 'Person Name')?></th>
+                <th width="185px"><?=\Yii::t('yii', 'Contact Number')?></th>
                 <th></th>
                 </tr>
             <?php
@@ -43,14 +43,15 @@ if($tracking<>""){
 $tracking=Training::find()->where(['id_project'=>$model->id])->orderBy(['nama' => SORT_ASC])->all();
 if($tracking<>""){
             ?>
-            <h4>Training</h4>
+            <h4><?=\Yii::t('yii', 'Training')?></h4>
             <table class="table table-bordered">
                 <tr>
                 <th width="15px">No. </th>
-                <th  width="85px">Tanggal</th>
-                <th width="85px">Status</th>
-                <th width="185px">Nama Person</th>
-                <th width="185px">Telp</th>
+                <th  width="85px"><?=\Yii::t('yii', 'Date')?></th>
+                <th width="85px"><?=\Yii::t('yii', 'Status')?></th>
+                <!--<th>Budget</th>-->
+                <th width="185px"><?=\Yii::t('yii', 'Person Name')?></th>
+                <th width="185px"><?=\Yii::t('yii', 'Contact Number')?></th>
                 <!--<th width="285px">Keterangan</th>-->
                 <th></th>
                 </tr>
@@ -75,14 +76,15 @@ if($tracking<>""){
 $tracking=Visit::find()->where(['id_project'=>$model->id])->orderBy(['nama' => SORT_ASC])->all();
 if($tracking<>""){
             ?>
-            <h4>Visit</h4>
+            <h4><?=\Yii::t('yii', 'Join Visit')?></h4>
             <table class="table table-bordered">
                 <tr>
                 <th width="15px">No. </th>
-                <th  width="85px">Tanggal Visit</th>
-                <th width="85px">Status</th>
-                <th width="185px">Nama Person</th>
-                <th width="185px">Telp</th>
+                <th  width="85px"><?=\Yii::t('yii', 'Date')?></th>
+                <th width="85px"><?=\Yii::t('yii', 'Status')?></th>
+                <!--<th>Budget</th>-->
+                <th width="185px"><?=\Yii::t('yii', 'Person Name')?></th>
+                <th width="185px"><?=\Yii::t('yii', 'Contact Number')?></th>
                 <th></th>
                 </tr>
             <?php
@@ -106,14 +108,14 @@ if($tracking<>""){
 $tracking=Barangpo::find()->where(['id_project'=>$model->id])->orderBy(['tanggal' => SORT_ASC])->all();
 if($tracking<>""){
             ?>
-            <h4>PO Project</h4>
+            <h4><?=\Yii::t('yii', 'Purchase Orders')?></h4>
             <table class="table table-bordered">
                 <tr>
                 <th width="15px">No. </th>
-                <th width="85px">Tanggal</th>
-                <th>No PO</th>
-                <th>Keterangan</th>
-                <th>Cetak</th>
+                <th width="85px"><?=\Yii::t('yii', 'Date')?></th>
+                <th><?=\Yii::t('yii', 'PO Code')?></th>
+                <th><?=\Yii::t('yii', 'Mark')?></th>
+                <th><?=\Yii::t('yii', 'Print')?></th>
                 </tr>
             <?php
             $i=1;
@@ -123,7 +125,7 @@ if($tracking<>""){
                 echo "<td>".$value['tanggal']."</td>";
                 echo "<td>".$value['kode']."</td>";
                 echo "<td>".$value['keterangan']."</td>";
-                echo "<td>".Html::a('<span class="fas fa-print" style="font-size:10pt;" title="add PO"></span> '.\Yii::t('yii', 'Print'), ['barangpo/print', 'id' => $value['id']], ['class' => 'btn btn-success','target'=>"_blank",'data-pjax'=>"0"])."</td>";
+                echo "<td>".Html::a('<span class="fas fa-print" style="font-size:10pt;" title="Print"></span> '.\Yii::t('yii', 'Print'), ['barangpo/print', 'id' => $value['id']], ['class' => 'btn btn-success','target'=>"_blank",'data-pjax'=>"0"])."</td>";
                 echo "</tr>";
                 $i++;
             }

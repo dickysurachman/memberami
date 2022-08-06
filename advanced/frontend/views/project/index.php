@@ -10,7 +10,7 @@ use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 /* @var $searchModel app\models\ProjectSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Projects';
+$this->title = \Yii::t('yii', 'Projects');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
@@ -34,7 +34,7 @@ CrudAsset::register($this);
             'toolbar'=> [
                 ['content'=>
                     Html::a(Yii::t('yii2-ajaxcrud', 'Create New'), ['create'],
-                    ['role'=>'modal-remote','title'=> Yii::t('yii2-ajaxcrud', 'Create New').' Projects','class'=>'btn btn-outline-primary']).
+                    ['role'=>'modal-remote','title'=> Yii::t('yii2-ajaxcrud', 'Create New').' '.\Yii::t('yii', 'Projects'),'class'=>'btn btn-outline-primary']).
                     Html::a('<i class="fa fa-redo"></i>', [''],
                     ['data-pjax'=>1, 'class'=>'btn btn-outline-success', 'title' => Yii::t('yii2-ajaxcrud', 'Reset Grid')]).
                     '{toggleData}'.
