@@ -78,11 +78,21 @@ class SiteController extends Controller
         ];
     }
 
+
     /**
      * Displays homepage.
      *
      * @return mixed
      */
+
+       public function beforeAction($action)
+    {
+        if(!parent::beforeAction($action))
+            return false;
+        if(isset(Yii::$app->session['lang'])) Yii::$app->language=Yii::$app->session['lang'];
+        return true ;
+    }
+
     public function actionRate()
     {    
         $searchModel = new BarangSearch();
