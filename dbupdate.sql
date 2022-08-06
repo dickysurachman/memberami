@@ -96,3 +96,15 @@ alter table `user` add id_level int(11) NULL;
 
 alter table `barang_podetail` add harga_d double NULL;
 alter table `barang_podetail` add harga_m double NULL;
+
+drop view  `podetail`;
+drop view `podetailsum`;
+
+
+create view `podetail` as select a.tanggal,b.nama,a.kode,c.qty * c.harga_m as total from barang_po a 
+join costumer b on a.id_perusahaan=b.id 
+  join barang_podetail c on c.id_kode=a.id 
+  join barang d on c.id_barang=d.id ;
+
+create view `podetailsum` as select tanggal,nama,kode,sum(total) as total from podetail
+  group by tanggal,nama,kode;

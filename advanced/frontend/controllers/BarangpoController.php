@@ -45,6 +45,16 @@ class BarangpoController extends Controller
      *
      * @return string
      */
+
+
+       public function beforeAction($action)
+    {
+        if(!parent::beforeAction($action))
+            return false;
+        if(isset(\Yii::$app->session['lang'])) \Yii::$app->language=\Yii::$app->session['lang'];
+        return true ;
+    }
+
     public function actionIndex()
     {
         $searchModel = new BarangpoSearch();
