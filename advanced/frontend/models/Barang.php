@@ -52,17 +52,17 @@ class Barang extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'kode' => 'Kode',
-            'nama' => 'Nama',
-            'harga' => 'Harga',
-            'qtyin' => 'Qty In',
-            'qtyout' => 'Qty Out',
-            'sisaa' => 'Sisa',
-            'ukuran' => 'Deskripsi',
-            'stok_awal' => 'Stok Awal',
-            'id_perusahaan' => 'Perusahaan',
-            'id_toko' => 'Member',
-            'status' => 'Status',
+            'kode' => Yii::t('yii', 'Code'),
+            'nama' => Yii::t('yii', 'Name'),
+            'harga' => Yii::t('yii', 'Price'),
+            'qtyin' => Yii::t('yii', 'Qty In'),
+            'qtyout' => Yii::t('yii', 'Qty Out'),
+            'sisaa' => Yii::t('yii', 'Qty Total'),
+            'ukuran' => Yii::t('yii', 'Description'),
+            'stok_awal' => Yii::t('yii', 'Beginning Stock'),
+            'id_perusahaan' =>Yii::t('yii', 'Company'),
+            'id_toko' => Yii::t('yii', 'Partner'),
+            'status' => Yii::t('yii', 'Status'),
         ];
     }
 
