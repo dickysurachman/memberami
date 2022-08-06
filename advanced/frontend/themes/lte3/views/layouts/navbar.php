@@ -36,9 +36,17 @@ if(!Yii::$app->user->isGuest) {
             <a href="<?php echo Yii::$app->homeUrl ?>site/profile.html" class="nav-link">Profile</a>
 
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link">Pricelist</a>
 
+        <li class="nav-item dropdown">
+            <a data-toggle="dropdown" href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link dropdown-toggle">Pricelist</a>
+        <ul class="dropdown-menu border-0 shadow">
+            <li class="dropdown-item">
+            <a href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link">Pricelist Umum</a>
+            </li>
+            <li class="dropdown-item">
+            <a href="<?php echo Yii::$app->homeUrl ?>site/ratemember.html" class="nav-link">Pricelist Partner</a>
+            </li>
+        </ul>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="<?php echo Yii::$app->homeUrl ?>#" class="nav-link">Download</a>

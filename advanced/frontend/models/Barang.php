@@ -66,6 +66,17 @@ class Barang extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getHargamember(){
+        $userd=User::findOne(Yii::$app->user->identity->id);    
+        $user=Level::findOne($userd->id_level);
+        if(isset($user)) {
+            $harga =$this->harga - ($this->harga * $user->diskon/100);
+            return number_format($harga);
+        } else {
+            return 'price did not set';
+        }
+    }
+
    
    
     /**

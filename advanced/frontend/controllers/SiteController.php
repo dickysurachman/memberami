@@ -39,7 +39,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup','profile','rate'],
+                'only' => ['logout', 'signup','profile','rate','ratemember'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -47,7 +47,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','profile','rate'],
+                        'actions' => ['logout','profile','rate','ratemember'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -89,6 +89,16 @@ class SiteController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('barang', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    public function actionRatemember()
+    {    
+        $searchModel = new BarangSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('barangmember', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
