@@ -71,7 +71,7 @@ $this->title="Print PO";
 	<div class="col-4">
 		<table class="" style="font-size: 10pt;">
 			<tr>
-				<td>PO No.</td>
+				<td width="90px">PO No.</td>
 				<td style="width: 200px;"><?php  echo $model->kode;?></td>
 			</tr>
 			<tr>
@@ -131,8 +131,8 @@ $this->title="Print PO";
 			<td>indent</td>
 			<td><?php echo $val->qty ?></td>
 			<td>pcs</td>
-			<td><?php echo number_format($val->harga_m) ?></td>
-			<td><?php echo number_format($total1) ?></td>
+			<td align="right" style="padding-right:20px;"><?php echo number_format($val->harga_m) ?></td>
+			<td align="right" style="padding-right:20px;"><?php echo number_format($total1) ?></td>
 		</tr>
 
 		<?php 
@@ -147,7 +147,7 @@ Pembayaran dilakukan dengan transfer ke Rek Mandiri 1200010055494 an PT.Global S
 <br/>40% Goods Delivery
 <br/>10% Afer Comissioning/BAP </td>
 			<td colspan="2">Total</td>
-			<td><?php echo number_format($total);$ppn=$total*0.11; ?></td>
+			<td align="right"  style="padding-right:20px;"><?php echo number_format($total);$ppn=$total*0.11; ?></td>
 		</tr>
 		<!---<tr>
 			<td>Disc</td>
@@ -157,12 +157,12 @@ Pembayaran dilakukan dengan transfer ke Rek Mandiri 1200010055494 an PT.Global S
 		<tr>
 			<td>PPN</td>
 			<td>11%</td>
-			<td><?php echo number_format($ppn);$total+=$ppn;?></td>
+			<td align="right"  style="padding-right:20px;"><?php echo number_format($ppn);$total+=$ppn;?></td>
 		</tr>
 		<tr>
 			<td colspan="6">Grand Total</td>
 			<td>IDR</td>
-			<td><?php echo number_format($total)?></td>
+			<td align="right"  style="padding-right:20px;"><?php echo number_format($total)?></td>
 		</tr>
 	</table>
 </div>
