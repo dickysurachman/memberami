@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Pages */
 
-$this->title = Yii::t('yii', 'Create Pages');
+$this->title = Yii::t('yii', 'Create').' '.Yii::t('yii', 'Pages');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Pages'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
