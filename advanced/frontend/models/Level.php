@@ -41,7 +41,7 @@ class Level extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('yii', 'ID'),
-            'nama' => Yii::t('yii', 'Nama'),
+            'nama' => Yii::t('yii', 'Name'),
             'diskon' => Yii::t('yii', 'Diskon(%)'),
             'status' => Yii::t('yii', 'Status'),
         ];

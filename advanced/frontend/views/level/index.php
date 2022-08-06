@@ -10,7 +10,7 @@ use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 /* @var $searchModel app\models\LevelSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Levels Patner');
+$this->title = Yii::t('yii', 'Patners Level');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);

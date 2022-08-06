@@ -155,7 +155,7 @@ class UserkController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." User",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Patner",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -166,7 +166,7 @@ class UserkController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." User",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Patner",
                     'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' User '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
                     'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a(Yii::t('yii2-ajaxcrud', 'Create More'), ['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
@@ -174,7 +174,7 @@ class UserkController extends Controller
                 ];         
             }else{           
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." User",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Patner",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
