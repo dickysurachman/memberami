@@ -45,10 +45,10 @@ class Barangpodetail extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_barang' => 'Barang',
-            'qty' => 'Qty',
-            'id_kode' => 'Kode',
-            'status' => 'Status',
+            'id_barang' =>\Yii::t('yii', 'Commodity'),
+            'qty' => \Yii::t('yii', 'Qty'),
+            'id_kode' => \Yii::t('yii', 'Code'),
+            'status' => \Yii::t('yii', 'Status'),
             'harga_d' => Yii::t('app', 'Harga Dasar'),
             'harga_m' => Yii::t('app', 'Harga Member'),
         ];

@@ -48,18 +48,18 @@ class Visit extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'ket'=>'Mark',
-            'nama' => 'Nama',
-            'id_project'=>'Project',
-            'tanggal' => 'Tanggal Visit',
-            'id_costumer' => 'Costumer',
-            'id_user' => 'User',
-            'status' => 'Status',
-            'nama_ap' => 'Nama Aplikasi',
-            'jumlah' => 'Jumlah',
-            'person' => 'Person',
-            'person_c' => 'No Contact Person',
+            'id' => \Yii::t('yii', 'ID'),
+            'ket'=>\Yii::t('yii', 'Mark'),
+            'nama' => \Yii::t('yii', 'Name'),
+            'id_project'=>\Yii::t('yii', 'Project Name'),
+            'tanggal' => \Yii::t('yii', 'Visit Date'),
+            'id_costumer' => \Yii::t('yii', 'Costumer'),
+            'id_user' => \Yii::t('yii', 'User'),
+            'status' => \Yii::t('yii', 'Status'),
+            'nama_ap' => \Yii::t('yii', 'Application Name'),
+            'jumlah' => \Yii::t('yii', 'Total'),
+            'person' => \Yii::t('yii', 'Person'),
+            'person_c' => \Yii::t('yii', 'Contact Person'),
         ];
     }
 

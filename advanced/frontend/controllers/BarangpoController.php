@@ -205,7 +205,7 @@ class BarangpoController extends Controller
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> \Yii::t('yii2-ajaxcrud', 'Create New')." Barangpodetail",
+                    'title'=> \Yii::t('yii2-ajaxcrud', 'Create New')." ".\Yii::t('yii', 'Purchase Orders'),
                     'content'=>$this->renderAjax('_forma', [
                         'model' => $model,
                     ]),
@@ -230,15 +230,15 @@ class BarangpoController extends Controller
                 $model->save();
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> \Yii::t('yii2-ajaxcrud', 'Create New')." Barangpodetail",
-                    'content'=>'<span class="text-success">'.\Yii::t('yii2-ajaxcrud', 'Create').' Barangpodetail '.\Yii::t('yii2-ajaxcrud', 'Success').'</span>',
+                    'title'=> \Yii::t('yii2-ajaxcrud', 'Create New')." ".\Yii::t('yii', 'Purchase Orders'),
+                    'content'=>'<span class="text-success">'.\Yii::t('yii2-ajaxcrud', 'Create').' '.\Yii::t('yii', 'Purchase Orders').\Yii::t('yii2-ajaxcrud', 'Success').'</span>',
                     'footer'=> Html::button(\Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a(\Yii::t('yii2-ajaxcrud', 'Create More'), ['createpo','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> \Yii::t('yii2-ajaxcrud', 'Create New')." Barangpodetail",
+                    'title'=> \Yii::t('yii2-ajaxcrud', 'Create New')." ".\Yii::t('yii', 'Purchase Orders'),
                     'content'=>$this->renderAjax('_forma', [
                         'model' => $model,
                     ]),
@@ -269,7 +269,7 @@ class BarangpoController extends Controller
             \Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> \Yii::t('yii2-ajaxcrud', 'Update')." Barangpodetail #".$id,
+                    'title'=> \Yii::t('yii2-ajaxcrud', 'Update')." ".\Yii::t('yii', 'Purchase Orders')." #".$id,
                     'content'=>$this->renderAjax('_forma', [
                         'model' => $model,
                     ]),
@@ -293,7 +293,7 @@ class BarangpoController extends Controller
                 $model->save();
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Barangpodetail #".$id,
+                    'title'=> \Yii::t('yii', 'Purchase Orders')." #".$id,
                     'content'=>$this->renderAjax('viewpo', [
                         'model' => $model,
                     ]),
@@ -302,7 +302,7 @@ class BarangpoController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> \Yii::t('yii2-ajaxcrud', 'Update')." Barangpodetail #".$id,
+                    'title'=> \Yii::t('yii2-ajaxcrud', 'Update')." ".\Yii::t('yii', 'Purchase Orders')." #".$id,
                     'content'=>$this->renderAjax('_forma', [
                         'model' => $model,
                     ]),
@@ -326,7 +326,7 @@ class BarangpoController extends Controller
         if($request->isAjax){
             \Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Barangpodetail #".$id,
+                    'title'=> \Yii::t('yii', 'Purchase Orders')." #".$id,
                     'content'=>$this->renderAjax('viewpo', [
                         'model' => $this->findModelpo($id),
                     ]),

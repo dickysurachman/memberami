@@ -20,7 +20,7 @@ $cityDesc =empty($model->id_barang) ? '' : Barang::findOne(['id'=>$model->id_bar
     <?php 
     echo $form->field($model, 'id_barang')->widget(Select2::classname(), [
         'initValueText' => $cityDesc, 
-        'options' => ['placeholder' => 'Search for Barang ...'],
+        'options' => ['placeholder' => 'Search for '.\Yii::t('yii', 'Commodity').' ...'],
         'pluginOptions' => [
             'allowClear' => true,
             'minimumInputLength' => 3,

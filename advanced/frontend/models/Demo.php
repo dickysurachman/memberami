@@ -59,17 +59,17 @@ class Demo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'ket'=>'Mark',
-            'nama' => 'Nama',
-            'tanggal' => 'Tanggal',
-            'id_costumer' => 'Costumer',
-            'id_user' => 'User',
-            'status' => 'Status',
-            'nama_ap' => 'Nama Aplikasi',
-            'jumlah' => 'Jumlah Budget',
-            'id_project'=>'Project',
-            'person' => 'Person',
-            'person_c' => 'No Contact Person',
+            'ket'=>\Yii::t('yii', 'Mark'),
+            'nama' => \Yii::t('yii', 'Name'),
+            'tanggal' => \Yii::t('yii', 'Date'),
+            'id_costumer' => \Yii::t('yii', 'Costumer'),
+            'id_user' => \Yii::t('yii', 'User'),
+            'status' => \Yii::t('yii', 'Status'),
+            'nama_ap' => \Yii::t('yii', 'Application Name'),
+            'jumlah' =>  \Yii::t('yii', 'Budget Total'),
+            'id_project'=>\Yii::t('yii', 'Project Name'),
+            'person' => \Yii::t('yii', 'Person'),
+            'person_c' => \Yii::t('yii', 'Contact Person'),
         ];
     }
          public function getCostumer()

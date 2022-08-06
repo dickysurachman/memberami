@@ -11,12 +11,12 @@ use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 /* @var $model app\models\Barangpo */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Barangpos'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('yii', 'Purchase Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 
 
-$this->title = Yii::t('yii', 'Barangpodetails');
+$this->title = \Yii::t('yii', 'Purchase Orders') .' '.\Yii::t('yii', 'Commodity');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);

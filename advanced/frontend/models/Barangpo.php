@@ -54,12 +54,12 @@ class Barangpo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tanggal' => 'Tanggal',
-            'kode' => 'Kode',
-            'dari' => 'Dari',
-            'keterangan' => 'Keterangan',
-            'id_perusahaan' => 'Perusahaan',
-            'id_project'=>'Project',
+            'tanggal' => \Yii::t('yii', 'Date'),
+            'kode' => \Yii::t('yii', 'Code'),
+            'dari' => \Yii::t('yii', 'From'),
+            'keterangan' =>\Yii::t('yii', 'Description'),
+            'id_perusahaan' => \Yii::t('yii', 'Company'),
+            'id_project'=>\Yii::t('yii', 'Project Name'),
             //'id_toko' => 'User',
             'id_user' => 'User',
             'status' => 'Status',

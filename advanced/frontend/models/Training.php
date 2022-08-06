@@ -56,16 +56,16 @@ class Training extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'ket'=>'Mark',
-            'id_project'=>'Project',
-            'id_costumer'=>'Company',
-            'tanggal_r' => 'Tanggal Request',
-            'status' => 'Status',
-            'keterangan' => 'Keterangan',
-            'nama' => 'Subject',
-            'id_user' => 'User',
-            'person' => 'Person',
-            'person_c' => 'No Contact Person',
+            'ket'=>\Yii::t('yii', 'Mark'),
+            'id_project'=>\Yii::t('yii', 'Project Name'),
+            'id_costumer'=>\Yii::t('yii', 'Company'),
+            'tanggal_r' => \Yii::t('yii', 'Date Request'),
+            'status' => \Yii::t('yii', 'Status'),
+            'keterangan' => \Yii::t('yii', 'Description'),
+            'nama' => \Yii::t('yii', 'Subject'),
+            'id_user' => \Yii::t('yii', 'User'),
+            'person' =>\Yii::t('yii', 'Person'),
+            'person_c' => \Yii::t('yii', 'Contact Person'),
         ];
     }
           public function getCostumer()

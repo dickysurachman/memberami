@@ -30,6 +30,9 @@ $(document).on("select2:open", () => {
 JS;
 $position= View::POS_END;
 $this->registerJs($script,$position);
+
+$this->title = Yii::t('yii', 'Create').' '.\Yii::t('yii', 'Purchase Orders');
+
 ?>
 
 <div class="barangin-form">

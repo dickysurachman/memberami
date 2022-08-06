@@ -9,7 +9,7 @@ use kartik\export\ExportMenu;
 /* @var $searchModel app\models\BarangpoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('yii','Barangpos');
+$this->title = \Yii::t('yii', 'Purchase Orders');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="barangpo-index">
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     ?>
     
-        <?= Html::a(Yii::t('yii', 'Create Barangpo'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('yii', 'Create').' '.\Yii::t('yii', 'Purchase Orders'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

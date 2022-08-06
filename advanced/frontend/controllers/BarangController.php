@@ -36,6 +36,13 @@ class BarangController extends Controller
      * Lists all Barang models.
      * @return mixed
      */
+      public function beforeAction($action)
+    {
+        if(!parent::beforeAction($action))
+            return false;
+        if(isset(Yii::$app->session['lang'])) Yii::$app->language=Yii::$app->session['lang'];
+        return true ;
+    }
     public function actionIndex()
     {    
         $searchModel = new BarangSearch();
@@ -105,7 +112,7 @@ class BarangController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Barang",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ". Yii::t('yii', 'Commodity'),
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -116,15 +123,15 @@ class BarangController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Barang",
-                    'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' Barang '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ". Yii::t('yii', 'Commodity'),
+                    'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' '. Yii::t('yii', 'Commodity').Yii::t('yii2-ajaxcrud', 'Success').'</span>',
                     'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a(Yii::t('yii2-ajaxcrud', 'Create More'), ['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Barang",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ". Yii::t('yii', 'Commodity'),
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -167,7 +174,7 @@ class BarangController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Barang #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." ". Yii::t('yii', 'Commodity')." #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -186,7 +193,7 @@ class BarangController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Barang #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update'). Yii::t('yii', 'Commodity')." #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
