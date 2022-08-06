@@ -61,7 +61,7 @@ $col=
         'header'=>'Harga Member',
         'value'=>'hargamember',
         'hAlign' => 'right',
-        'format'=>['decimal',2],
+        //'format'=>['decimal',2],
     ],
 ];
 
