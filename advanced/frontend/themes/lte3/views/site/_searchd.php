@@ -66,7 +66,7 @@ $cityDesc =empty($model->add_who) ? '' : User::findOne($model->add_who)->nama;
 
     </div>
     <div class="form-group" style="margin-top:15px">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton(\Yii::t('yii', 'Search'), ['class' => 'btn btn-primary']) ?>
         <?php //= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
