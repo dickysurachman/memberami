@@ -59,7 +59,7 @@ use hscstudio\mimin\components\Mimin;
                             ['label' => \Yii::t('yii', 'Patners'), 'url' => ['/userk/index'], 'icon' => 'fas fa-portrait','visible'=>Mimin::checkRoute('userk/create')],
                             ['label' => \Yii::t('yii', 'Patners Level'), 'url' => ['/level/index'], 'icon' => 'fas fa-sitemap','visible'=>Mimin::checkRoute('level/create')],
                             ['label' => \Yii::t('yii', 'Partner Profile'), 'url' => ['/perusahaan/index'], 'icon' => 'fas fa-list','visible'=>Mimin::checkRoute('perusahaan/index')],
-                            ['label' => \Yii::t('yii', 'Pages'), 'url' => ['/pages/index'], 'icon' => 'fas fa-images','visible'=>Mimin::checkRoute('pages/index')],
+                            ['label' => \Yii::t('yii', 'Pages'), 'url' => ['/pagess/index'], 'icon' => 'fas fa-images','visible'=>Mimin::checkRoute('pages/index')],
                             ['label' => \Yii::t('yii', 'Role'), 'url' => ['/mimin/role/index'], 'icon' => 'fas fa-bug','visible'=>Mimin::checkRoute('mimin/role')],
                             ['label' => \Yii::t('yii', 'Routes'), 'url' => ['/mimin/route/index'], 'icon' => 'fas fa-angle-double-right','visible'=>Mimin::checkRoute('mimin/route')],
                             ['label' => \Yii::t('yii', 'Language'), 'url' => ['/site/bahasa'], 'icon' => 'fas fa-atlas'],

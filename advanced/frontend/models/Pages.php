@@ -46,11 +46,11 @@ class Pages extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'judul' => 'Judul',
-            'konten' => 'Konten',
-            'status' => 'Status',
-            'slug' => 'Slug',
-            'created' => 'Created',
+            'judul' => \Yii::t('yii', 'Title'),
+            'konten' => \Yii::t('yii', 'Content'),
+            'status' => \Yii::t('yii', 'Status'),
+            'slug' => \Yii::t('yii', 'Slug'),
+            'created' => \Yii::t('yii', 'Created')
         ];
     }
 }
