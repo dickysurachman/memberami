@@ -30,26 +30,26 @@ if(!Yii::$app->user->isGuest) {
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?=\yii\helpers\Url::home()?>" class="nav-link">Home</a>
+            <a href="<?=\yii\helpers\Url::home()?>" class="nav-link"><?php echo \Yii::t('yii', 'Home')?></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?php echo Yii::$app->homeUrl ?>site/profile.html" class="nav-link">Profile</a>
+            <a href="<?php echo Yii::$app->homeUrl ?>site/profile.html" class="nav-link"><?php echo \Yii::t('yii', 'Profile')?></a>
 
         </li>
 
         <li class="nav-item dropdown">
-            <a data-toggle="dropdown" href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link dropdown-toggle">Pricelist</a>
+            <a data-toggle="dropdown" href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link dropdown-toggle"><?php echo \Yii::t('yii', 'Pricelist')?></a>
         <ul class="dropdown-menu border-0 shadow">
             <li class="dropdown-item">
-            <a href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link">Pricelist Umum</a>
+            <a href="<?php echo Yii::$app->homeUrl ?>site/rate.html" class="nav-link"><?php echo \Yii::t('yii', 'General Pricelist')?></a>
             </li>
             <li class="dropdown-item">
-            <a href="<?php echo Yii::$app->homeUrl ?>site/ratemember.html" class="nav-link">Pricelist Partner</a>
+            <a href="<?php echo Yii::$app->homeUrl ?>site/ratemember.html" class="nav-link"><?php echo \Yii::t('yii', 'Partner Pricelist')?></a>
             </li>
         </ul>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?php echo Yii::$app->homeUrl ?>#" class="nav-link">Download</a>
+            <a href="<?php echo Yii::$app->homeUrl ?>#" class="nav-link"><?php echo \Yii::t('yii', 'Download')?></a>
 
         </li>
         <li class="nav-item d-none d-sm-inline-block">
