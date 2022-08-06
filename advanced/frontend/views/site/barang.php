@@ -55,6 +55,14 @@ $col=
         'hAlign' => 'right',
         'format'=>['decimal',2],
     ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'harga',
+        'header'=>'Harga Member',
+        'value'=>'hargamember',
+        'hAlign' => 'right',
+        'format'=>['decimal',2],
+    ],
 ];
 
 ?>
