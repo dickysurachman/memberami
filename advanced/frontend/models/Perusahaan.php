@@ -51,14 +51,14 @@ class Perusahaan extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_user' => 'User',
-            'nama' => 'Nama Perusahaan',
-            'alamat' => 'Alamat',
-            'nama_d' => 'Nama Direktur',
-            'npwp' => 'NPWP Perusahaan',
-            'id_kota' => 'Kota',
-            'telp' => 'Telp',
-            'logo' => 'Logo',
+            'id_user' => \Yii::t('yii', 'User'),
+            'nama' => \Yii::t('yii', 'Company Name'),
+            'alamat' => \Yii::t('yii', 'Address'),
+            'nama_d' => \Yii::t('yii', 'CEO Name'),//'Nama Direktur',
+            'npwp' => \Yii::t('yii', 'Company NPWP'),//'NPWP Perusahaan',
+            'id_kota' => \Yii::t('yii', 'City'),//'Kota',
+            'telp' => \Yii::t('yii', 'Contact Person'),//'Telp',
+            'logo' => \Yii::t('yii', 'Logo Picture'),//'Logo',
             'status' => 'Status',
         ];
     }

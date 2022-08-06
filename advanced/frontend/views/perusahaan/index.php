@@ -10,7 +10,7 @@ use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 /* @var $searchModel app\models\PerusahaanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Perusahaans';
+$this->title =\Yii::t('yii', 'Partner Profile');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
@@ -37,6 +37,7 @@ CrudAsset::register($this);
             'striped' => true,
             'condensed' => true,
             'responsive' => true,          
+            'responsiveWrap' => false,          
             'panel' => [
                 'type' => 'default', 
                 'heading' => '<i class="fa fa-list"></i> <b>'.$this->title.'</b>',

@@ -98,7 +98,7 @@ class PerusahaanController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Perusahaan",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -123,7 +123,7 @@ class PerusahaanController extends Controller
                 $model->save();
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Perusahaan",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ",
                     'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' Perusahaan '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
                     'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a(Yii::t('yii2-ajaxcrud', 'Create More'), ['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
@@ -131,7 +131,7 @@ class PerusahaanController extends Controller
                 ];         
             }else{           
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Perusahaan",
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -174,7 +174,7 @@ class PerusahaanController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Perusahaan #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')."  #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -199,7 +199,7 @@ class PerusahaanController extends Controller
                 }
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Perusahaan #".$id,
+                    'title'=> " #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -208,7 +208,7 @@ class PerusahaanController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Perusahaan #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')."  #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
