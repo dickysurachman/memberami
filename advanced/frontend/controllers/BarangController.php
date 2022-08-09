@@ -10,7 +10,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
-
+use frontend\models\Csv;
+use yii\web\UploadedFile;
 /**
  * BarangController implements the CRUD actions for Barang model.
  */
@@ -52,6 +53,54 @@ class BarangController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionUploadcsv()
+    {
+        $model= new Csv();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->csv = UploadedFile::getInstance($model, 'csv');
+            if(isset($model->csv)){
+                $namafile=rand(1000, 99999999);
+                $file1= $namafile . '.' . $model->csv->extension;
+                $model->csv->saveAs('images/' . $namafile . '.' . $model->csv->extension,TRUE);
+                $csvFilePath = "images/".$file1;
+                $file = fopen($csvFilePath, "r");
+                $i=0;
+                $j=0;
+                $transaction = Yii::$app->db->beginTransaction();
+                try
+                {
+                while (($row = fgetcsv($file)) !== FALSE) {
+                        $i++;
+                        $barang = New Barang();
+                        $str = preg_replace('/[[:^print:]]/', '',$row[0]);
+                        $str = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $str);
+                        $str = str_replace("\"", "", $str);
+                        $barang->kode = $str;
+                        $barang->nama = $row[1];
+                        $barang->ukuran = $row[2];
+                        $barang->harga = $row[3];
+                        $barang->save();    
+                }
+                    $transaction->commit();
+                    Yii::$app->session->setFlash('success', $i.' rows Success ');
+                }
+                catch(Exception $e)
+                {
+                    $transaction->rollBack();
+                    Yii::$app->session->setFlash('danger', 'Failed import '.$e.getMessage());
+
+                }
+
+              }
+            return $this->redirect(['barang/index']); 
+        }
+        // Yii::$app->session->setFlash('success', ' rows Success ');
+        return $this->render('uploadcsv', [
+        'model' => $model,
+        ]);
+
     }
 
 

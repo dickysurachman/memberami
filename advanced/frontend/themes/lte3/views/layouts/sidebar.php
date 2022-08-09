@@ -53,7 +53,8 @@ use hscstudio\mimin\components\Mimin;
                     [
                         'label' => \Yii::t('yii', 'Main Menu'),
                         'icon' => 'tachometer-alt',
-                        'badge' => '<span class="right badge badge-info">5</span>',
+                        //'badge' => '<span class="right badge badge-info">5</span>',
+                        //'badge' => '<span class="right badge badge-info">5</span>',
                         'visible' => !Yii::$app->user->isGuest,
                         'items' => [
                             ['label' => \Yii::t('yii', 'Patners'), 'url' => ['/userk/index'], 'icon' => 'fas fa-portrait','visible'=>Mimin::checkRoute('userk/create')],

@@ -37,6 +37,7 @@ class Barang extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            //[['kode'], 'unique'],
             [['stok_awal', 'id_perusahaan', 'id_toko', 'status','harga'], 'integer'],
             [['kode'], 'string', 'max' => 25],
             [['nama'], 'string', 'max' => 250],
