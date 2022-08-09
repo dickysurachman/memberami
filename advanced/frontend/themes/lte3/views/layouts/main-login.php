@@ -14,17 +14,18 @@ $this->registerCssFile('https://code.ionicframework.com/ionicons/2.0.1/css/ionic
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Member Robotik</title>
+    <title>Patner Area</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('<?=Yii::$app->homeUrl?>/images/background.jpg');">
 <?php  $this->beginBody() ?>
 <div class="login-box">
     <div class="login-logo">
-        <a href="<?=Yii::$app->homeUrl?>"><b>Member</b>Robotik</a>
+        <img src="<?=Yii::$app->homeUrl?>/images/hikorobotics.svg" title="logo Hikrobotix" alt="logo Hikrobotix" style="width: 250px;" /><br/>
+        <a href="<?=Yii::$app->homeUrl?>"><b>Patner Area</b></a>
     </div>
     <!-- /.login-logo -->
 
