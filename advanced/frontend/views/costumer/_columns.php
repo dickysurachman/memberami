@@ -50,10 +50,10 @@ return [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'alamat',
     ],
-   [
+     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'kotas',
-        'header'=>'City',
+        'header'=>\Yii::t('yii', 'City'),
         'value'=>function ($model, $key, $index, $widget) { 
                 return isset($model->kota)?$model->kota->name:'';
         },

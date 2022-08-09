@@ -60,6 +60,7 @@ class Perusahaan extends \yii\db\ActiveRecord
             'telp' => \Yii::t('yii', 'Contact Person'),//'Telp',
             'logo' => \Yii::t('yii', 'Logo Picture'),//'Logo',
             'status' => 'Status',
+           
         ];
     }
     public function getCity()

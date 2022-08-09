@@ -23,6 +23,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'City'=>'Kota',
     'Barangpodetails'=> 'Detil barang PO',
     'Barangpos'=>'Barang PO',
     'Create Barangpo'=>'Membuat PO Barang',

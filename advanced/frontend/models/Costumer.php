@@ -51,6 +51,7 @@ class Costumer extends \yii\db\ActiveRecord
             'id_city' => \Yii::t('yii', 'City'),
             'id_segmen' => \Yii::t('yii', 'Segment'),
             'id_user' => \Yii::t('yii', 'User'),
+            'kotas'=>\Yii::t('yii', 'City'),//'Logo',
             'person' => 'Person',
             'person_c' => 'No Contact Person',
         ];
