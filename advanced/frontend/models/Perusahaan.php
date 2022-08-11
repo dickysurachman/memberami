@@ -36,10 +36,11 @@ class Perusahaan extends \yii\db\ActiveRecord
         return [
             [['nama', 'alamat', 'nama_d'], 'required'],
             [['id_user', 'id_kota', 'status'], 'integer'],
-            [['nama', 'nama_d'], 'string', 'max' => 100],
+            [['nama', 'nama_d','nama_s'], 'string', 'max' => 100],
             [['alamat'], 'string', 'max' => 150],
             [['npwp'], 'string', 'max' => 30],
             [['telp'], 'string', 'max' => 20],
+            [['telp_s'], 'string', 'max' => 50],
             [['logo'], 'string', 'max' => 250],
         ];
     }
@@ -55,9 +56,11 @@ class Perusahaan extends \yii\db\ActiveRecord
             'nama' => \Yii::t('yii', 'Company Name'),
             'alamat' => \Yii::t('yii', 'Address'),
             'nama_d' => \Yii::t('yii', 'CEO Name'),//'Nama Direktur',
+            'nama_s' => \Yii::t('yii', 'Sales Name'),//'Nama Direktur',
             'npwp' => \Yii::t('yii', 'Company NPWP'),//'NPWP Perusahaan',
             'id_kota' => \Yii::t('yii', 'City'),//'Kota',
-            'telp' => \Yii::t('yii', 'Contact Person'),//'Telp',
+            'telp' => \Yii::t('yii', 'CEO Contact Person'),//'Telp',
+            'telp_s' => \Yii::t('yii', 'Sales Contact Person'),//'Telp',
             'logo' => \Yii::t('yii', 'Logo Picture'),//'Logo',
             'status' => 'Status',
            

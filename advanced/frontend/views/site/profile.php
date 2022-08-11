@@ -78,6 +78,8 @@ $this->registerJs($script,$position);
     ?> 
 
     <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nama_s')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'telp_s')->textInput(['maxlength' => true]) ?>
 
     
     <?php

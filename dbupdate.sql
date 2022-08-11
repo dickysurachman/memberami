@@ -108,3 +108,7 @@ join costumer b on a.id_perusahaan=b.id
 
 create view `podetailsum` as select tanggal,nama,kode,sum(total) as total from podetail
   group by tanggal,nama,kode;
+
+
+alter table `profile` add `nama_s` varchar(100) NULL;
+alter table `profile` add `telp_s` varchar(50) NULL;

@@ -55,9 +55,11 @@ $this->title=\Yii::t('yii', 'Profile');
                     'value'=>isset($model->user->level)?$model->user->level->nama:'',
                 ],
                 'nama_d',
+                'telp',
                 'npwp',
                 'alamat',
-                'telp',
+                'nama_s',
+                'telp_s',
                 
             ],
         ]) ?>
