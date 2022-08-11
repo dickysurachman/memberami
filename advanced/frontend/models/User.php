@@ -65,6 +65,16 @@ class User extends \yii\db\ActiveRecord
             'verification_token' => 'Verification Token',
         ];
     }
+
+    public function getLama(){
+
+         
+        $date1 = new \DateTime(\date('Y-M-d',$this->created_at));
+        $date2 = new \DateTime();
+        $interval = $date1->diff($date2);
+        return  $interval->y . " ".\Yii::t('yii', 'years').", " . $interval->m." ".\Yii::t('yii', 'months').", ".$interval->d." ".\Yii::t('yii', 'days');
+    }
+
        public function getLevel()
     {
         return $this->hasOne(Level::className(), ['id' => 'id_level']);

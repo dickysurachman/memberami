@@ -60,6 +60,11 @@ $this->title=\Yii::t('yii', 'Profile');
                 'alamat',
                 'nama_s',
                 'telp_s',
+                [
+                    'attribute'=>'id_user',
+                    'label'=>\Yii::t('yii', 'Long Time Joined'),
+                    'value'=>isset($model->user)?$model->user->lama:'',
+                ],
                 
             ],
         ]) ?>
