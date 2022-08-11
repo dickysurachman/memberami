@@ -58,7 +58,7 @@ $col=
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'harga',
-        'header'=> Yii::t('yii', 'Member Price'),
+        'header'=> Yii::t('yii', 'Patner Price'),
         'value'=>'hargamember',
         'hAlign' => 'right',
         //'format'=>['decimal',2],

@@ -39,7 +39,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup','profile','rate','ratemember'],
+                'only' => ['logout', 'signup','profile','rate','ratemember','profileedit'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -47,7 +47,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','profile','rate','ratemember'],
+                        'actions' => ['logout','profile','rate','ratemember','profileedit'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -115,6 +115,19 @@ class SiteController extends Controller
     }
      public function actionProfile()
     {
+
+        //$request = Yii::$app->request;
+
+       
+        return $this->render('profileview', 
+                //[
+                //    'model' => $model,
+                //]
+            );
+       
+    }
+    public function actionProfileedit()
+    {
         /*if(Yii::$app->user->isGuest) {
             $this->redirect(['site/index']);
             die();
@@ -149,7 +162,7 @@ class SiteController extends Controller
                 }
                 $model->id_user=Yii::$app->user->identity->id;
                 $model->save();
-                //return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['site/profile']);
             } 
         
         return $this->render('profile', [

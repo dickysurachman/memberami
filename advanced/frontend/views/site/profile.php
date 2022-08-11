@@ -9,7 +9,8 @@ use app\models\City;
 use kartik\file\FileInput;
 use app\models\User;
 $url = \yii\helpers\Url::to(['site/kota']);
-$this->title="Update Profile";
+$this->title=\Yii::t('yii', 'Update')." ".\Yii::t('yii', 'Profile');
+
 $cityDesc =empty($model->id_kota) ? '' : City::findOne(['id'=>$model->id_kota])->name;
 /* @var $this yii\web\View */
 /* @var $model app\models\Perusahaan */
@@ -107,7 +108,7 @@ $this->registerJs($script,$position);
   
     <?php if (!Yii::$app->request->isAjax){ ?>
         <div class="form-group">
-            <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            <?= Html::submitButton($model->isNewRecord ? \Yii::t('yii', 'Create') : \Yii::t('yii', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         </div>
     <?php } ?>
 
