@@ -52,10 +52,10 @@ if(!Yii::$app->user->isGuest) {
             <a href="<?php echo Yii::$app->homeUrl ?>#" class="nav-link"><?php echo \Yii::t('yii', 'Download')?></a>
 
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!--<li class="nav-item d-none d-sm-inline-block">
             <a href="<?php echo Yii::$app->homeUrl ?>site/contact.html" class="nav-link">Contact</a>
 
-        </li>
+        </li>-->
        
         
     </ul>
