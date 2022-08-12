@@ -23,6 +23,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Payment Type'=>'Tipe Pembayaran',
+    'Term'=>'Termin',
+    'Currency'=>'Mata Uang',
     'City'=>'Kota',
     'Barangpodetails'=> 'Detil barang PO',
     'Barangpos'=>'Barang PO',

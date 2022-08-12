@@ -68,7 +68,7 @@ class Barangpo extends \yii\db\ActiveRecord
             'id_perusahaan' => \Yii::t('yii', 'Company'),
             'id_project'=>\Yii::t('yii', 'Project Name'),
             //'id_toko' => 'User',
-            'id_user' => \Yii::t('yii', 'User'),//'User',
+            'id_user' => \Yii::t('yii', 'Patner'),//'User',
             'status' => 'Status',
             'add_who' => 'Add Who',
             'add_date' => 'Add Date',
