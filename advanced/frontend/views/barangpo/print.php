@@ -1,8 +1,10 @@
 <?php
 use app\models\Person;
 use app\models\Barangpodetail;
+use app\models\Perusahaan;
 $this->title="Print PO";
 
+$cek = Perusahaan::findOne(['id_user'=>$model->id_user]);
 
 
 ?>
@@ -47,23 +49,25 @@ $this->title="Print PO";
 		<table class="" style="font-size: 10pt;">
 			<tr>
 				<td colspan="2" style="width:300px">TO :<br/>
-					<?php echo "<b>".$model->perusahaan->nama .'</b><br/>'.$model->perusahaan->alamat?>
+					<?php 
+					if($cek)
+					echo "<b>".$cek->nama .'</b><br/>'.$cek->alamat; ?>
 
 				</td>
 			</tr>
 			<tr>
 				<td>Up</td>
-				<td><?php $cel=Person::findOne(['id_costumer'=>$model->perusahaan->id]); 
-					if(isset($cel)) echo $cel->nama;
+				<td><?php if($cek)
+					echo $cek->nama_d;
 					?></td>
 			</tr>
 			<tr>
 				<td>Telp / Mobile</td>
-				<td><?php if(isset($cel)) echo $cel->telp; ?></td>
+				<td><?php if(isset($cek)) echo $cek->telp; ?></td>
 			</tr>
 			<tr>
 				<td>Fax / Email</td>
-				<td><?php if(isset($cel)) echo $cel->email; ?></td>
+				<td><?php if(isset($cek)) echo $cek->email; ?></td>
 			</tr>
 		</table>
 	</div>
@@ -80,23 +84,23 @@ $this->title="Print PO";
 			</tr>
 			<tr>
 				<td>Sales Name</td>
-				<td><?php  echo $model->user->username;?></td>
+				<td><?php  echo $model->dari;?></td>
 			</tr>
 			<tr>
 				<td>Mobile</td>
-				<td><?php  //echo $model->kode;?></td>
+				<td><?=$model->nohp?></td>
 			</tr>
 			<tr>
 				<td>Payment</td>
-				<td><?php  //echo $model->kode;?></td>
+				<td><?=$model->payment?></td>
 			</tr>
 			<tr>
 				<td>Term</td>
-				<td><?php  //echo $model->kode;?></td>
+				<td><?=$model->term?></td>
 			</tr>
 			<tr>
 				<td>Currency</td>
-				<td>IDR</td>
+				<td><?=$model->curr?></td>
 			</tr>
 			
 		</table>
@@ -128,8 +132,8 @@ $this->title="Print PO";
 			<td><?php echo $i ?></td>
 			<td><?php echo $val->barang->kode?></td>
 			<td><?php echo $val->barang->ukuran?></td>
-			<td>indent</td>
-			<td><?php echo $val->qty ?></td>
+			<td style="text-align: center;"><?=$val->barang->state?></td>
+			<td style="text-align: center;"><?php echo $val->qty ?></td>
 			<td>pcs</td>
 			<td align="right" style="padding-right:20px;"><?php echo number_format($val->harga_m) ?></td>
 			<td align="right" style="padding-right:20px;"><?php echo number_format($total1) ?></td>
@@ -145,7 +149,9 @@ PO to: order@gso.asia<br/>
 Pembayaran dilakukan dengan transfer ke Rek Mandiri 1200010055494 an PT.Global Sahabat Otomasi
 <br/>50% DP
 <br/>40% Goods Delivery
-<br/>10% Afer Comissioning/BAP </td>
+<br/>10% Afer Comissioning/BAP<br/>
+<?=$model->keterangan?>
+	 </td>
 			<td colspan="2">Total</td>
 			<td align="right"  style="padding-right:20px;"><?php echo number_format($total);$ppn=$total*0.11; ?></td>
 		</tr>

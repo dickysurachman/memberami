@@ -111,8 +111,8 @@ class BarangpoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $cek=Costumer::findOne($model->id_perusahaan);
-                $model->id_user=$cek->id_user;
+                $cek=Project::findOne($model->id_project);
+                $model->id_perusahaan=$cek->id_costumer;
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }

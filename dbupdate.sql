@@ -117,3 +117,9 @@ alter table `profile` add `telp_s` varchar(50) NULL;
 alter table `profile` add `telp_c` varchar(50) NULL;
 alter table `profile` add `email` varchar(100) NULL;
 alter table `profile` add `email_s` varchar(100) NULL;
+
+
+alter table `barang_po` add `nohp` varchar(30) NULL;
+alter table `barang_po` add `payment` varchar(50) NULL;
+alter table `barang_po` add `term` varchar(50) NULL;
+alter table `barang_po` add `curr` varchar(10) NULL;

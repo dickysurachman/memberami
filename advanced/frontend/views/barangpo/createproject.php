@@ -51,6 +51,12 @@ $this->title = Yii::t('yii', 'Create').' '.\Yii::t('yii', 'Purchase Orders');
 
     <?= $form->field($model, 'dari')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'dari')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nohp')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'payment')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'term')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'curr')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'keterangan')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">

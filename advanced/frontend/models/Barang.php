@@ -49,6 +49,18 @@ class Barang extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+
+    public function getState(){
+        if($this->status==0) {
+            return 'Indent';
+        } else {
+            return 'Ready';
+
+        }
+
+    }
+
     public function attributeLabels()
     {
         return [

@@ -11,8 +11,8 @@ use yii\widgets\DetailView;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'id_user',
+            //'id',
+            //'id_user',
             'nama',
             'alamat',
             'nama_d',

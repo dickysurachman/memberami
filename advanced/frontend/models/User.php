@@ -79,6 +79,10 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Level::className(), ['id' => 'id_level']);
     }
+       public function getPerusahaan()
+    {
+        return $this->hasOne(Perusahaan::className(), ['id' => 'id_user']);
+    }
        public function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();

@@ -252,9 +252,27 @@ class SiteController extends Controller
         $parents = $_POST['depdrop_parents'];
         if ($parents != null) {
             $cat_id = $parents[0];
-            //$out = self::getSubCatList($cat_id); 
-//            $out=ArrayHelper::map(Project::find()->where(['id_costumer'=>$cat_id])->asArray()->all(), 'id', 'nama');
             $out1=Project::find()->where(['id_costumer'=>$cat_id])->all();
+            $i=0;
+            foreach($out1 as $val){
+                $out[$i]['id']=$val->id;
+                $out[$i]['name']=$val->nama;
+                $i++;
+            }
+            return ['output'=>$out, 'selected'=>''];
+        }
+    }
+    return ['output'=>'', 'selected'=>''];
+    }
+
+    public function actionSubcatuser() {
+    \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    $out = [];
+    if (isset($_POST['depdrop_parents'])) {
+        $parents = $_POST['depdrop_parents'];
+        if ($parents != null) {
+            $cat_id = $parents[0];
+            $out1=Project::find()->where(['id_user'=>$cat_id])->all();
             $i=0;
             foreach($out1 as $val){
                 $out[$i]['id']=$val->id;

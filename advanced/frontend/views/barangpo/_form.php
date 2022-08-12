@@ -36,7 +36,7 @@ $this->registerJs($script,$position);
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="col-md-6" style="padding-left: 0px;"> 
-        <label class="control-label" for="semen-tgl">Tanggal PO </label>
+        <label class="control-label" for="semen-tgl"> <?=\Yii::t('yii', 'Date')?> <?=\Yii::t('yii', 'Purchase Orders')?> </label>
         <?php
         echo DatePicker::widget([
         'model'  => $model,
@@ -47,23 +47,27 @@ $this->registerJs($script,$position);
     </div>
 
     <?= $form->field($model, 'dari')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nohp')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'payment')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'term')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'curr')->textInput(['maxlength' => true]) ?>
 
     <?php 
     //echo $form->field($model, 'id_perusahaan')->dropDownList($cos, ['id'=>'cat-id']);
-    echo $form->field($model, 'id_perusahaan')->widget(Select2::classname(), [
+    echo $form->field($model, 'id_user')->widget(Select2::classname(), [
         'id'=>'cat-id',
-        'data'=>$cos,
-        'initValueText' => $cityDesc, 
-        'options' => ['placeholder' => 'Search for Costumer ...'],
+        'data'=>$usr,
+        'initValueText' => $cityDesc2, 
+        'options' => ['placeholder' => 'Search for User ...'],
     ]);
     echo $form->field($model, 'id_project')->widget(DepDrop::classname(), [
     'data'=>$data,
     'options'=>['id'=>'cat-id'],
     'type' => DepDrop::TYPE_SELECT2,
     'pluginOptions'=>[
-        'depends'=>['barangpo-id_perusahaan'],
+        'depends'=>['barangpo-id_user'],
         'placeholder'=>'Select...',
-        'url'=>Url::to(['/site/subcat'])
+        'url'=>Url::to(['/site/subcatuser'])
     ]
     ]);
      
