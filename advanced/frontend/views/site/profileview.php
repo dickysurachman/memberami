@@ -30,16 +30,18 @@ $this->title=\Yii::t('yii', 'Profile');
 <div class="perusahaan-form">
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-4" style="padding:25px;" align="center"> 
         <?php  
 
         if($check==true){
          $images=Yii::$app->homeUrl."/images/".$model->logo;
          echo "<img src='".$images."' style='width:210px;'/>";    
         }
-
         ?>
-
+        <br/>
+        <br/>
+        <br/>
+         <?= Html::a(Yii::t('yii', 'Update'), ['site/profileedit'], ['class' => 'btn btn-primary']) ?>
         </div>
         <div class="col-8">
         <?php  
@@ -54,12 +56,15 @@ $this->title=\Yii::t('yii', 'Profile');
                     'label'=>\Yii::t('yii', 'Level Patner'),
                     'value'=>isset($model->user->level)?$model->user->level->nama:'',
                 ],
+                'telp_c',
                 'nama_d',
                 'telp',
+                'email',
                 'npwp',
                 'alamat',
                 'nama_s',
                 'telp_s',
+                'email_s',
                 [
                     'attribute'=>'id_user',
                     'label'=>\Yii::t('yii', 'Long Time Joined'),
@@ -71,7 +76,7 @@ $this->title=\Yii::t('yii', 'Profile');
         <?php } ?>
             
         </div>
-        <?= Html::a(Yii::t('yii', 'Update'), ['site/profileedit'], ['class' => 'btn btn-primary']) ?>
+       
 
     </div>
 

@@ -49,10 +49,11 @@ $this->registerJs($script,$position);
     <label for="perusahaan-nama_d"><?php echo $mem ?></label>
     
     </div>
+    <?= $form->field($model, 'telp_c')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'nama_d')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
 
 
    <?php 
@@ -76,10 +77,12 @@ $this->registerJs($script,$position);
         ],
     ]);
     ?> 
+    <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'nama_s')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'telp_s')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email_s')->textInput(['maxlength' => true]) ?>
 
     
     <?php

@@ -1,6 +1,17 @@
 <?php 
 use hscstudio\mimin\components\Mimin;
+use app\models\Perusahaan;
 //Yii::$app->language="en";
+$images=$assetDir."/img/user2-160x160.jpg";
+
+$cek=Perusahaan::findOne(['id_user'=>Yii::$app->user->identity->id]);
+if($cek){
+    if(is_null($cek->logo)==false) {
+        $images=Yii::$app->homeUrl."/images/".$cek->logo;
+    }
+
+}
+
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -14,7 +25,7 @@ use hscstudio\mimin\components\Mimin;
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?=$assetDir?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="<?=$images?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">

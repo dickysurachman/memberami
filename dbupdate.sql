@@ -112,3 +112,8 @@ create view `podetailsum` as select tanggal,nama,kode,sum(total) as total from p
 
 alter table `profile` add `nama_s` varchar(100) NULL;
 alter table `profile` add `telp_s` varchar(50) NULL;
+
+
+alter table `profile` add `telp_c` varchar(50) NULL;
+alter table `profile` add `email` varchar(100) NULL;
+alter table `profile` add `email_s` varchar(100) NULL;
