@@ -39,7 +39,7 @@ return [
     'Pages'=>'Halaman',
     'Language'=>'Pemilihan Bahasa',
     'Company'=>'Perusahaan',
-    'Costumer'=>'Kostumer',
+    'Costumer'=>'Pelanggan',
     'Project'=>'Proyek',
     'Demo'=>'Presentasi',
     'Main Menu'=>'Menu Utama',
