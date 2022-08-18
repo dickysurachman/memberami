@@ -16,7 +16,7 @@ $this->title=\Yii::t('yii', 'Profile');
 
 $project=Project::find()->where('id_user='.Yii::$app->user->identity->id)->count();
 $costumer=Costumer::find()->where('id_user='.Yii::$app->user->identity->id)->count();
-$peson=Person::find()->where('id_user='.Yii::$app->user->identity->id)->count();
+$person=Person::find()->where('id_user='.Yii::$app->user->identity->id)->count();
 
 
         $ban="";
