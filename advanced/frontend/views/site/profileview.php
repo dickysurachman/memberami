@@ -43,7 +43,7 @@ $person=Person::find()->where('id_user='.Yii::$app->user->identity->id)->count()
 <div class="perusahaan-form">
 
     <div class="row">
-        <div class="col-4" align="center"> 
+        <div class="col-4"> 
         
         <div class="card card-primary card-outline">
               <div class="card-body box-profile">
