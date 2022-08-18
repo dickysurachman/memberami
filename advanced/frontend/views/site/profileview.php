@@ -36,14 +36,14 @@ $person=Person::find()->where('id_user='.Yii::$app->user->identity->id)->count()
 
         if($check==true){
          $images=Yii::$app->homeUrl."/images/".$model->logo;
-         //echo "<img src='".$images."' style='width:210px;'/>";    
+         //echo "<img src='".$images."' style='width:210px;'/>";    style="padding:25px;"
         }
         ?>
 
 <div class="perusahaan-form">
 
     <div class="row">
-        <div class="col-4" style="padding:25px;" align="center"> 
+        <div class="col-4" align="center"> 
         
         <div class="card card-primary card-outline">
               <div class="card-body box-profile">
