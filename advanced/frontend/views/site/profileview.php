@@ -36,7 +36,7 @@ $person=Person::find()->where('id_user='.Yii::$app->user->identity->id)->count()
 
         if($check==true){
          $images=Yii::$app->homeUrl."/images/".$model->logo;
-         echo "<img src='".$images."' style='width:210px;'/>";    
+         //echo "<img src='".$images."' style='width:210px;'/>";    
         }
         ?>
 
