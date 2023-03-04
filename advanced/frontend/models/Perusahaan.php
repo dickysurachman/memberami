@@ -42,6 +42,8 @@ class Perusahaan extends \yii\db\ActiveRecord
             [['telp'], 'string', 'max' => 20],
             [['telp_s','telp_c'], 'string', 'max' => 50],
             [['logo'], 'string', 'max' => 250],
+            [['akta','npwp_f','kemenkumham','nib'], 'string', 'max' => 125],
+
         ];
     }
 
@@ -65,6 +67,10 @@ class Perusahaan extends \yii\db\ActiveRecord
             'telp_s' => \Yii::t('yii', 'Sales Mobile Number'),//'Telp',
             'telp_c' => \Yii::t('yii', 'Company Mobile Number'),//'Telp',
             'logo' => \Yii::t('yii', 'Logo Picture'),//'Logo',
+            'akta' => \Yii::t('yii', 'AKTA File'),//'Logo',
+            'npwp_f' => \Yii::t('yii', 'NPWP File'),//'Logo',
+            'kemenkumham' => \Yii::t('yii', 'KEMENKUMHAM File'),//'Logo',
+            'nib' => \Yii::t('yii', 'NIB File'),//'Logo',
             'status' => 'Status',
            
         ];

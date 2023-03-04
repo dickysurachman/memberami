@@ -140,12 +140,14 @@ class SiteController extends Controller
         } else {
             $model=Perusahaan::findOne(['id_user'=>Yii::$app->user->identity->id]);
             $ban=$model->logo;
+            $akta=$model->akta;
+            $nib=$model->nib;
+            $npwp=$model->npwp_f;
+            $kemenkumham=$model->kemenkumham;
         }
 
         if ($model->load($request->post())) {
                 $model->logo = UploadedFile::getInstance($model, 'logo');
-                //var_dump($model->logo);die();
-                //if(isset($model->logo) or is_null($model->logo)==false){
                 if(isset($model->logo)){
                 $namafile=rand(1000, 99999999);
                 if(strpos(" jpg jpeg bmp gif png ",strtolower($model->logo->extension))){                
@@ -160,6 +162,72 @@ class SiteController extends Controller
                 else {
                     $model->logo=$ban;
                 }
+
+                $model->akta = UploadedFile::getInstance($model, 'akta');
+                if(isset($model->akta)){
+                $namafile=rand(1000, 99999999);
+                if(strpos(" pdf ",strtolower($model->akta->extension))){                
+                    $file1= $namafile . '.' . $model->akta->extension;
+                    $model->akta->saveAs('images/dll/' . $file1,TRUE);
+                } else {
+                    $file1= $namafile . '.jpg' ;
+                    $model->akta->saveAs('images/dll/' . $file1,TRUE);
+                }
+                $model->akta=$file1;
+                } 
+                else {
+                    $model->akta=$akta;
+                }
+
+                $model->nib = UploadedFile::getInstance($model, 'nib');
+                if(isset($model->nib)){
+                $namafile=rand(1000, 99999999);
+                if(strpos(" pdf ",strtolower($model->nib->extension))){                
+                    $file1= $namafile . '.' . $model->nib->extension;
+                    $model->nib->saveAs('images/dll/' . $file1,TRUE);
+                } else {
+                    $file1= $namafile . '.jpg' ;
+                    $model->nib->saveAs('images/dll/' . $file1,TRUE);
+                }
+                $model->nib=$file1;
+                } 
+                else {
+                    $model->nib=$nib;
+                }
+
+                $model->npwp_f = UploadedFile::getInstance($model, 'npwp_f');
+                if(isset($model->npwp_f)){
+                $namafile=rand(1000, 99999999);
+                if(strpos(" pdf ",strtolower($model->npwp_f->extension))){                
+                    $file1= $namafile . '.' . $model->npwp_f->extension;
+                    $model->npwp_f->saveAs('images/dll/' . $file1,TRUE);
+                } else {
+                    $file1= $namafile . '.jpg' ;
+                    $model->npwp_f->saveAs('images/dll/' . $file1,TRUE);
+                }
+                    $model->npwp_f=$file1;
+                } 
+                else {
+                    $model->npwp_f=$npwp;
+                }
+
+                $model->kemenkumham = UploadedFile::getInstance($model, 'kemenkumham');
+                if(isset($model->kemenkumham)){
+                $namafile=rand(1000, 99999999);
+                if(strpos(" pdf ",strtolower($model->kemenkumham->extension))){                
+                    $file1= $namafile . '.' . $model->kemenkumham->extension;
+                    $model->kemenkumham->saveAs('images/dll/' . $file1,TRUE);
+                } else {
+                    $file1= $namafile . '.jpg' ;
+                    $model->kemenkumham->saveAs('images/dll/' . $file1,TRUE);
+                }
+                $model->kemenkumham=$file1;
+                } 
+                else {
+                    $model->kemenkumham=$kemenkumham;
+                }
+
+
                 $model->id_user=Yii::$app->user->identity->id;
                 $model->save();
                 return $this->redirect(['site/profile']);

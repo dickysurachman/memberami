@@ -123,3 +123,9 @@ alter table `barang_po` add `nohp` varchar(30) NULL;
 alter table `barang_po` add `payment` varchar(50) NULL;
 alter table `barang_po` add `term` varchar(50) NULL;
 alter table `barang_po` add `curr` varchar(10) NULL;
+
+3-3-2023
+
+alter table  `profile` add `akta` varchar(125) NULL, add `kemenkumham` varchar(125) NULL, add `nib` varchar(125),
+add `npwp_f` varchar(125)
+

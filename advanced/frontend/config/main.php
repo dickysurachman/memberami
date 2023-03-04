@@ -13,6 +13,7 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    //'homeUrl'=>'http://localhost/member/memberami',
     'controllerNamespace' => 'frontend\controllers',
     //'language' =>  'id-ID',
     //'language' =>  'id-ID',

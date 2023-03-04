@@ -109,7 +109,122 @@ $this->registerJs($script,$position);
     }
      ?>
 
-    
+    <div class="row">
+    <div class="col-3">
+    <?php
+    if(isset($model->akta)){
+    $akta=Yii::$app->homeUrl."/images/dll/".$model->akta;
+    echo $form->field($model, 'akta')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'initialPreview'=>[
+            $akta
+        ],
+        'initialPreviewConfig'=> [
+            ['type'=>"pdf",  'size'=>8000, 'url'=> $akta], 
+        ],
+ 
+        'initialPreviewAsData'=>true,
+         'maxFile'=>1,
+    ]
+    ]);
+    } else {
+        
+    echo $form->field($model, 'akta')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'maxFile'=>1,
+    ]
+    ]); 
+    }
+     ?>
+    </div>
+    <div class="col-3">
+    <?php
+    if(isset($model->npwp_f)){
+    $npwp_f=Yii::$app->homeUrl."/images/dll/".$model->npwp_f;
+    echo $form->field($model, 'npwp_f')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'initialPreview'=>[
+            $npwp_f
+        ],
+        'initialPreviewConfig'=> [
+            ['type'=>"pdf",  'size'=>8000, 'url'=> $npwp_f], 
+        ],
+        'initialPreviewAsData'=>true,
+         'maxFile'=>1,
+    ]
+    ]);
+    } else {
+        
+    echo $form->field($model, 'npwp_f')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'maxFile'=>1,
+    ]
+    ]); 
+    }
+     ?>
+     </div>
+    <div class="col-3">
+    <?php
+    if(isset($model->kemenkumham)){
+    $kemenkumham=Yii::$app->homeUrl."/images/dll/".$model->kemenkumham;
+    echo $form->field($model, 'kemenkumham')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'initialPreview'=>[
+            $kemenkumham
+        ],
+        'initialPreviewConfig'=> [
+            ['type'=>"pdf",  'size'=>8000, 'url'=> $kemenkumham], 
+        ],
+        'initialPreviewAsData'=>true,
+         'maxFile'=>1,
+    ]
+    ]);
+    } else {
+        
+    echo $form->field($model, 'kemenkumham')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'maxFile'=>1,
+    ]
+    ]); 
+    }
+     ?>
+    </div>
+    <div class="col-3">
+    <?php
+    if(isset($model->nib)){
+    $nib=Yii::$app->homeUrl."/images/dll/".$model->nib;
+    echo $form->field($model, 'nib')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'initialPreview'=>[
+            $nib
+        ],
+       'initialPreviewConfig'=> [
+            ['type'=>"pdf",  'size'=>8000, 'url'=> $nib], 
+        ],        
+        'initialPreviewAsData'=>true,
+         'maxFile'=>1,
+    ]
+    ]);
+    } else {
+        
+    echo $form->field($model, 'nib')->widget(FileInput::classname(), [
+    'options' => ['accept' => 'pdf/*'],
+     'pluginOptions' => [
+        'maxFile'=>1,
+    ]
+    ]); 
+    }
+     ?>
+
+    </div>
+    </div>
   
     <?php if (!Yii::$app->request->isAjax){ ?>
         <div class="form-group">
