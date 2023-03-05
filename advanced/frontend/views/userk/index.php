@@ -5,7 +5,7 @@ use yii\bootstrap4\Modal;
 use kartik\grid\GridView;
 use yii2ajaxcrud\ajaxcrud\CrudAsset;
 use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
-
+use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,6 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
 CrudAsset::register($this);
 
 ?>
+<style type="text/css">
+    @media (min-width: 576px)
+    {    
+        .modal-dialog {
+            max-width: 100% !important;
+            width: 850px !important;
+        }
+    }
+
+</style>
+
 <div class="user-index">
     <div id="ajaxCrudDatatable">
         <?=GridView::widget([

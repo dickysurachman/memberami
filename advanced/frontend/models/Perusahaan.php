@@ -87,7 +87,9 @@ class Perusahaan extends \yii\db\ActiveRecord
     {
         if (parent::beforeSave($insert)) {
             if($this->isNewRecord)   
-            $this->id_user=Yii::$app->user->identity->id;
+            if(!isset($this->id_user)) {
+                $this->id_user=Yii::$app->user->identity->id;
+            }
             return true;
         } else {
             

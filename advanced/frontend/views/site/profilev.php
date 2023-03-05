@@ -1,7 +1,5 @@
 <?php
 use yii\helpers\Html;
-use yii\helpers\Url;
-use common\widgets\Alert;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
@@ -18,6 +16,16 @@ $cityDesc =empty($model->id_kota) ? '' : City::findOne(['id'=>$model->id_kota])-
 /* @var $model app\models\Perusahaan */
 /* @var $form yii\widgets\ActiveForm */
 
+$cek =User::findOne($model->id_user);
+if($cek) 
+{
+    $mem2=isset($cek->level)?$cek->level->nama:'';
+    $mem="Member Level :".$mem2;
+
+} else {
+    $mem="Member Level :";
+
+}
 $script = <<< JS
 $(document).on("select2:open", () => {
   document.querySelector(".select2-container--open .select2-search__field").focus()
@@ -27,50 +35,24 @@ $position= View::POS_END;
 $this->registerJs($script,$position);
 ?>
  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>    
-<style type="text/css">
-    .login-box {
-        width: 80% !important;
-    }
 
-</style>
-<?= Alert::widget() ?>
-<div class="card">
-    <div class="card-body login-card-body">
+<div class="perusahaan-form">
 
-         <p class="login-box-msg">Please fill out the following fields to signup:</p>
-        <?php $form = \yii\bootstrap4\ActiveForm::begin(['id' => 'login-form','options' => ['enctype' => 'multipart/form-data']]) ?>
 
-        <?= $form->field($model,'username', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
-       <?= $form->field($model,'email', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->textInput(['placeholder' => $model->getAttributeLabel('email')]) ?>
 
-        <?= $form->field($model, 'password', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-        <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+
+
+    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
+    <div class="form-group">
+    <label for="perusahaan-nama_d"><?php echo $mem ?></label>
+    
+    </div>
     <?= $form->field($model, 'telp_c')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'nama_d')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'email_c')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 
 
@@ -243,22 +225,8 @@ $this->registerJs($script,$position);
 
     </div>
     </div>
-        <div class="row">
-            <div class="col-8">
-            </div>
-            <div class="col-4">
-                <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block']) ?>
-                <?= Html::a('Sign In', Url::to('login.html'),['class' => 'btn btn-danger btn-block']) ?>
-
-            </div>
-        </div>
-
-        <?php \yii\bootstrap4\ActiveForm::end(); ?>
-
-       
-        <!-- /.social-auth-links -->
-
-        
-    </div>
-    <!-- /.login-card-body -->
+  
+    
+    <?php ActiveForm::end(); ?>
+    
 </div>

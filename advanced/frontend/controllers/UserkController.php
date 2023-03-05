@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
+use app\models\Perusahaan;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -119,6 +120,7 @@ class UserkController extends Controller
      */
     public function actionView($id)
     {   
+        
         $request = Yii::$app->request;
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;

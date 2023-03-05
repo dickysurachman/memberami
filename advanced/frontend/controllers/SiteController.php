@@ -39,7 +39,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup','profile','rate','ratemember','profileedit'],
+                'only' => ['logout', 'signup','profile','rate','ratemember','profileedit','profilev'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -47,7 +47,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','profile','rate','ratemember','profileedit'],
+                        'actions' => ['logout','profile','rate','ratemember','profileedit','profilev'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -234,6 +234,33 @@ class SiteController extends Controller
             } 
         
         return $this->render('profile', [
+                    'model' => $model,
+                ]);
+       
+    }
+     public function actionProfilev($id)
+    {
+        /*if(Yii::$app->user->isGuest) {
+            $this->redirect(['site/index']);
+            die();
+        }*/
+        $request = Yii::$app->request;
+        $ban="";
+        $do=Perusahaan::findOne(['id_user'=>$id]);
+        if(!isset($do)){
+            $model = new Perusahaan();  
+        } else {
+            $model=Perusahaan::findOne(['id_user'=>$id]);
+            $ban=$model->logo;
+            $akta=$model->akta;
+            $nib=$model->nib;
+            $npwp=$model->npwp_f;
+            $kemenkumham=$model->kemenkumham;
+        }
+
+        
+        
+        return $this->render('profilev', [
                     'model' => $model,
                 ]);
        
