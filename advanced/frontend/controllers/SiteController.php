@@ -292,7 +292,9 @@ class SiteController extends Controller
     {
         if(Yii::$app->user->isGuest){
         $this->layout="single2";
-        return $this->render('indeks');
+        $this->layout=false;
+        $hasil=Pages::findOne(['slug'=>'index','status'=>1]);
+        return $this->render('indeks',['hasil'=>$hasil]);
         } else {
             if(Mimin::checkRoute('userk/create')){
 
