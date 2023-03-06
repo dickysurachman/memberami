@@ -31,6 +31,9 @@ $this->registerJs($script,$position);
     .login-box {
         width: 80% !important;
     }
+    .login-page, .register-page {
+        height: 100% !important;
+    }
 
 </style>
 <?= Alert::widget() ?>
@@ -65,15 +68,21 @@ $this->registerJs($script,$position);
         ])
             ->label(false)
             ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+    <div class="row">
+        <div class="col">
+    <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?> </div> 
+        <div class="col">
+    <?= $form->field($model, 'telp_c')->textInput(['maxlength' => true]) ?></div>
+        <div class="col">
+    <?= $form->field($model, 'nama_d')->textInput(['maxlength' => true]) ?></div>
+        <div class="col">
+    <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?></div>
+        <div class="col">
+    <?= $form->field($model, 'email_c')->textInput(['maxlength' => true]) ?></div>
+    </div>
 
-        <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'telp_c')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'nama_d')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'email_c')->textInput(['maxlength' => true]) ?>
-
-
-
+    <div class="row">
+        <div class="col">    
    <?php 
     echo $form->field($model, 'id_kota')->widget(Select2::classname(), [
         'initValueText' => $cityDesc, 
@@ -94,13 +103,20 @@ $this->registerJs($script,$position);
             'templateSelection' => new JsExpression('function (id_kota) { return id_kota.text; }'),
         ],
     ]);
-    ?> 
-    <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'nama_s')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'telp_s')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'email_s')->textInput(['maxlength' => true]) ?>
+    ?> </div>
+        <div class="col">    
+    <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?></div>
+        <div class="col">    
+    <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?></div>
+    </div>
+    <div class="row">
+    <div class="col">
+    <?= $form->field($model, 'nama_s')->textInput(['maxlength' => true]) ?></div>
+    <div class="col">
+    <?= $form->field($model, 'telp_s')->textInput(['maxlength' => true]) ?></div>
+    <div class="col">
+    <?= $form->field($model, 'email_s')->textInput(['maxlength' => true]) ?></div>
+    </div>
 
     
     <?php

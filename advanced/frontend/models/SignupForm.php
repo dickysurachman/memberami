@@ -55,7 +55,7 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
-            [['nama', 'alamat', 'nama_d','akta','npwp_f','kemenkumham','nib'], 'required'],
+            [['nama', 'alamat', 'nama_d','akta','npwp_f','kemenkumham','nib','email_c','telp_c','logo','npwp'], 'required'],
             [['id_user', 'id_kota', 'status'], 'integer'],
             [['nama', 'nama_d','nama_s','email_c','email_s'], 'string', 'max' => 100],
             [['alamat'], 'string', 'max' => 150],

@@ -269,12 +269,12 @@ class SiteController extends Controller
     {
         $hasil=Pages::findOne(['slug'=>$id,'status'=>1]);
         if(isset($hasil)){
-        $this->layout="single";
-
-         return $this->render('indeks',['hasil'=>$hasil]);
+            //$this->layout="single";
+            $this->layout=false;
+            return $this->render('indeks',['hasil'=>$hasil]);
         } else {
-        $this->layout="single3";
-        return $this->render('indeks');
+            $this->layout="single3";
+            return $this->render('indeks');
         }
     }
     public function actionIndeks2($id)
@@ -424,6 +424,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        $this->layout="main2";
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
@@ -447,6 +448,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        $this->layout="main2";
         return $this->render('about');
     }
 
