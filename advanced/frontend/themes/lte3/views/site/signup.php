@@ -69,20 +69,20 @@ $this->registerJs($script,$position);
             ->label(false)
             ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
     <div class="row">
-        <div class="col">
+        <div class="col-md-2">
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?> </div> 
-        <div class="col">
+        <div class="col-md-2">
     <?= $form->field($model, 'telp_c')->textInput(['maxlength' => true]) ?></div>
-        <div class="col">
+        <div class="col-md-3">
     <?= $form->field($model, 'nama_d')->textInput(['maxlength' => true]) ?></div>
-        <div class="col">
+        <div class="col-md-3">
     <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?></div>
-        <div class="col">
+        <div class="col-md-2">
     <?= $form->field($model, 'email_c')->textInput(['maxlength' => true]) ?></div>
     </div>
 
     <div class="row">
-        <div class="col">    
+        <div class="col-md-3">    
    <?php 
     echo $form->field($model, 'id_kota')->widget(Select2::classname(), [
         'initValueText' => $cityDesc, 
@@ -104,17 +104,17 @@ $this->registerJs($script,$position);
         ],
     ]);
     ?> </div>
-        <div class="col">    
+        <div class="col-md-4">    
     <?= $form->field($model, 'npwp')->textInput(['maxlength' => true]) ?></div>
-        <div class="col">    
+        <div class="col-md-5">    
     <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?></div>
     </div>
     <div class="row">
-    <div class="col">
+    <div class="col-md-4">
     <?= $form->field($model, 'nama_s')->textInput(['maxlength' => true]) ?></div>
-    <div class="col">
+    <div class="col-md-4">
     <?= $form->field($model, 'telp_s')->textInput(['maxlength' => true]) ?></div>
-    <div class="col">
+    <div class="col-md-4">
     <?= $form->field($model, 'email_s')->textInput(['maxlength' => true]) ?></div>
     </div>
 
@@ -144,7 +144,7 @@ $this->registerJs($script,$position);
      ?>
 
     <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->akta)){
     $akta=Yii::$app->homeUrl."/images/dll/".$model->akta;
@@ -173,7 +173,7 @@ $this->registerJs($script,$position);
     }
      ?>
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->npwp_f)){
     $npwp_f=Yii::$app->homeUrl."/images/dll/".$model->npwp_f;
@@ -201,7 +201,7 @@ $this->registerJs($script,$position);
     }
      ?>
      </div>
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->kemenkumham)){
     $kemenkumham=Yii::$app->homeUrl."/images/dll/".$model->kemenkumham;
@@ -229,7 +229,7 @@ $this->registerJs($script,$position);
     }
      ?>
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->nib)){
     $nib=Yii::$app->homeUrl."/images/dll/".$model->nib;
@@ -261,6 +261,7 @@ $this->registerJs($script,$position);
     </div>
         <div class="row">
             <div class="col-8">
+                <?= Html::a('Home Page', Url::to(Yii::$app->homeUrl)) ?>
             </div>
             <div class="col-4">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block']) ?>

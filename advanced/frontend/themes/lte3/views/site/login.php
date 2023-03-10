@@ -37,6 +37,7 @@ use common\widgets\Alert;
                     ],
                     'uncheck' => null
                 ]) ?>
+                  <?= Html::a('Home Page', Url::to(Yii::$app->homeUrl)) ?>
             </div>
             <div class="col-4">
                 <?= Html::submitButton('Sign In', ['class' => 'btn btn-primary btn-block']) ?>
