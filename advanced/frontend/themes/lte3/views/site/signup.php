@@ -71,9 +71,9 @@ $this->registerJs($script,$position);
     <div class="row">
         <div class="col-md-2">
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?> </div> 
-        <div class="col-md-2">
-    <?= $form->field($model, 'telp_c')->textInput(['maxlength' => true]) ?></div>
         <div class="col-md-3">
+    <?= $form->field($model, 'telp_c')->textInput(['maxlength' => true]) ?></div>
+        <div class="col-md-2">
     <?= $form->field($model, 'nama_d')->textInput(['maxlength' => true]) ?></div>
         <div class="col-md-3">
     <?= $form->field($model, 'telp')->textInput(['maxlength' => true]) ?></div>
