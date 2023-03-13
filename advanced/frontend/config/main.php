@@ -11,8 +11,10 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name'=>'Member GSO',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'homeUrl'=>'https://member.gso.co.id',
     //'homeUrl'=>'http://localhost/member/memberami',
     'controllerNamespace' => 'frontend\controllers',
     //'language' =>  'id-ID',

@@ -4,7 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
-
+use app\models\User;
 /**
  * Login form
  */
@@ -42,6 +42,20 @@ class LoginForm extends Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
+
+            $userx=User::findOne(['username'=>$this->username])
+            if($userx){
+                if($userx->status==9){
+                    $this->addError($attribute, 'Waiting for administrator approval');
+                }
+            }
+            $userx=User::findOne(['email'=>$this->username])
+            if($userx){
+                if($userx->status==9){
+                    $this->addError($attribute, 'Waiting for administrator approval');
+                }
+            }
+
             $user = $this->getUser();
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Incorrect username or password.');

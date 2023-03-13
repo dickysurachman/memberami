@@ -26,7 +26,8 @@ use app\models\Perusahaan;
 use yii\web\UploadedFile;
 use app\models\BarangSearch;
 use yii\helpers\ArrayHelper;
-use common\models\User;
+//use common\models\User;
+use app\models\User;
 /**
  * Site controller
  */
@@ -40,7 +41,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup','profile','rate','ratemember','profileedit','profilev'],
+                'only' => ['logout', 'signup','profile','rate','ratemember','profileedit','profilev','requestupdateprofile'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -48,7 +49,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout','profile','rate','ratemember','profileedit','profilev'],
+                        'actions' => ['logout','profile','rate','ratemember','profileedit','profilev','requestupdateprofile'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -494,6 +495,8 @@ class SiteController extends Controller
         }
         return $out;
     }
+
+
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
@@ -512,6 +515,28 @@ class SiteController extends Controller
         ]);
     }
 
+
+
+    public function actionRequestupdateprofile($id)
+    {
+        $user = User::findOne(['id'=>$id]);
+        if($user){
+        $link=Yii::$app->homeUrl."site/userlengkapi?token=".$user->password_reset_token;
+           Yii::$app
+            ->mailer
+            ->compose()
+            ->setTextBody('Dear '.$user->username.' Please complete your profile by click link '.$link)
+            ->setHtmlBody('<b>Dear '.$user->username.'</b><br>Please complete your profile by click link <a href="'
+                .$link.'">'.$link.'</a>')
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setTo($this->email)
+            ->setSubject('Please complete your profile ' . Yii::$app->name)
+            ->send();
+            Yii::$app->session->setFlash('success', 'Email already sent to User, to complete their profile');
+           return $this->goHome();
+        }
+
+    }
     /**
      * Resets password.
      *
@@ -528,7 +553,7 @@ class SiteController extends Controller
             throw new InvalidArgumentException('Password reset token cannot be blank.');
             die();
         }
-        $user = User::findByPasswordResetToken($token);
+        $user = \common\models\User::findByPasswordResetToken($token);
         if (!$user) {
             $model=Perusahaan::findOne(['id_user'=>$user->id]);
             $ban=$model->logo;
@@ -537,7 +562,6 @@ class SiteController extends Controller
             $npwp=$model->npwp_f;
             $kemenkumham=$model->kemenkumham;
             
-
             if ($model->load($request->post())) {
                 $model->logo = UploadedFile::getInstance($model, 'logo');
                 if(isset($model->logo)){
