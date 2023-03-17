@@ -261,7 +261,8 @@ $this->registerJs($script,$position);
     </div>
         <div class="row">
             <div class="col-8">
-                <?= Html::a('Home Page', Url::to(Yii::$app->homeUrl)) ?>
+                <?= Html::a('Home Page', 'https://www.gso.co.id') ?>
+                
             </div>
             <div class="col-4">
                 <?= Html::submitButton('Signup', ['class' => 'btn btn-primary btn-block']) ?>
