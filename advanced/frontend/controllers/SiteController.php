@@ -532,7 +532,7 @@ class SiteController extends Controller
             ->setTo($user->email)
             ->setSubject('Please complete your profile ' . Yii::$app->name)
             ->send();
-            Yii::$app->session->setFlash('success', 'Email already sent to User, to complete their profile');
+            Yii::$app->session->setFlash('success', 'Email already sent to User '.$user->email.', to complete their profile');
            return $this->goHome();
         }
 
