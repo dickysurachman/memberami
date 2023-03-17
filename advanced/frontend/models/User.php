@@ -93,4 +93,9 @@ class User extends \yii\db\ActiveRecord
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
+    public function generatePasswordResetToken()
+    {
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
 }

@@ -521,6 +521,8 @@ class SiteController extends Controller
     {
         $user = User::findOne(['id'=>$id]);
         if($user){
+            $user->generatePasswordResetToken();
+            $user->save();
         $link=Yii::$app->homeUrl."site/userlengkapi?token=".$user->password_reset_token;
            Yii::$app
             ->mailer
