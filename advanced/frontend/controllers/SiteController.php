@@ -529,7 +529,7 @@ class SiteController extends Controller
             ->setHtmlBody('<b>Dear '.$user->username.'</b><br>Please complete your profile by click link <a href="'
                 .$link.'">'.$link.'</a>')
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
-            ->setTo($this->email)
+            ->setTo($user->email)
             ->setSubject('Please complete your profile ' . Yii::$app->name)
             ->send();
             Yii::$app->session->setFlash('success', 'Email already sent to User, to complete their profile');
