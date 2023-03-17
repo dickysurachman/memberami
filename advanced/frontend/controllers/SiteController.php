@@ -555,7 +555,7 @@ class SiteController extends Controller
             throw new InvalidArgumentException('Password reset token cannot be blank.');
             die();
         }
-        $user = \common\models\User::findByPasswordResetToken($token);
+        $user = User::findOne(['password_reset_token' => $token]);
         if (!$user) {
             $request = Yii::$app->request;
             $model=Perusahaan::findOne(['id_user'=>$user->id]);

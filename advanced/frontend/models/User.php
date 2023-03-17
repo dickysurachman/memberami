@@ -98,4 +98,5 @@ class User extends \yii\db\ActiveRecord
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
+   
 }
