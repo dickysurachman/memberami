@@ -526,8 +526,8 @@ class SiteController extends Controller
             ->mailer
             ->compose()
             ->setTextBody('Dear '.$user->username.' Please complete your profile by click link '.$link)
-            ->setHtmlBody('<b>Dear '.$user->username.'</b><br>Please complete your profile by click link <a href="'
-                .$link.'">'.$link.'</a>')
+            //->setHtmlBody('<b>Dear '.$user->username.'</b><br>Please complete your profile by click link <a href="'
+            //    .$link.'">'.$link.'</a><br>Regards,')
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
             ->setTo($user->email)
             ->setSubject('Please complete your profile ' . Yii::$app->name)
