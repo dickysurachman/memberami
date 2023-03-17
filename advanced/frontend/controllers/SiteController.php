@@ -651,7 +651,7 @@ class SiteController extends Controller
                     $model->kemenkumham=$kemenkumham;
                 }
 
-                $model->id_user=Yii::$app->user->identity->id;
+                //$model->id_user=Yii::$app->user->identity->id;
                 $model->save();
                 Yii::$app->session->setFlash('success', 'Thank you for complete the form. Please wait for administrator approval');
                 return $this->redirect(['site/login']);
