@@ -523,7 +523,7 @@ class SiteController extends Controller
         if($user){
             $user->generatePasswordResetToken();
             $user->save();
-        $link=Yii::$app->homeUrl."site/userlengkapi?token=".$user->password_reset_token;
+        $link=Yii::$app->homeUrl."/site/userlengkapi?token=".$user->password_reset_token;
            Yii::$app
             ->mailer
             ->compose()
@@ -557,6 +557,7 @@ class SiteController extends Controller
         }
         $user = \common\models\User::findByPasswordResetToken($token);
         if (!$user) {
+            $request = Yii::$app->request;
             $model=Perusahaan::findOne(['id_user'=>$user->id]);
             $ban=$model->logo;
             $akta=$model->akta;
