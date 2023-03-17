@@ -556,7 +556,7 @@ class SiteController extends Controller
             die();
         }
         $user = User::findOne(['password_reset_token' => $token]);
-        if (!$user) {
+        if (isset($user)) {
             $request = Yii::$app->request;
             $model=Perusahaan::findOne(['id_user'=>$user->id]);
             if(!$model) {
