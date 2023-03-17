@@ -569,7 +569,7 @@ class SiteController extends Controller
             $nib=$model->nib;
             $npwp=$model->npwp_f;
             $kemenkumham=$model->kemenkumham;
-            
+            $model->id_user=$user->id;           
             if ($model->load($request->post())) {
                 $model->logo = UploadedFile::getInstance($model, 'logo');
                 if(isset($model->logo)){
