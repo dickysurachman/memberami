@@ -41,6 +41,7 @@ use app\models\Perusahaan;
         <?php 
         if(isset($do)){
             echo Html::a('Cek Detail', ['/site/profilev','id'=>$model->id], ['class'=>'btn btn-primary','target'=>'_blank']);
+            echo "&nbsp;&nbsp;&nbsp;".Html::a('Kirim Email Update Profile', ['/site/requestupdateprofile','id'=>$model->id], ['class'=>'btn btn-danger','target'=>'_blank']);
         }
         ?>
 

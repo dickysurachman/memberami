@@ -110,7 +110,7 @@ $this->registerJs($script,$position);
      ?>
 
     <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->akta)){
     $akta=Yii::$app->homeUrl."/images/dll/".$model->akta;
@@ -139,7 +139,7 @@ $this->registerJs($script,$position);
     }
      ?>
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->npwp_f)){
     $npwp_f=Yii::$app->homeUrl."/images/dll/".$model->npwp_f;
@@ -167,7 +167,7 @@ $this->registerJs($script,$position);
     }
      ?>
      </div>
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->kemenkumham)){
     $kemenkumham=Yii::$app->homeUrl."/images/dll/".$model->kemenkumham;
@@ -195,7 +195,7 @@ $this->registerJs($script,$position);
     }
      ?>
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
     <?php
     if(isset($model->nib)){
     $nib=Yii::$app->homeUrl."/images/dll/".$model->nib;

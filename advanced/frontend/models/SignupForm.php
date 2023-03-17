@@ -121,6 +121,7 @@ class SignupForm extends Model
         $perusahaan->nama_s=$this->nama_s;
         $perusahaan->telp=$this->telp;
         $perusahaan->email=$this->email_c;
+        $perusahaan->email_s=$this->email_s;
         $perusahaan->id_kota=$this->id_kota;
         $perusahaan->npwp=$this->npwp;
         $perusahaan->alamat=$this->alamat;

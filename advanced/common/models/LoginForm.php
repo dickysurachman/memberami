@@ -43,13 +43,13 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
 
-            $userx=User::findOne(['username'=>$this->username])
+            $userx=User::findOne(['username'=>$this->username]);
             if($userx){
                 if($userx->status==9){
                     $this->addError($attribute, 'Waiting for administrator approval');
                 }
             }
-            $userx=User::findOne(['email'=>$this->username])
+            $userx=User::findOne(['email'=>$this->username]);
             if($userx){
                 if($userx->status==9){
                     $this->addError($attribute, 'Waiting for administrator approval');
@@ -85,11 +85,11 @@ class LoginForm extends Model
     protected function getUser()
     {
         if ($this->_user === null) {
-            $this->_user = User::findByUsername($this->username);
+            $this->_user = \common\models\User::findByUsername($this->username);
         } 
 
         if ($this->_user === null) {
-            $this->_user = User::findByEmail($this->username);
+            $this->_user = \common\models\User::findByEmail($this->username);
         }
 
         return $this->_user;
