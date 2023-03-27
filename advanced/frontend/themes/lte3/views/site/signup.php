@@ -261,7 +261,7 @@ $this->registerJs($script,$position);
     </div>
         <div class="row">
             <div class="col-8">
-                <?= Html::a('Home Page', 'https://www.gso.co.id') ?>
+                <?= Html::a('Home Page', 'https://www.gso.co.id') ?><br/>
                  <?= Html::a('Forget Password', Url::to('request-password-reset.html')) ?>
                 
             </div>
