@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
+//use yii\widgets\ActiveForm;
 use yii\jui\DatePicker;
 use app\models\User;
 use app\models\Costumer;
@@ -32,7 +33,7 @@ $position= View::POS_END;
 $this->registerJs($script,$position);
 ?>
 
-<div class="barangin-form">
+<div class="barangpo-form">
 
     <?php $form = ActiveForm::begin(); ?>
     <div class="col-md-6" style="padding-left: 0px;"> 

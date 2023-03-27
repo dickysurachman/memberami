@@ -110,7 +110,7 @@ class BarangpoController extends Controller
         $model = new Barangpo();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
+            if ($model->load($this->request->post()) & $model->validate()) {
                 $cek=Project::findOne($model->id_project);
                 $model->id_perusahaan=$cek->id_costumer;
                 $model->save();
