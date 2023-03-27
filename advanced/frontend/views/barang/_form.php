@@ -5,6 +5,7 @@ use kartik\money\MaskMoney;
 /* @var $this yii\web\View */
 /* @var $model app\models\Barang */
 /* @var $form yii\widgets\ActiveForm */
+$st=['Indent','Ready'];
 ?>
 
 <div class="barang-form">
@@ -12,7 +13,7 @@ use kartik\money\MaskMoney;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'kode')->textInput(['maxlength' => true]) ?>
-
+<?= $form->field($model, 'status')->dropDownList($st,array('prompt'=>'Silahkan Pilih'))  ?>
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
   <?php    echo $form->field($model, 'harga')->widget(MaskMoney::classname()); ?>
 
