@@ -37,6 +37,7 @@ class Barangpo extends \yii\db\ActiveRecord
     {
         return [
            //[['tanggal', 'kode', 'dari', 'keterangan', 'id_perusahaan', 'id_toko'], 'required'],
+           [['tanggal', 'id_user','keterangan','dari'], 'required'],
             [['tanggal', 'add_date', 'edit_date'], 'safe'],
             [['keterangan'], 'string'],
             [['id_perusahaan', 'status','id_user', 'add_who', 'edit_who','id_project'], 'integer'],
