@@ -4,12 +4,15 @@ use app\models\Perusahaan;
 //Yii::$app->language="en";
 $images=$assetDir."/img/user2-160x160.jpg";
 
+if(!Yii::$app->user->isGuest) {
+    
 $cek=Perusahaan::findOne(['id_user'=>Yii::$app->user->identity->id]);
 if($cek){
     if(is_null($cek->logo)==false) {
         $images=Yii::$app->homeUrl."/images/".$cek->logo;
     }
 
+}
 }
 
 ?>

@@ -37,7 +37,8 @@ use common\widgets\Alert;
                     ],
                     'uncheck' => null
                 ]) ?>
-                  <?= Html::a('Home Page', 'https://www.gso.co.id') ?>
+                  <?= Html::a('Home Page', 'https://www.gso.co.id') ?> <br/>
+                  <?= Html::a('Forget Password', Url::to('request-password-reset.html')) ?>
             </div>
             <div class="col-4">
                 <?= Html::submitButton('Sign In', ['class' => 'btn btn-primary btn-block']) ?>
