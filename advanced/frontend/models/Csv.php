@@ -30,7 +30,8 @@ class Csv extends Model
 			[['csv'], 'file', 'extensions' => 'csv',],
             //[['gambar'],'file', 'extensions' => 'csv', 'mimeTypes' => 'image/jpeg, image/png'], 
             //[['gambar'], 'file', 'extensions' => 'jpg,jpeg,png'],
-            [['alamat','phone','tanggal'],'safe'],
+             [['alamat'], 'string', 'max' => 2],
+            [['phone','tanggal'],'safe'],
             // verifyCode needs to be entered correctly
         ];
     }
@@ -44,7 +45,7 @@ class Csv extends Model
                     'tanggal'=>'Tanggal Scanning',
                     'gambar'=>'File Foto',
                     'csv'=>'File CSV',
-                    'alamat'=> 'Alamat',
+                    'alamat'=> 'Delimiter',
                     'phone'=>'Phone',
                     ];
      

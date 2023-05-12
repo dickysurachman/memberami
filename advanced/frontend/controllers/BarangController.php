@@ -71,18 +71,61 @@ class BarangController extends Controller
                 $transaction = Yii::$app->db->beginTransaction();
                 try
                 {
+                if(isset($model->alamat) and trim($model->alamat)<>"" and is_null($model->alamat)==false) {
+                while (($row = fgetcsv($file,0,$model->alamat)) !== FALSE) {
+                //while (($row = fgetcsv($file)) !== FALSE) {
+                        //echo $row[0].$row[1].preg_replace('/[[:^print:]]/', '',$row[2]).str_replace(".","",$row[3])."<br>";
+                        
+                        $i++;
+                        $barang = New Barang();
+                        $str = preg_replace('/[[:^print:]]/', '',$row[0]);
+                        $str = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $str);
+                        $str = str_replace("\"", "", $str);
+                        $desc =str_replace("\"","",$row[2]);
+                        //$desc=str_replace(","," ",$desc);
+                        $ammount= str_replace("\"","",$row[3]);
+                        $ammount= str_replace(".","",$ammount);
+                        $ammount= str_replace(",","",$ammount);
+                        $barang->kode = $str;
+                        $barang->nama = $row[1];
+                        $barang->ukuran =  $desc;
+                        $barang->harga = $ammount;
+                        //$barang->ukuran =  str_replace($row[2],"\"","");
+                        //$barang->harga = str_replace($row[3],"\"","");
+                        //$barang->ukuran = $row[2];
+                        //$barang->harga = $row[3];
+                        $barang->stok_awal=0;
+                        $barang->id_perusahaan=0;
+                        $barang->id_toko=0;
+                        $barang->status=0;
+                        $barang->save();    
+                }
+
+               // die();
+                } else {
+
                 while (($row = fgetcsv($file)) !== FALSE) {
                         $i++;
                         $barang = New Barang();
                         $str = preg_replace('/[[:^print:]]/', '',$row[0]);
                         $str = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $str);
                         $str = str_replace("\"", "", $str);
+                        $desc =str_replace("\"","",$row[2]);
+                        //$desc=str_replace(","," ",$desc);
+                        $ammount= str_replace("\"","",$row[3]);
+                        $ammount= str_replace(".","",$ammount);
+                        $ammount= str_replace(",","",$ammount);                        
                         $barang->kode = $str;
                         $barang->nama = $row[1];
-                        $barang->ukuran = $row[2];
-                        $barang->harga = $row[3];
+                        $barang->ukuran =  $desc;
+                        $barang->harga = $ammount;
+                        $barang->stok_awal=0;
+                        $barang->id_perusahaan=0;
+                        $barang->id_toko=0;
+                        $barang->status=0;
                         $barang->save();    
                 }
+                }                    
                     $transaction->commit();
                     Yii::$app->session->setFlash('success', $i.' rows Success ');
                 }

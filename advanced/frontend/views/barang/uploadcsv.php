@@ -31,6 +31,7 @@ use yii\web\View;
     ?>
     </div> */?>
 	  <?= $form->field($model, 'csv')->fileInput() ?>
+      <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
     <div class="form-group">
         <?= Html::submitButton('Import', ['class' => 'btn btn-success']) ?>
     </div>
