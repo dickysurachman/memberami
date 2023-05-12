@@ -67,16 +67,20 @@ class BarangController extends Controller
                 $csvFilePath = "images/".$file1;
                 $file = fopen($csvFilePath, "r");
                 $i=0;
+                $i2=0;
                 $j=0;
                 $transaction = Yii::$app->db->beginTransaction();
                 try
                 {
                 if(isset($model->alamat) and trim($model->alamat)<>"" and is_null($model->alamat)==false) {
                 while (($row = fgetcsv($file,0,$model->alamat)) !== FALSE) {
-                //while (($row = fgetcsv($file)) !== FALSE) {
-                        //echo $row[0].$row[1].preg_replace('/[[:^print:]]/', '',$row[2]).str_replace(".","",$row[3])."<br>";
-                        
                         $i++;
+                        if($i>1) {
+                        $i2++;
+
+                       // echo $i.$row[0].$row[1].preg_replace('/[[:^print:]]/', '',$row[2]).str_replace(".","",$row[3])."<br>";
+                        ///*
+                        
                         $barang = New Barang();
                         $str = preg_replace('/[[:^print:]]/', '',$row[0]);
                         $str = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $str);
@@ -90,22 +94,22 @@ class BarangController extends Controller
                         $barang->nama = $row[1];
                         $barang->ukuran =  $desc;
                         $barang->harga = $ammount;
-                        //$barang->ukuran =  str_replace($row[2],"\"","");
-                        //$barang->harga = str_replace($row[3],"\"","");
-                        //$barang->ukuran = $row[2];
-                        //$barang->harga = $row[3];
                         $barang->stok_awal=0;
                         $barang->id_perusahaan=0;
                         $barang->id_toko=0;
                         $barang->status=0;
-                        $barang->save();    
+                        $barang->save();   // */
+                        
+                        }
                 }
 
-               // die();
+                //die();
                 } else {
 
                 while (($row = fgetcsv($file)) !== FALSE) {
                         $i++;
+                        if($i>1) {
+                        $i2++;
                         $barang = New Barang();
                         $str = preg_replace('/[[:^print:]]/', '',$row[0]);
                         $str = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $str);
@@ -123,11 +127,12 @@ class BarangController extends Controller
                         $barang->id_perusahaan=0;
                         $barang->id_toko=0;
                         $barang->status=0;
-                        $barang->save();    
+                        $barang->save();  
+                        }  
                 }
                 }                    
                     $transaction->commit();
-                    Yii::$app->session->setFlash('success', $i.' rows Success ');
+                    Yii::$app->session->setFlash('success', $i2.' rows Success ');
                 }
                 catch(Exception $e)
                 {

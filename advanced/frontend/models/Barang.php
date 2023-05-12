@@ -38,10 +38,10 @@ class Barang extends \yii\db\ActiveRecord
     {
         return [
             //[['kode'], 'unique'],
-            [['stok_awal', 'id_perusahaan', 'id_toko', 'status','harga'], 'integer'],
+            [['stok_awal', 'id_perusahaan', 'id_toko', 'status','harga'], 'safe'],
             [['kode'], 'string', 'max' => 25],
             [['nama'], 'string', 'max' => 250],
-            [['ukuran'], 'string'],
+            [['ukuran'], 'safe'],
             //[['id_perusahaan'], 'exist', 'skipOnError' => true, 'targetClass' => Perusahaan::className(), 'targetAttribute' => ['id_perusahaan' => 'id']],
         ];
     }
