@@ -21,6 +21,7 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'kode',
+        'filter'=>false,
         'header'=>'Barcode',
          'format' => 'raw',
             'value'=>function ($data) {
