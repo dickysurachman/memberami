@@ -40,7 +40,7 @@ class Kategori extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('yii', 'ID'),
-            'nama' => Yii::t('yii', 'Nama'),
+            'nama' => Yii::t('yii', 'nama'),
             'id_toko' => Yii::t('yii', 'Id Toko'),
         ];
     }
