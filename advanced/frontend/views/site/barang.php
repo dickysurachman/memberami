@@ -14,7 +14,9 @@ $this->title = Yii::t('yii', 'Commodity');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);
-
+use app\models\Kategori;
+use yii\helpers\ArrayHelper;
+$level=ArrayHelper::map(Kategori::find()->orderBy(['nama' => SORT_ASC])->asArray()->all(), 'id', 'nama');
 ?>
 <?php 
 
@@ -34,7 +36,16 @@ $col=
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'id_kat',
+        'filter'=>$level,
+        'value'=>function ($model, $key, $index, $column) {
+        return isset($model->kategori)?$model->kategori->nama:'';
+                },
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'kode',
+        'filter'=>false,
         'header'=>'Barcode',
          'format' => 'raw',
             'value'=>function ($data) {

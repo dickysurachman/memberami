@@ -1,8 +1,6 @@
 <?php
 use yii\helpers\Url;
-use app\models\Kategori;
-use yii\helpers\ArrayHelper;
-$level=ArrayHelper::map(Kategori::find()->orderBy(['nama' => SORT_ASC])->asArray()->all(), 'id', 'nama');
+
 return [
     [
         'class' => 'kartik\grid\CheckboxColumn',
@@ -18,44 +16,9 @@ return [
     // ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'kode',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'id_kat',
-        'filter'=>$level,
-        'value'=>function ($model, $key, $index, $column) {
-        return isset($model->kategori)?$model->kategori->nama:'';
-                },
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'kode',
-        'filter'=>false,
-        'header'=>'Barcode',
-         'format' => 'raw',
-            'value'=>function ($data) {
-                return '<img alt="testing" src="'.str_replace("index.php","",Yii::$app->homeUrl) .'/barcode.php?size=25&text='.$data->kode.'">';
-                                },
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'nama',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'ukuran',
-    ],
-    //[
-    //    'class'=>'\kartik\grid\DataColumn',
-    //    'attribute'=>'stok_awal',
-   // ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'harga',
-        'hAlign' => 'right',
-        'format'=>['decimal',2],
-    ],
+    
     [
         'class' => 'kartik\grid\ActionColumn',
         'dropdown' => false,

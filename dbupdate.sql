@@ -129,3 +129,19 @@ alter table `barang_po` add `curr` varchar(10) NULL;
 alter table  `profile` add `akta` varchar(125) NULL, add `kemenkumham` varchar(125) NULL, add `nib` varchar(125),
 add `npwp_f` varchar(125)
 
+
+14-7-2023
+
+CREATE TABLE `kategori` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id`);
+  
+ ALTER TABLE `kategori`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+  alter table `barang` add `id_kat` int(11) NULL;
+  alter table `kategori` add `id_toko` int(11) NULL;

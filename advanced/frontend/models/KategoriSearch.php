@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Barang;
+use app\models\Kategori;
 
 /**
- * BarangSearch represents the model behind the search form about `app\models\Barang`.
+ * KategoriSearch represents the model behind the search form about `app\models\Kategori`.
  */
-class BarangSearch extends Barang
+class KategoriSearch extends Kategori
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class BarangSearch extends Barang
     public function rules()
     {
         return [
-            [['id', 'stok_awal', 'id_perusahaan', 'id_toko', 'status','harga','id_kat'], 'integer'],
-            [['kode', 'nama', 'ukuran'], 'safe'],
+            [['id', 'id_toko'], 'integer'],
+            [['nama'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class BarangSearch extends Barang
      */
     public function search($params)
     {
-        $query = Barang::find();
+        $query = Kategori::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,17 +57,10 @@ class BarangSearch extends Barang
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'stok_awal' => $this->stok_awal,
-            'id_perusahaan' => $this->id_perusahaan,
             'id_toko' => $this->id_toko,
-            'harga' => $this->harga,
-            'id_kat' => $this->id_kat,
-            'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'kode', $this->kode])
-            ->andFilterWhere(['like', 'nama', $this->nama])
-            ->andFilterWhere(['like', 'ukuran', $this->ukuran]);
+        $query->andFilterWhere(['like', 'nama', $this->nama]);
 
         return $dataProvider;
     }

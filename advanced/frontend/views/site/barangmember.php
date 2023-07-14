@@ -9,7 +9,9 @@ use yii2ajaxcrud\ajaxcrud\BulkButtonWidget;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BarangSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+use app\models\Kategori;
+use yii\helpers\ArrayHelper;
+$level=ArrayHelper::map(Kategori::find()->orderBy(['nama' => SORT_ASC])->asArray()->all(), 'id', 'nama');
 $this->title = Yii::t('yii', 'Commodity');
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -32,10 +34,19 @@ $col=
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'kode',
     ],
+     [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'id_kat',
+        'filter'=>$level,
+        'value'=>function ($model, $key, $index, $column) {
+        return isset($model->kategori)?$model->kategori->nama:'';
+                },
+    ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'kode',
         'header'=>'Barcode',
+        'filter'=>false,
          'format' => 'raw',
             'value'=>function ($data) {
                 return '<img alt="testing" src="'.str_replace("index.php","",Yii::$app->homeUrl) .'/barcode.php?size=25&text='.$data->kode.'">';

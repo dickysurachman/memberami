@@ -38,7 +38,7 @@ class Barang extends \yii\db\ActiveRecord
     {
         return [
             //[['kode'], 'unique'],
-            [['stok_awal', 'id_perusahaan', 'id_toko', 'status','harga'], 'safe'],
+            [['stok_awal', 'id_perusahaan', 'id_toko', 'status','harga','id_kat'], 'safe'],
             [['kode'], 'string', 'max' => 25],
             [['nama'], 'string', 'max' => 250],
             [['ukuran'], 'safe'],
@@ -65,6 +65,7 @@ class Barang extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'id_kat' => Yii::t('yii', 'Category'),
             'kode' => Yii::t('yii', 'Code'),
             'nama' => Yii::t('yii', 'Name'),
             'harga' => Yii::t('yii', 'Price'),
@@ -91,7 +92,10 @@ class Barang extends \yii\db\ActiveRecord
     }
 
    
-   
+    public function getKategori()
+    {
+        return $this->hasOne(Kategori::className(), ['id' => 'id_kat']);
+    }
     /**
      * Gets query for [[BarangIndetails]].
      *

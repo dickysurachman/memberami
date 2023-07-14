@@ -3,19 +3,18 @@
 namespace frontend\controllers;
 
 use Yii;
-use app\models\Barang;
-use app\models\BarangSearch;
+use app\models\Kategori;
+use app\models\KategoriSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
-use frontend\models\Csv;
-use yii\web\UploadedFile;
+
 /**
- * BarangController implements the CRUD actions for Barang model.
+ * CatController implements the CRUD actions for Kategori model.
  */
-class BarangController extends Controller
+class CatController extends Controller
 {
     /**
      * @inheritdoc
@@ -34,19 +33,12 @@ class BarangController extends Controller
     }
 
     /**
-     * Lists all Barang models.
+     * Lists all Kategori models.
      * @return mixed
      */
-      public function beforeAction($action)
-    {
-        if(!parent::beforeAction($action))
-            return false;
-        if(isset(Yii::$app->session['lang'])) Yii::$app->language=Yii::$app->session['lang'];
-        return true ;
-    }
     public function actionIndex()
     {    
-        $searchModel = new BarangSearch();
+        $searchModel = new KategoriSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -55,109 +47,9 @@ class BarangController extends Controller
         ]);
     }
 
-    public function actionUploadcsv()
-    {
-        $model= new Csv();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->csv = UploadedFile::getInstance($model, 'csv');
-            if(isset($model->csv)){
-                $namafile=rand(1000, 99999999);
-                $file1= $namafile . '.' . $model->csv->extension;
-                $model->csv->saveAs('images/' . $namafile . '.' . $model->csv->extension,TRUE);
-                $csvFilePath = "images/".$file1;
-                $file = fopen($csvFilePath, "r");
-                $i=0;
-                $i2=0;
-                $j=0;
-                $transaction = Yii::$app->db->beginTransaction();
-                try
-                {
-                if(isset($model->alamat) and trim($model->alamat)<>"" and is_null($model->alamat)==false) {
-                while (($row = fgetcsv($file,0,$model->alamat)) !== FALSE) {
-                        $i++;
-                        if($i>1) {
-                        $i2++;
-
-                       // echo $i.$row[0].$row[1].preg_replace('/[[:^print:]]/', '',$row[2]).str_replace(".","",$row[3])."<br>";
-                        ///*
-                        
-                        $barang = New Barang();
-                        $str = preg_replace('/[[:^print:]]/', '',$row[0]);
-                        $str = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $str);
-                        $str = str_replace("\"", "", $str);
-                        $desc =str_replace("\"","",$row[2]);
-                        //$desc=str_replace(","," ",$desc);
-                        $ammount= str_replace("\"","",$row[3]);
-                        $ammount= str_replace(".","",$ammount);
-                        $ammount= str_replace(",","",$ammount);
-                        $cat= str_replace("\"","",$row[4]);
-                        $barang->kode = $str;
-                        $barang->nama = $row[1];
-                        $barang->ukuran =  $desc;
-                        $barang->id_kat =  $cat;
-                        $barang->harga = $ammount;
-                        $barang->stok_awal=0;
-                        $barang->id_perusahaan=0;
-                        $barang->id_toko=0;
-                        $barang->status=0;
-                        $barang->save();   // */
-                        
-                        }
-                }
-
-                //die();
-                } else {
-
-                while (($row = fgetcsv($file)) !== FALSE) {
-                        $i++;
-                        if($i>1) {
-                        $i2++;
-                        $barang = New Barang();
-                        $str = preg_replace('/[[:^print:]]/', '',$row[0]);
-                        $str = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $str);
-                        $str = str_replace("\"", "", $str);
-                        $desc =str_replace("\"","",$row[2]);
-                        //$desc=str_replace(","," ",$desc);
-                        $ammount= str_replace("\"","",$row[3]);
-                        $cat= str_replace("\"","",$row[4]);
-                        $ammount= str_replace(".","",$ammount);
-                        $ammount= str_replace(",","",$ammount);                        
-                        $barang->kode = $str;
-                        $barang->nama = $row[1];
-                        $barang->ukuran =  $desc;
-                        $barang->harga = $ammount;
-                         $barang->id_kat =  $cat;
-                        $barang->stok_awal=0;
-                        $barang->id_perusahaan=0;
-                        $barang->id_toko=0;
-                        $barang->status=0;
-                        $barang->save();  
-                        }  
-                }
-                }                    
-                    $transaction->commit();
-                    Yii::$app->session->setFlash('success', $i2.' rows Success ');
-                }
-                catch(Exception $e)
-                {
-                    $transaction->rollBack();
-                    Yii::$app->session->setFlash('danger', 'Failed import '.$e.getMessage());
-
-                }
-
-              }
-            return $this->redirect(['barang/index']); 
-        }
-        // Yii::$app->session->setFlash('success', ' rows Success ');
-        return $this->render('uploadcsv', [
-        'model' => $model,
-        ]);
-
-    }
-
 
     /**
-     * Displays a single Barang model.
+     * Displays a single Kategori model.
      * @param integer $id
      * @return mixed
      */
@@ -167,7 +59,7 @@ class BarangController extends Controller
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Barang #".$id,
+                    'title'=> "Kategori #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $this->findModel($id),
                     ]),
@@ -181,22 +73,8 @@ class BarangController extends Controller
         }
     }
 
-     public function actionCari($q = null, $id = null) {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        $out = ['results' => ['id' => '', 'text' => '']];
-        if (!is_null($q)) {
-            $data = Yii::$app->db->createCommand("select id,nama AS text from barang where nama like '%".$q."%'  limit 20")
-            ->queryAll();
-            $out['results'] = array_values($data);
-        }
-        elseif ($id > 0) {
-            $out['results'] = ['id' => $id, 'text' => Barang::find($id)->nama];
-        }
-        return $out;
-    } 
-
     /**
-     * Creates a new Barang model.
+     * Creates a new Kategori model.
      * For ajax request will return json object
      * and for non-ajax request if creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -204,7 +82,7 @@ class BarangController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Barang();  
+        $model = new Kategori();  
 
         if($request->isAjax){
             /*
@@ -213,7 +91,7 @@ class BarangController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ". Yii::t('yii', 'Commodity'),
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Kategori",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -224,15 +102,15 @@ class BarangController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ". Yii::t('yii', 'Commodity'),
-                    'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' '. Yii::t('yii', 'Commodity').Yii::t('yii2-ajaxcrud', 'Success').'</span>',
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Kategori",
+                    'content'=>'<span class="text-success">'.Yii::t('yii2-ajaxcrud', 'Create').' Kategori '.Yii::t('yii2-ajaxcrud', 'Success').'</span>',
                     'footer'=> Html::button(Yii::t('yii2-ajaxcrud', 'Close'), ['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
                             Html::a(Yii::t('yii2-ajaxcrud', 'Create More'), ['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
         
                 ];         
             }else{           
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." ". Yii::t('yii', 'Commodity'),
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Create New')." Kategori",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
@@ -257,7 +135,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Updates an existing Barang model.
+     * Updates an existing Kategori model.
      * For ajax request will return json object
      * and for non-ajax request if update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
@@ -275,7 +153,7 @@ class BarangController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             if($request->isGet){
                 return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." ". Yii::t('yii', 'Commodity')." #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Kategori #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -285,7 +163,7 @@ class BarangController extends Controller
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
-                    'title'=> "Barang #".$id,
+                    'title'=> "Kategori #".$id,
                     'content'=>$this->renderAjax('view', [
                         'model' => $model,
                     ]),
@@ -294,7 +172,7 @@ class BarangController extends Controller
                 ];    
             }else{
                  return [
-                    'title'=> Yii::t('yii2-ajaxcrud', 'Update'). Yii::t('yii', 'Commodity')." #".$id,
+                    'title'=> Yii::t('yii2-ajaxcrud', 'Update')." Kategori #".$id,
                     'content'=>$this->renderAjax('update', [
                         'model' => $model,
                     ]),
@@ -317,7 +195,7 @@ class BarangController extends Controller
     }
 
     /**
-     * Delete an existing Barang model.
+     * Delete an existing Kategori model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -345,7 +223,7 @@ class BarangController extends Controller
     }
 
      /**
-     * Delete multiple existing Barang model.
+     * Delete multiple existing Kategori model.
      * For ajax request will return json object
      * and for non-ajax request if deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
@@ -376,15 +254,15 @@ class BarangController extends Controller
     }
 
     /**
-     * Finds the Barang model based on its primary key value.
+     * Finds the Kategori model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Barang the loaded model
+     * @return Kategori the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Barang::findOne($id)) !== null) {
+        if (($model = Kategori::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -79,6 +79,7 @@ if($cek){
                             ['label' => \Yii::t('yii', 'Routes'), 'url' => ['/mimin/route/index'], 'icon' => 'fas fa-angle-double-right','visible'=>Mimin::checkRoute('mimin/route')],
                             ['label' => \Yii::t('yii', 'Language'), 'url' => ['/site/bahasa'], 'icon' => 'fas fa-atlas'],
                             ['label' => \Yii::t('yii', 'Segment'), 'url' => ['/segment/index'], 'icon' => 'fas fa-landmark','visible'=>Mimin::checkRoute('segment/index')],
+                            ['label' => \Yii::t('yii', 'Category'), 'url' => ['/cat/index'], 'icon' => 'fas fa-bookmark','visible'=>Mimin::checkRoute('cat/index')],
                             ['label' => \Yii::t('yii', 'Commodity'), 'url' => ['/barang/index'], 'icon' => 'fas fa-sd-card','visible'=>Mimin::checkRoute('barang/index')],
                             ['label' => \Yii::t('yii', 'Purchase Orders'), 'url' => ['/barangpo/index'], 'icon' => 'fas fa-chart-line','visible'=>Mimin::checkRoute('barangpo/index')],
                             ['label' => \Yii::t('yii', 'Company'), 'url' => ['/costumer/index'], 'icon' => 'fas fa-folder-plus'],
